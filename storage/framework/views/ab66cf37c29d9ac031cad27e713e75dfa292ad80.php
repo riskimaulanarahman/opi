@@ -5,22 +5,22 @@
     <div class="navbar-brand-box">
         <a href="index" class="logo logo-dark">
             <span class="logo-sm">
-                {{-- <img src="{{ URL::asset('assets/images/logo-dark-sm.png') }}" alt="" height="22"> --}}
+                
                 <b style="font-size: 30px;">O</b>
             </span>
             <span class="logo-lg">
-                {{-- <img src="{{ URL::asset('assets/images/logo-dark.png') }}" alt="" height="22"> --}}
+                
                 <b style="font-size: 30px;">OASys</b>
             </span>
         </a>
 
         <a href="index" class="logo logo-light">
             <span class="logo-lg">
-                {{-- <img src="{{ URL::asset('assets/images/logo-light.png') }}" alt="" height="22"> --}}
+                
                 <b style="font-size: 30px;">OASys</b>
             </span>
             <span class="logo-sm">
-                {{-- <img src="{{ URL::asset('assets/images/logo-light-sm.png') }}" alt="" height="22"> --}}
+                
                 <b style="font-size: 30px;">O</b>
             </span>
         </a>
@@ -42,7 +42,7 @@
 
             <ul class="metismenu list-unstyled" id="side-menu">
 
-                {{-- Dashboard --}}
+                
                 <li class="menu-title" data-key="t-applications">Dashboard</li>
                 <li>
                     <a href="javascript: void(0);">
@@ -59,12 +59,12 @@
                     </a>
                 </li>
 
-                {{-- Administrator --}}
-                @php $isAdmin = true @endphp
-                @if ($isAdmin)
+                
+                <?php $isAdmin = true ?>
+                <?php if($isAdmin): ?>
                     <li class="menu-title" data-key="t-applications">Administrator</li>
 
-                    {{-- module --}}
+                    
                     <li>
                         <a href="javascript: void(0);">
                             <i class="icon nav-icon" data-eva="shopping-bag-outline"></i>
@@ -72,7 +72,7 @@
                         </a>
                     </li>
 
-                    {{-- Role --}}
+                    
                     <li>
                         <a href="javascript: void(0);">
                             <i class="icon nav-icon" data-eva="shopping-bag-outline"></i>
@@ -80,19 +80,19 @@
                         </a>
                     </li>
 
-                    {{-- User --}}
+                    
                     <li>
                         <a href="javascript: void(0);">
                             <i class="icon nav-icon" data-eva="shopping-bag-outline"></i>
                             <span class="menu-item" data-key="t-ecommerce">User</span>
                         </a>
                     </li>
-                @endif
+                <?php endif; ?>
 
-                {{-- Request & Approval --}}
+                
                     <li class="menu-title" data-key="t-applications">Request & Approval</li>
 
-                    {{-- Request & Approval Advance --}}
+                    
                     <li>
                         <a href="javascript: void(0);" class="has-arrow">
                             <i class="icon nav-icon" data-eva="shopping-bag-outline"></i>
@@ -100,7 +100,7 @@
                         </a>
                         <ul class="sub-menu" aria-expanded="false">
 
-                            {{-- Approval Advance --}}
+                            
                             <li>
                                 <a href="javascript: void(0);">
                                     <i class="icon nav-icon" data-eva="grid-outline"></i>
@@ -109,7 +109,7 @@
                                 </a>
                             </li>
 
-                            {{-- Report Advance --}}
+                            
                             <li>
                                 <a href="javascript: void(0);">
                                     <i class="icon nav-icon" data-eva="grid-outline"></i>
@@ -118,7 +118,7 @@
                                 </a>
                             </li>
 
-                            {{-- Request Advance --}}
+                            
                             <li>
                                 <a href="javascript: void(0);">
                                     <i class="icon nav-icon" data-eva="grid-outline"></i>
@@ -129,7 +129,7 @@
                         </ul>
                     </li>
 
-                    {{-- Approval & Request IT --}}
+                    
                     <li>
                         <a href="javascript: void(0);" class="has-arrow">
                             <i class="icon nav-icon" data-eva="shopping-bag-outline"></i>
@@ -137,7 +137,7 @@
                         </a>
                         <ul class="sub-menu" aria-expanded="false">
 
-                            {{-- Approval IT --}}
+                            
                             <li>
                                 <a href="javascript: void(0);">
                                     <i class="icon nav-icon" data-eva="grid-outline"></i>
@@ -146,7 +146,7 @@
                                 </a>
                             </li>
 
-                            {{-- Report IT --}}
+                            
                             <li>
                                 <a href="javascript: void(0);">
                                     <i class="icon nav-icon" data-eva="grid-outline"></i>
@@ -155,7 +155,7 @@
                                 </a>
                             </li>
 
-                            {{-- Request IT --}}
+                            
                             <li>
                                 <a href="javascript: void(0);">
                                     <i class="icon nav-icon" data-eva="grid-outline"></i>
@@ -166,7 +166,7 @@
                         </ul>
                     </li>
 
-                    {{-- Request & Approval MMF --}}
+                    
                     <li>
                         <a href="javascript: void(0);" class="has-arrow">
                             <i class="icon nav-icon" data-eva="shopping-bag-outline"></i>
@@ -174,7 +174,7 @@
                         </a>
                         <ul class="sub-menu" aria-expanded="false">
 
-                            {{-- Aproval MMF --}}
+                            
                             <li>
                                 <a href="javascript: void(0);">
                                     <i class="icon nav-icon" data-eva="grid-outline"></i>
@@ -183,7 +183,7 @@
                                 </a>
                             </li>
 
-                            {{-- Report MMF --}}
+                            
                             <li>
                                 <a href="javascript: void(0);">
                                     <i class="icon nav-icon" data-eva="grid-outline"></i>
@@ -192,7 +192,7 @@
                                 </a>
                             </li>
 
-                            {{-- Request MMF --}}
+                            
                             <li>
                                 <a href="javascript: void(0);">
                                     <i class="icon nav-icon" data-eva="grid-outline"></i>
@@ -203,7 +203,7 @@
                         </ul>
                     </li>
 
-                    {{-- Approval & Request Payment --}}
+                    
                     <li>
                         <a href="javascript: void(0);" class="has-arrow">
                             <i class="icon nav-icon" data-eva="shopping-bag-outline"></i>
@@ -211,7 +211,7 @@
                         </a>
                         <ul class="sub-menu" aria-expanded="false">
 
-                            {{-- Approval Payment --}}
+                            
                             <li>
                                 <a href="javascript: void(0);">
                                     <i class="icon nav-icon" data-eva="grid-outline"></i>
@@ -220,7 +220,7 @@
                                 </a>
                             </li>
 
-                            {{-- Report Payment --}}
+                            
                             <li>
                                 <a href="javascript: void(0);">
                                     <i class="icon nav-icon" data-eva="grid-outline"></i>
@@ -229,7 +229,7 @@
                                 </a>
                             </li>
 
-                            {{-- Request Payment --}}
+                            
                             <li>
                                 <a href="javascript: void(0);">
                                     <i class="icon nav-icon" data-eva="grid-outline"></i>
@@ -240,7 +240,7 @@
                         </ul>
                     </li>
 
-                    {{-- Aprroval & Request PH Coverage --}}
+                    
                     <li>
                         <a href="javascript: void(0);" class="has-arrow">
                             <i class="icon nav-icon" data-eva="shopping-bag-outline"></i>
@@ -248,7 +248,7 @@
                         </a>
                         <ul class="sub-menu" aria-expanded="false">
 
-                            {{-- Aprroval PH Coverage --}}
+                            
                             <li>
                                 <a href="javascript: void(0);">
                                     <i class="icon nav-icon" data-eva="grid-outline"></i>
@@ -257,7 +257,7 @@
                                 </a>
                             </li>
 
-                            {{-- Report PH Coverage --}}
+                            
                             <li>
                                 <a href="javascript: void(0);">
                                     <i class="icon nav-icon" data-eva="grid-outline"></i>
@@ -266,7 +266,7 @@
                                 </a>
                             </li>
 
-                            {{-- Request PH Coverage --}}
+                            
                             <li>
                                 <a href="javascript: void(0);">
                                     <i class="icon nav-icon" data-eva="grid-outline"></i>
@@ -276,7 +276,7 @@
                             </li>
                         </ul>
 
-                        {{-- Aprroval & Request RFC --}}
+                        
                     <li>
                         <a href="javascript: void(0);" class="has-arrow">
                             <i class="icon nav-icon" data-eva="shopping-bag-outline"></i>
@@ -284,7 +284,7 @@
                         </a>
                         <ul class="sub-menu" aria-expanded="false">
 
-                            {{-- Aprroval RFC --}}
+                            
                             <li>
                                 <a href="javascript: void(0);">
                                     <i class="icon nav-icon" data-eva="grid-outline"></i>
@@ -293,7 +293,7 @@
                                 </a>
                             </li>
 
-                            {{-- Record RFC --}}
+                            
                             <li>
                                 <a href="javascript: void(0);">
                                     <i class="icon nav-icon" data-eva="grid-outline"></i>
@@ -302,7 +302,7 @@
                                 </a>
                             </li>
 
-                            {{-- Request RFC --}}
+                            
                             <li>
                                 <a href="javascript: void(0);">
                                     <i class="icon nav-icon" data-eva="grid-outline"></i>
@@ -313,7 +313,7 @@
                         </ul>
                     </li>
 
-                    {{-- Aproval & Request SKPL --}}
+                    
                     <li>
                         <a href="javascript: void(0);" class="has-arrow">
                             <i class="icon nav-icon" data-eva="shopping-bag-outline"></i>
@@ -321,7 +321,7 @@
                         </a>
                         <ul class="sub-menu" aria-expanded="false">
 
-                            {{-- Aproval SKPL --}}
+                            
                             <li>
                                 <a href="javascript: void(0);">
                                     <i class="icon nav-icon" data-eva="grid-outline"></i>
@@ -330,7 +330,7 @@
                                 </a>
                             </li>
 
-                            {{-- Data SKPL --}}
+                            
                             <li>
                                 <a href="javascript: void(0);">
                                     <i class="icon nav-icon" data-eva="grid-outline"></i>
@@ -339,7 +339,7 @@
                                 </a>
                             </li>
 
-                            {{-- DOT Timesheet SKPL --}}
+                            
                             <li>
                                 <a href="javascript: void(0);">
                                     <i class="icon nav-icon" data-eva="grid-outline"></i>
@@ -348,7 +348,7 @@
                                 </a>
                             </li>
 
-                            {{-- Request SKPL --}}
+                            
                             <li>
                                 <a href="javascript: void(0);">
                                     <i class="icon nav-icon" data-eva="grid-outline"></i>
@@ -359,7 +359,7 @@
                         </ul>
                     </li>
 
-                    {{-- Approval & Request Travel --}}
+                    
                     <li>
                         <a href="javascript: void(0);" class="has-arrow">
                             <i class="icon nav-icon" data-eva="shopping-bag-outline"></i>
@@ -367,7 +367,7 @@
                         </a>
                         <ul class="sub-menu" aria-expanded="false">
 
-                            {{-- Approval Travel --}}
+                            
                             <li>
                                 <a href="javascript: void(0);">
                                     <i class="icon nav-icon" data-eva="grid-outline"></i>
@@ -376,7 +376,7 @@
                                 </a>
                             </li>
 
-                            {{-- Report Travel --}}
+                            
                             <li>
                                 <a href="javascript: void(0);">
                                     <i class="icon nav-icon" data-eva="grid-outline"></i>
@@ -385,7 +385,7 @@
                                 </a>
                             </li>
 
-                            {{-- Request Travel --}}
+                            
                             <li>
                                 <a href="javascript: void(0);">
                                     <i class="icon nav-icon" data-eva="grid-outline"></i>
@@ -396,129 +396,129 @@
                         </ul>
                     </li>
 
-                {{-- Master --}}
+                
                     <li class="menu-title" data-key="t-applications">Master</li>
 
-                    {{-- Master Approver --}}
-                    @php $hasMasterApprover = true @endphp
-                    @if ($hasMasterApprover)
+                    
+                    <?php $hasMasterApprover = true ?>
+                    <?php if($hasMasterApprover): ?>
                         <li>
                             <a href="javascript: void(0);">
                                 <i class="icon nav-icon" data-eva="grid-outline"></i>
                                 <span class="menu-item" data-key="t-dashboards">Approver</span>
                             </a>
                         </li>
-                    @endif
+                    <?php endif; ?>
 
-                    {{-- Master Balance --}}
-                    @php $hasMasterBalance = true @endphp
-                    @if ($hasMasterBalance)
+                    
+                    <?php $hasMasterBalance = true ?>
+                    <?php if($hasMasterBalance): ?>
                         <li>
                             <a href="javascript: void(0);">
                                 <i class="icon nav-icon" data-eva="grid-outline"></i>
                                 <span class="menu-item" data-key="t-dashboards">Balance</span>
                             </a>
                         </li>
-                    @endif
+                    <?php endif; ?>
 
-                    {{-- Master Company --}}
-                    @php $hasMasterCompany = true @endphp
-                    @if ($hasMasterCompany)
+                    
+                    <?php $hasMasterCompany = true ?>
+                    <?php if($hasMasterCompany): ?>
                         <li>
                             <a href="javascript: void(0);">
                                 <i class="icon nav-icon" data-eva="grid-outline"></i>
                                 <span class="menu-item" data-key="t-dashboards">Company</span>
                             </a>
                         </li>
-                    @endif
+                    <?php endif; ?>
 
-                    {{-- Master Department --}}
-                    @php $hasMasterDepartment = true @endphp
-                    @if ($hasMasterDepartment)
+                    
+                    <?php $hasMasterDepartment = true ?>
+                    <?php if($hasMasterDepartment): ?>
                         <li>
                             <a href="javascript: void(0);">
                                 <i class="icon nav-icon" data-eva="grid-outline"></i>
                                 <span class="menu-item" data-key="t-dashboards">Department</span>
                             </a>
                         </li>
-                    @endif
+                    <?php endif; ?>
 
-                    {{-- Master Designation --}}
-                    @php $hasMasterDesignation = true @endphp
-                    @if ($hasMasterDesignation)
+                    
+                    <?php $hasMasterDesignation = true ?>
+                    <?php if($hasMasterDesignation): ?>
                         <li>
                             <a href="javascript: void(0);">
                                 <i class="icon nav-icon" data-eva="grid-outline"></i>
                                 <span class="menu-item" data-key="t-dashboards">Designation</span>
                             </a>
                         </li>
-                    @endif
+                    <?php endif; ?>
 
-                    {{-- Master Division --}}
-                    @php $hasMasterDivision = true @endphp
-                    @if ($hasMasterDivision)
+                    
+                    <?php $hasMasterDivision = true ?>
+                    <?php if($hasMasterDivision): ?>
                         <li>
                             <a href="javascript: void(0);">
                                 <i class="icon nav-icon" data-eva="grid-outline"></i>
                                 <span class="menu-item" data-key="t-dashboards">Division</span>
                             </a>
                         </li>
-                    @endif
+                    <?php endif; ?>
 
-                    {{-- Master Division --}}
-                    @php $hasMasterHoliday = true @endphp
-                    @if ($hasMasterHoliday)
+                    
+                    <?php $hasMasterHoliday = true ?>
+                    <?php if($hasMasterHoliday): ?>
                         <li>
                             <a href="javascript: void(0);">
                                 <i class="icon nav-icon" data-eva="grid-outline"></i>
                                 <span class="menu-item" data-key="t-dashboards">Holiday</span>
                             </a>
                         </li>
-                    @endif
+                    <?php endif; ?>
 
-                    {{-- Master Internal Hiring --}}
-                    @php $hasMasterInternalHiring = true @endphp
-                    @if ($hasMasterInternalHiring)
+                    
+                    <?php $hasMasterInternalHiring = true ?>
+                    <?php if($hasMasterInternalHiring): ?>
                         <li>
                             <a href="javascript: void(0);">
                                 <i class="icon nav-icon" data-eva="grid-outline"></i>
                                 <span class="menu-item" data-key="t-dashboards">Internal Hiring</span>
                             </a>
                         </li>
-                    @endif
+                    <?php endif; ?>
 
-                    {{-- Master RFC Activity --}}
-                    @php $hasMasterRfcActivity = true @endphp
-                    @if ($hasMasterRfcActivity)
+                    
+                    <?php $hasMasterRfcActivity = true ?>
+                    <?php if($hasMasterRfcActivity): ?>
                         <li>
                             <a href="javascript: void(0);">
                                 <i class="icon nav-icon" data-eva="grid-outline"></i>
                                 <span class="menu-item" data-key="t-dashboards">RFC Activity</span>
                             </a>
                         </li>
-                    @endif
+                    <?php endif; ?>
 
-                    {{-- Master RFC Contractor --}}
-                    @php $hasMasterRfcContractor = true @endphp
-                    @if ($hasMasterRfcContractor)
+                    
+                    <?php $hasMasterRfcContractor = true ?>
+                    <?php if($hasMasterRfcContractor): ?>
                         <li>
                             <a href="javascript: void(0);">
                                 <i class="icon nav-icon" data-eva="grid-outline"></i>
                                 <span class="menu-item" data-key="t-dashboards">RFC Contractor</span>
                             </a>
                         </li>
-                    @endif
+                    <?php endif; ?>
 
-                    {{-- Master RFC SK --}}
-                    @php $hasMasterRfcSk = true @endphp
-                    @if ($hasMasterRfcSk)
+                    
+                    <?php $hasMasterRfcSk = true ?>
+                    <?php if($hasMasterRfcSk): ?>
                     <li>
                         <a href="javascript: void(0);">
                             <i class="icon nav-icon" data-eva="grid-outline"></i>
                             <span class="menu-item" data-key="t-dashboards">RFC SK</span>
                         </a>
                     </li>
-                    @endif
+                    <?php endif; ?>
 
             </ul>
         </div>
@@ -534,4 +534,4 @@
         </div>
     </div>
 </div>
-<!-- Left Sidebar End -->
+<!-- Left Sidebar End --><?php /**PATH D:\mysql\htdocs\oasys_update\resources\views/layouts/sidebar.blade.php ENDPATH**/ ?>
