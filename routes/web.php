@@ -17,8 +17,7 @@ Auth::routes();
 
 // Go to Home Dashboard
 Route::get('/', [App\Http\Controllers\DashboardController::class, 'root'])->name('root');
-Route::get('/advance', [App\Http\Controllers\AdvanceController::class, 'index'])->name('advance');
-
+Route::get('/advance_approval', [App\Http\Controllers\AdvanceController::class, 'index'])->name('advance_approval');
 
 // Unused
 // Language Translation

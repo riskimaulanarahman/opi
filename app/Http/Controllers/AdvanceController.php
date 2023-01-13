@@ -14,28 +14,31 @@ class AdvanceController extends Controller
     public function index()
     {
         $data = array(
-            'title' => 'Advance',
+            'icon' => 'fas fa-money-bill-wave',
+            'module' => 'Advance',
+            'title' => 'Approval',
             'menu' => [
-                array(
-                    'title' => 'Menus',
-                    'routes' => 'root',
-                    'submenu' => [
-                        array(
-                            'title' => 'subMenus',
-                            'routes' => 'root',
-                        ),
-                        array(
-                            'title' => 'subMenus 1',
-                            'routes' => 'root',
-                        )
-                    ]
-                ),
-                array(
-                    'title' => 'Menus 1',
-                    'routes' => 'root',
-                    'submenu' => null
-                )
-            ]
+                    array(
+                        'title' => 'Menus',
+                        'routes' => 'root',
+                        'submenu' => [
+                            array(
+                                'title' => 'subMenus',
+                                'routes' => 'root',
+                            ),
+                            array(
+                                'title' => 'subMenus 1',
+                                'routes' => 'root',
+                            )
+                        ]
+                    ),
+                    array(
+                        'title' => 'Menus 1',
+                        'routes' => 'root',
+                        'submenu' => null
+                    )
+                ],
+            'data' => null
         );
 
         return view('master-grid.index')->with('data', $data);

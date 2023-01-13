@@ -46,27 +46,35 @@
                     <?php $__currentLoopData = $sidebar; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <?php if($item['group'] == $sequenceitem['id']): ?>
                             <li>
-                                <a href="javascript: void(0);" class="<?php echo e($item['is_parent'] ? 'has-arrow' : ''); ?>">
+                                <a href="<?php echo e(!$item['is_parent'] ? $item['route'] : '#'); ?>" class="<?php echo e($item['is_parent'] ? 'has-arrow' : ''); ?>">
                                     <i class="icon nav-icon" data-eva="shopping-bag-outline"></i>
                                     <span class="menu-item" data-key="t-ecommerce"><?php echo e($item['title']); ?></span>
                                 </a>
-                                <ul class="sub-menu" aria-expanded="false">
-                                    <?php $__currentLoopData = $sidebar; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subitem): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                        <?php if($item['id'] === $subitem['parent_id']): ?>
-                                            <li>
-                                                <a href="javascript: void(0);">
-                                                    <i class="icon nav-icon" data-eva="grid-outline"></i>
-                                                    <span class="menu-item" data-key="t-dashboards"><?php echo e($subitem['title']); ?></span>
-                                                    <span class="badge rounded-pill bg-primary">3</span>
-                                                </a>
-                                            </li>
-                                        <?php endif; ?>
-                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                </ul>
+                                <?php if($item['is_parent']): ?>
+                                    <ul class="sub-menu" aria-expanded="false">
+                                        <?php $__currentLoopData = $sidebar; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subitem): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <?php if($item['id'] === $subitem['parent_id']): ?>
+                                                <li>
+                                                    <a href="<?php echo e($subitem['route']); ?>">
+                                                        <i class="icon nav-icon" data-eva="grid-outline"></i>
+                                                        <span class="menu-item" data-key="t-dashboards">
+                                                            <?php
+                                                                $split = explode(" ", $subitem['title']);
+                                                                echo $split[count($split)-1]
+                                                            ?>
+                                                        </span>
+                                                        <span class="badge rounded-pill bg-primary">3</span>
+                                                    </a>
+                                                </li>
+                                            <?php endif; ?>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                    </ul>
+                                <?php endif; ?>
                             </li>
                         <?php endif; ?>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
             </ul>
         </div>
 

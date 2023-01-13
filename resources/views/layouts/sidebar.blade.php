@@ -46,27 +46,35 @@
                     @foreach ($sidebar as $item)
                         @if ($item['group'] == $sequenceitem['id'])
                             <li>
-                                <a href="javascript: void(0);" class="{{ $item['is_parent'] ? 'has-arrow' : '' }}">
+                                <a href="{{ !$item['is_parent'] ? $item['route'] : '#' }}" class="{{ $item['is_parent'] ? 'has-arrow' : '' }}">
                                     <i class="icon nav-icon" data-eva="shopping-bag-outline"></i>
                                     <span class="menu-item" data-key="t-ecommerce">{{ $item['title'] }}</span>
                                 </a>
-                                <ul class="sub-menu" aria-expanded="false">
-                                    @foreach ( $sidebar as $subitem )
-                                        @if($item['id'] === $subitem['parent_id'])
-                                            <li>
-                                                <a href="javascript: void(0);">
-                                                    <i class="icon nav-icon" data-eva="grid-outline"></i>
-                                                    <span class="menu-item" data-key="t-dashboards">{{ $subitem['title'] }}</span>
-                                                    <span class="badge rounded-pill bg-primary">3</span>
-                                                </a>
-                                            </li>
-                                        @endif
-                                    @endforeach
-                                </ul>
+                                @if ($item['is_parent'])
+                                    <ul class="sub-menu" aria-expanded="false">
+                                        @foreach ( $sidebar as $subitem )
+                                            @if($item['id'] === $subitem['parent_id'])
+                                                <li>
+                                                    <a href="{{ $subitem['route'] }}">
+                                                        <i class="icon nav-icon" data-eva="grid-outline"></i>
+                                                        <span class="menu-item" data-key="t-dashboards">
+                                                            @php
+                                                                $split = explode(" ", $subitem['title']);
+                                                                echo $split[count($split)-1]
+                                                            @endphp
+                                                        </span>
+                                                        <span class="badge rounded-pill bg-primary">3</span>
+                                                    </a>
+                                                </li>
+                                            @endif
+                                        @endforeach
+                                    </ul>
+                                @endif
                             </li>
                         @endif
                     @endforeach
                 @endforeach
+
             </ul>
         </div>
 
