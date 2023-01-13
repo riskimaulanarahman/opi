@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Sidemenu extends Migration
+class CreateSequencesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,9 @@ class Sidemenu extends Migration
      */
     public function up()
     {
-        Schema::create('sidemenu', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('name')->unique();
-            $table->string('icon');
-            $table->integer('group_id');
-            $table->integer('parent_id');
-            $table->string('slug');
+        Schema::create('sequences', function (Blueprint $table) {
+            $table->id();
+            $table->string('title');
             $table->timestamps();
         });
     }
@@ -31,7 +27,6 @@ class Sidemenu extends Migration
      */
     public function down()
     {
-        //Drop Table
-        Schema::dropIfExists('sidemenu');
+        Schema::dropIfExists('sequences');
     }
 }

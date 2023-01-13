@@ -2,11 +2,16 @@
 
 namespace App\Providers;
 
+use App\Models\Front;
+use App\Models\Sequence;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Route;
+
+use Illuminate\Pagination\Paginator;
+use View;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -46,6 +51,20 @@ class RouteServiceProvider extends ServiceProvider
             Route::middleware('web')
                 ->namespace($this->namespace)
                 ->group(base_path('routes/web.php'));
+        });
+
+        Paginator::useBootstrap();
+
+        View::composer('*', function($view)
+        {
+            $sidebar = Front::orderBy('title')->get();
+            $view->with('sidebar', $sidebar);
+        });
+
+        View::composer('*', function($view)
+        {
+            $sequence = Sequence::all();
+            $view->with('sequence', $sequence);
         });
     }
 

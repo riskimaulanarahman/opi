@@ -1,5 +1,5 @@
 <?php $__env->startSection('title'); ?>
-<?php echo app('translator')->get('translation.Login'); ?>
+    Login
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
         <div class="auth-page">
