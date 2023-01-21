@@ -1,8 +1,7 @@
-@extends('layouts.master-without-nav')
-@section('title')
-@lang('translation.Login')
-@endsection
-@section('content')
+<?php $__env->startSection('title'); ?>
+<?php echo app('translator')->get('translation.Login'); ?>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
 
         <div class="auth-page">
             <div class="container-fluid p-0">
@@ -18,8 +17,8 @@
                                                     <div class="d-flex flex-column h-100">
                                                         <div class="mb-4 mb-md-5">
                                                             <a href="index" class="d-block auth-logo">
-                                                                <img src="{{ URL::asset('assets/images/logo-dark.png')}}" alt="" height="22" class="auth-logo-dark me-start">
-                                                                <img src="{{ URL::asset('assets/images/logo-light.png')}}" alt="" height="22" class="auth-logo-light me-start">
+                                                                <img src="<?php echo e(URL::asset('assets/images/logo-dark.png')); ?>" alt="" height="22" class="auth-logo-dark me-start">
+                                                                <img src="<?php echo e(URL::asset('assets/images/logo-light.png')); ?>" alt="" height="22" class="auth-logo-light me-start">
                                                             </a>
                                                         </div>
                                                         <div class="auth-content my-auto">
@@ -27,15 +26,29 @@
                                                                 <h5 class="mb-0">Welcome Back !</h5>
                                                                 <p class="text-muted mt-2">Sign in to continue to <b>Oasys</b>.</p>
                                                             </div>
-                                                            <form class="mt-4 pt-2" action="{{ route('login') }}" method="POST">
-                                                                @csrf
+                                                            <form class="mt-4 pt-2" action="<?php echo e(route('login')); ?>" method="POST">
+                                                                <?php echo csrf_field(); ?>
                                                                 <div class="form-floating form-floating-custom mb-4">
-                                                                    <input type="text" class="form-control @error('username') is-invalid @enderror" value="{{ old('username') }}" id="input-username" placeholder="Enter User Name" name="username">
-                                                                    @error('username')
+                                                                    <input type="text" class="form-control <?php $__errorArgs = ['username'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('username')); ?>" id="input-username" placeholder="Enter User Name" name="username">
+                                                                    <?php $__errorArgs = ['username'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
                                                                         <span class="invalid-feedback" role="alert">
-                                                                            <strong>{{ $message }}</strong>
+                                                                            <strong><?php echo e($message); ?></strong>
                                                                         </span>
-                                                                    @enderror
+                                                                    <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                                                     <label for="input-username">Username</label>
                                                                     <div class="form-floating-icon">
                                                                         <i data-eva="people-outline"></i>
@@ -43,12 +56,26 @@
                                                                 </div>
 
                                                                 <div class="form-floating form-floating-custom mb-4 auth-pass-inputgroup">
-                                                                    <input type="password" class="form-control pe-5 @error('password') is-invalid @enderror" name="password" id="password-input" placeholder="Enter Password">
-                                                                    @error('password')
+                                                                    <input type="password" class="form-control pe-5 <?php $__errorArgs = ['password'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" name="password" id="password-input" placeholder="Enter Password">
+                                                                    <?php $__errorArgs = ['password'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
                                                                         <span class="invalid-feedback" role="alert">
-                                                                            <strong>{{ $message }}</strong>
+                                                                            <strong><?php echo e($message); ?></strong>
                                                                         </span>
-                                                                    @enderror
+                                                                    <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                                                     <button type="button" class="btn btn-link position-absolute h-100 end-0 top-0" id="password-addon">
                                                                         <i class="mdi mdi-eye-outline font-size-18 text-muted"></i>
                                                                     </button>
@@ -99,7 +126,7 @@
                                             <div class="carousel-inner w-75 mx-auto">
                                                 <div class="carousel-item active">
                                                     <div class="mt-4">
-                                                        <img src="{{ URL::asset('./assets/images/login-img.png')}}" class="img-fluid" alt="">
+                                                        <img src="<?php echo e(URL::asset('./assets/images/login-img.png')); ?>" class="img-fluid" alt="">
                                                     </div>
                                                     <div class="testi-contain text-center">
                                                         <h5 class="font-size-20 mt-4">Complementary Team</h5>
@@ -111,7 +138,7 @@
 
                                                 <div class="carousel-item">
                                                     <div class="mt-4">
-                                                        <img src="{{ URL::asset('./assets/images/login-img.png')}}" class="img-fluid" alt="">
+                                                        <img src="<?php echo e(URL::asset('./assets/images/login-img.png')); ?>" class="img-fluid" alt="">
                                                     </div>
                                                     <div class="testi-contain text-center">
                                                         <h5 class="font-size-20 mt-4">Ownership</h5>
@@ -123,7 +150,7 @@
 
                                                 <div class="carousel-item">
                                                     <div class="mt-4">
-                                                        <img src="{{ URL::asset('./assets/images/login-img.png')}}" class="img-fluid" alt="">
+                                                        <img src="<?php echo e(URL::asset('./assets/images/login-img.png')); ?>" class="img-fluid" alt="">
                                                     </div>
                                                     <div class="testi-contain text-center">
                                                         <h5 class="font-size-20 mt-4">People</h5>
@@ -135,7 +162,7 @@
 
                                                 <div class="carousel-item">
                                                     <div class="mt-4">
-                                                        <img src="{{ URL::asset('./assets/images/login-img.png')}}" class="img-fluid" alt="">
+                                                        <img src="<?php echo e(URL::asset('./assets/images/login-img.png')); ?>" class="img-fluid" alt="">
                                                     </div>
                                                     <div class="testi-contain text-center">
                                                         <h5 class="font-size-20 mt-4">Integrity</h5>
@@ -147,7 +174,7 @@
 
                                                 <div class="carousel-item">
                                                     <div class="mt-4">
-                                                        <img src="{{ URL::asset('./assets/images/login-img.png')}}" class="img-fluid" alt="">
+                                                        <img src="<?php echo e(URL::asset('./assets/images/login-img.png')); ?>" class="img-fluid" alt="">
                                                     </div>
                                                     <div class="testi-contain text-center">
                                                         <h5 class="font-size-20 mt-4">Customer</h5>
@@ -159,7 +186,7 @@
 
                                                 <div class="carousel-item">
                                                     <div class="mt-4">
-                                                        <img src="{{ URL::asset('./assets/images/login-img.png')}}" class="img-fluid" alt="">
+                                                        <img src="<?php echo e(URL::asset('./assets/images/login-img.png')); ?>" class="img-fluid" alt="">
                                                     </div>
                                                     <div class="testi-contain text-center">
                                                         <h5 class="font-size-20 mt-4">Continous Improvement</h5>
@@ -185,8 +212,10 @@
             <!-- end container fluid -->
         </div>
 
-        @endsection
-        @section('script')
-            <script src="{{ URL::asset('assets/js/pages/pass-addon.init.js') }}"></script>
-            <script src="{{ URL::asset('assets/js/pages/eva-icon.init.js') }}"></script>
-        @endsection
+        <?php $__env->stopSection(); ?>
+        <?php $__env->startSection('script'); ?>
+            <script src="<?php echo e(URL::asset('assets/js/pages/pass-addon.init.js')); ?>"></script>
+            <script src="<?php echo e(URL::asset('assets/js/pages/eva-icon.init.js')); ?>"></script>
+        <?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.master-without-nav', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\mysql\htdocs\oasys2023\resources\views/auth/login.blade.php ENDPATH**/ ?>

@@ -2,12 +2,10 @@
 
 namespace Illuminate\Foundation\Auth;
 
-use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
-
 
 trait AuthenticatesUsers
 {
@@ -33,30 +31,13 @@ trait AuthenticatesUsers
      */
     public function login(Request $request)
     {
-        // username return as string
-        $username = $request->input('username');
-
-        // find username return as string or null 
-        // $find_username = User::firstWhere('username', $username);
-
-        // Validate login pattern
         $this->validateLogin($request);
 
-        // conditions using LDAP or User Table
-        // if ($find_username == null) {
-        //     $request = [
-        //         'LoginName' => $request->input('username'),
-        //         'password' => $request->input('password'),
-        //     ];
-        // } 
-        
         // If the class is using the ThrottlesLogins trait, we can automatically throttle
         // the login attempts for this application. We'll key this by the username and
         // the IP address of the client making these requests into this application.
-        if (
-            method_exists($this, 'hasTooManyLoginAttempts') &&
-            $this->hasTooManyLoginAttempts($request)
-        ) {
+        if (method_exists($this, 'hasTooManyLoginAttempts') &&
+            $this->hasTooManyLoginAttempts($request)) {
             $this->fireLockoutEvent($request);
 
             return $this->sendLockoutResponse($request);
@@ -69,7 +50,6 @@ trait AuthenticatesUsers
 
             return $this->sendLoginResponse($request);
         }
-
 
         // If the login attempt was unsuccessful we will increment the number of attempts
         // to login and redirect the user back to the login form. Of course, when this
@@ -136,8 +116,8 @@ trait AuthenticatesUsers
         }
 
         return $request->wantsJson()
-            ? new JsonResponse([], 204)
-            : redirect()->intended($this->redirectPath());
+                    ? new JsonResponse([], 204)
+                    : redirect()->intended($this->redirectPath());
     }
 
     /**
@@ -174,7 +154,7 @@ trait AuthenticatesUsers
      */
     public function username()
     {
-        return 'username';
+        return 'email';
     }
 
     /**

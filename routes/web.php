@@ -1,8 +1,8 @@
 <?php
 
+use App\Models\SideMenu;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,16 +14,20 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 Auth::routes();
+//Language Translation
+Route::get('index/{locale}', [App\Http\Controllers\HomeController::class, 'lang']);
 
-// Go to Home Dashboard
-Route::get('/', [App\Http\Controllers\DashboardController::class, 'root'])->name('root');
-Route::get('/advance_approval', [App\Http\Controllers\AdvanceController::class, 'index'])->name('advance_approval');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'root'])->name('root');
 
-// Unused
-// Language Translation
-// Route::get('index/{locale}', [App\Http\Controllers\HomeController::class, 'lang']);
+//Update User Details
+Route::post('/update-profile/{id}', [App\Http\Controllers\HomeController::class, 'updateProfile'])->name('updateProfile');
+Route::post('/update-password/{id}', [App\Http\Controllers\HomeController::class, 'updatePassword'])->name('updatePassword');
 
-// Update User Details
-Route::post('/update-profile/{id}', [App\Http\Controllers\DashboardController::class, 'updateProfile'])->name('updateProfile');
-Route::post('/update-password/{id}', [App\Http\Controllers\DashboardController::class, 'updatePassword'])->name('updatePassword');
-Route::get('{any}', [App\Http\Controllers\DashboardController::class, 'index'])->name('index');
+// Route::get('{any}', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
+
+$sidemenu = SideMenu::select('route')->get();
+foreach ($sidemenu as $menu_item) {
+    Route::get('/{menu_item}', [App\Http\Controllers\SideMenuController::class, 'index'])->name('index');
+}
+
+

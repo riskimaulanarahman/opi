@@ -1,8 +1,8 @@
 {
     "private": true,
-    "name": "OAsys",
-    "version": "2.0.0",
-    "author": "KF Planning",
+    "name": "borex",
+    "version": "1.0.0",
+    "author": "Themesbrand",
     "browserslist": [
         "last 2 version",
         "> 2%"

@@ -2,8 +2,9 @@
 
 namespace App\Providers;
 
-use App\Models\Front;
+use App\Models\Icon;
 use App\Models\Sequence;
+use App\Models\SideMenu;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Http\Request;
@@ -53,19 +54,27 @@ class RouteServiceProvider extends ServiceProvider
                 ->group(base_path('routes/web.php'));
         });
 
-        Paginator::useBootstrap();
+        /**
+         * Configure dynamic route for the sidebar
+         * 
+         * @return array
+         */
 
-        View::composer('*', function($view)
-        {
-            $sidebar = Front::orderBy('title')->get();
-            $view->with('sidebar', $sidebar);
-        });
+         Paginator::useBootstrap();
 
-        View::composer('*', function($view)
-        {
-            $sequence = Sequence::all();
-            $view->with('sequence', $sequence);
-        });
+         View::composer('*', function($view)
+         {
+            $item = SideMenu::orderBy('title')->get();
+            $icon = Icon::select(['id', 'name'])->where('id', $item->icon_id)->get();
+
+            $view->with('sidemenu', $item);
+         });
+
+         View::composer('*', function($view)
+         {
+             $sequence_menu = Sequence::all();
+             $view->with('sequence', $sequence_menu);
+         });
     }
 
     /**
@@ -75,8 +84,9 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function configureRateLimiting()
     {
-        RateLimiter::for('api', function (Request $request) {
+        RateLimiter::for ('api', function (Request $request) {
             return Limit::perMinute(60)->by(optional($request->user())->id ?: $request->ip());
         });
     }
+
 }

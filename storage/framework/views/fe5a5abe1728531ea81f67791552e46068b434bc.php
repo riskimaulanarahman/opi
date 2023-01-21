@@ -1,7 +1,6 @@
-@extends('layouts.master')
-@section('title') @lang('translation.Dashboards') @endsection
-@section('content')
-@section('pagetitle')Dashboard @endsection
+<?php $__env->startSection('title'); ?> <?php echo app('translator')->get('translation.Dashboards'); ?> <?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+<?php $__env->startSection('pagetitle'); ?>Dashboard <?php $__env->stopSection(); ?>
 <div class="row">
     <div class="col-xxl-9">
         <div class="row">
@@ -400,7 +399,7 @@
             <div class="card">
                 <div class="card-body p-0">
                     <div class="user-profile-img">
-                        <img src="{{ URL::asset('assets/images/pattern-bg.jpg') }}" class="profile-img profile-foreground-img rounded-top"
+                        <img src="<?php echo e(URL::asset('assets/images/pattern-bg.jpg')); ?>" class="profile-img profile-foreground-img rounded-top"
                             style="height: 120px;" alt="">
                         <div class="overlay-content rounded-top">
                             <div>
@@ -430,7 +429,7 @@
 
                     <div class="mt-n5 position-relative">
                         <div class="text-center">
-                            <img src="@if (Auth::user()->avatar != ''){{ URL::asset('images/' . Auth::user()->avatar) }}@else{{ URL::asset('assets/images/users/avatar-1.jpg') }}@endif" alt=""
+                            <img src="<?php if(Auth::user()->avatar != ''): ?><?php echo e(URL::asset('images/' . Auth::user()->avatar)); ?><?php else: ?><?php echo e(URL::asset('assets/images/users/avatar-1.jpg')); ?><?php endif; ?>" alt=""
                                 class="avatar-xl rounded-circle img-thumbnail">
 
                             <div class="mt-3">
@@ -1169,12 +1168,14 @@
     </div>
     <!-- end col -->
 </div>
-@endsection
-@section('script')
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('script'); ?>
 <!-- apexcharts -->
-<script src="{{ URL::asset('/assets/libs/apexcharts/apexcharts.min.js') }}"></script>
+<script src="<?php echo e(URL::asset('/assets/libs/apexcharts/apexcharts.min.js')); ?>"></script>
 
 <!-- dashboard init -->
-<script src="{{ URL::asset('/assets/js/pages/dashboard.init.js') }}"></script>
-<script src="{{ URL::asset('/assets/js/app.min.js') }}"></script>
-@endsection
+<script src="<?php echo e(URL::asset('/assets/js/pages/dashboard.init.js')); ?>"></script>
+<script src="<?php echo e(URL::asset('/assets/js/app.min.js')); ?>"></script>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\mysql\htdocs\oasys2023\resources\views/dashboard/index.blade.php ENDPATH**/ ?>

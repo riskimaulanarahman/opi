@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Sequence extends Model
+class Icon extends Model
 {
     use HasFactory;
-    
+
     protected $guard = ['id'];
 
     protected $fillable = [
-        'title', 'icon', 'is_active'
+        'name'
     ];
 }
