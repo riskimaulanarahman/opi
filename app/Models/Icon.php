@@ -8,10 +8,4 @@ use Illuminate\Database\Eloquent\Model;
 class Icon extends Model
 {
     use HasFactory;
-
-    protected $guard = ['id'];
-
-    protected $fillable = [
-        'name'
-    ];
 }
