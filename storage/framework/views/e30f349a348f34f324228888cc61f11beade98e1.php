@@ -5,10 +5,7 @@
 <div class="row">
     <div class="col-xxl-9">
         <div class="row">
-
-            
             <div class="col-xl-4 col-lg-6">
-                
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex align-items-center">
@@ -20,11 +17,14 @@
                                 </div>
                             </div>
                             <div class="flex-grow-1">
-                                <p class="text-muted mb-1">Aproved Request</p>
-                                <h4 class="mb-0">10</h4>
+                                <p class="text-muted mb-1">Revenue</p>
+                                <h4 class="mb-0">$21,456</h4>
                             </div>
 
-                            
+                            <div class="flex-shrink-0 align-self-end ms-2">
+                                <div class="badge rounded-pill font-size-13 badge-soft-success">+ 2.65%
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <!-- end card body -->
@@ -32,11 +32,7 @@
                 <!-- end card -->
             </div>
             <!-- end col -->
-
-            
             <div class="col-xl-4 col-lg-6">
-                
-                
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex align-items-center">
@@ -48,10 +44,13 @@
                                 </div>
                             </div>
                             <div class="flex-grow-1">
-                                <p class="text-muted mb-1">Waiting Approval</p>
-                                <h4 class="mb-0">12</h4>
+                                <p class="text-muted mb-1">Orders</p>
+                                <h4 class="mb-0">5,643</h4>
                             </div>
-                            
+                            <div class="flex-shrink-0 align-self-end ms-2">
+                                <div class="badge rounded-pill font-size-13 badge-soft-danger">- 0.82%
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <!-- end card body -->
@@ -59,11 +58,7 @@
                 <!-- end card -->
             </div>
             <!-- end col -->
-            
-            
             <div class="col-xl-4">
-
-                
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex align-items-center">
@@ -75,10 +70,13 @@
                                 </div>
                             </div>
                             <div class="flex-grow-1">
-                                <p class="text-muted mb-1">Ask to rework</p>
-                                <h4 class="mb-0">20</h4>
+                                <p class="text-muted mb-1">Customers</p>
+                                <h4 class="mb-0">45,254</h4>
                             </div>
-                            
+                            <div class="flex-shrink-0 align-self-end ms-2">
+                                <div class="badge rounded-pill font-size-13 badge-soft-danger">- 1.04%
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <!-- end card body -->
@@ -95,74 +93,76 @@
                     <div class="flex-grow-1">
                         <h5 class="card-title mb-3">Overview</h5>
                     </div>
-                    
+                    <div class="flex-shrink-0">
+                        <div class="dropdown">
+                            <a class="dropdown-toggle text-reset" href="#" data-bs-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                <span class="fw-semibold">Sort By:</span> <span class="text-muted">Yearly<i
+                                        class="mdi mdi-chevron-down ms-1"></i></span>
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <a class="dropdown-item" href="#">Yearly</a>
+                                <a class="dropdown-item" href="#">Monthly</a>
+                                <a class="dropdown-item" href="#">Weekly</a>
+                                <a class="dropdown-item" href="#">Today</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="row gy-4">
                     <div class="col-xxl-3">
                         <div>
                             <div class="mt-3 mb-3">
-                                <p class="text-muted mb-1">This Year</p>
+                                <p class="text-muted mb-1">This Month</p>
 
                                 <div class="d-flex flex-wrap align-items-center gap-2">
-                                    <h2 class="mb-0">80 Request</h2>
-                                    
+                                    <h2 class="mb-0">$24,568</h2>
+                                    <div class="badge rounded-pill font-size-13 badge-soft-success">+
+                                        2.65%</div>
                                 </div>
                             </div>
 
                             <div class="row g-0">
                                 <div class="col-sm-6">
                                     <div class="border-bottom border-end p-3 h-100">
-                                        <p class="text-muted text-truncate mb-1">Advance</p>
-                                        <h5 class="text-truncate mb-0">30</h5>
+                                        <p class="text-muted text-truncate mb-1">Orders</p>
+                                        <h5 class="text-truncate mb-0">5,643</h5>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="border-bottom p-3 h-100">
-                                        <p class="text-muted text-truncate mb-1">IT</p>
-                                        <h5 class="text-truncate mb-0">10</h5>
+                                        <p class="text-muted text-truncate mb-1">Sales</p>
+                                        <h5 class="text-truncate mb-0">16,273</h5>
                                     </div>
                                 </div>
                             </div>
                             <div class="row g-0">
                                 <div class="col-sm-6">
                                     <div class="border-bottom border-end p-3 h-100">
-                                        <p class="text-muted text-truncate mb-1">MMF</p>
-                                        <h5 class="text-truncate mb-0">10</h5>
+                                        <p class="text-muted text-truncate mb-1">Order Value</p>
+                                        <h5 class="text-truncate mb-0">12.03 %</h5>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="border-bottom p-3 h-100">
-                                        <p class="text-muted text-truncate mb-1">Payment</p>
-                                        <h5 class="text-truncate mb-0">20</h5>
+                                        <p class="text-muted text-truncate mb-1">Customers</p>
+                                        <h5 class="text-truncate mb-0">21,456</h5>
                                     </div>
                                 </div>
                             </div>
                             <div class="row g-0">
                                 <div class="col-sm-6">
                                     <div class="border-end p-3 h-100">
-                                        <p class="text-muted text-truncate mb-1">PH Coverage</p>
-                                        <h5 class="text-truncate mb-0">10</h5>
+                                        <p class="text-muted text-truncate mb-1">Income</p>
+                                        <h5 class="text-truncate mb-0">$35,652</h5>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="p-3 h-100">
-                                        <p class="text-muted text-truncate mb-1">RFC</p>
-                                        <h5 class="text-truncate mb-0">12</h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row g-0">
-                                <div class="col-sm-6">
-                                    <div class="border-end p-3 h-100">
-                                        <p class="text-muted text-truncate mb-1">SKPL</p>
-                                        <h5 class="text-truncate mb-0">10</h5>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="p-3 h-100">
-                                        <p class="text-muted text-truncate mb-1">Travel</p>
-                                        <h5 class="text-truncate mb-0">12</h5>
+                                        <p class="text-muted text-truncate mb-1">Expenses</p>
+                                        <h5 class="text-truncate mb-0">$12,248</h5>
                                     </div>
                                 </div>
                             </div>

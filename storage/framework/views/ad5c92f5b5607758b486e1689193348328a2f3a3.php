@@ -78,7 +78,11 @@
                     <img class="rounded-circle header-profile-user" src="<?php if(Auth::user()->avatar != ''): ?><?php echo e(URL::asset('images/' . Auth::user()->avatar)); ?><?php else: ?><?php echo e(URL::asset('assets/images/users/avatar-1.jpg')); ?><?php endif; ?>" alt="Header Avatar">
                 </button>
                 <div class="dropdown-menu dropdown-menu-end pt-0">
-                    <div class="p-3 border-bottom">
+                    <div class="px-3 pt-3">
+                        <h6 class="mb-0"><?php echo e(Auth::user()->name); ?></h6>
+                        <p class="mb-0 font-size-11 text-muted"><b><?php echo e(Auth::user()->fullname); ?></b></p>
+                    </div>
+                    <div class="px-3 pt-2 pb-3 border-bottom">
                         <h6 class="mb-0"><?php echo e(Auth::user()->name); ?></h6>
                         <p class="mb-0 font-size-11 text-muted"><?php echo e(Auth::user()->email); ?></p>
                     </div>
@@ -88,9 +92,7 @@
                     
                     
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#"><i
-                            class="mdi mdi-account text-muted font-size-16 align-middle me-1"></i> <span
-                            class="align-middle">Balance : <b>12</b></span></a>
+                    
                     
                     
                     

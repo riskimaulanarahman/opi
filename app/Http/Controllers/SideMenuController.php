@@ -29,7 +29,7 @@ class SideMenuController extends Controller
         $sequence = Sequence::select('title')->where('id', $sidemenu->sequence_id)->first();
         $icon = Icon::select('name')->where('id', $sidemenu->icon_id)->first();
         $data = array(
-            'icon' => $icon->name,
+            'icon' => 'fa fa-table',
             'module' => $sequence->title,
             'title' => $sidemenu->title,
             'menu' => [
@@ -53,7 +53,7 @@ class SideMenuController extends Controller
                         'submenu' => null
                     )
                 ],
-            'data' => null
+            'data' => '1'
         );
 
         return view('grid.index')->with('data', $data);

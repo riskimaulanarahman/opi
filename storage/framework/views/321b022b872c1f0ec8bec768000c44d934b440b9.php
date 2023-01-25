@@ -40,292 +40,42 @@
         <div id="sidebar-menu">
             <!-- Left Menu Start -->
             <ul class="metismenu list-unstyled" id="side-menu">
-                <li>
-                    <a href="javascript: void(0);">
-                        <i class="icon nav-icon" data-eva="grid-outline"></i>
-                        <span class="menu-item" data-key="t-dashboards">Dashboard</span>
-                        <span class="badge rounded-pill bg-primary">3</span>
-                    </a>
-                </li>
-
-                
-                <li class="menu-title" data-key="t-applications">Administrator</li>
-
-                <li>
-                    <a href="javascript: void(0);" class="has-arrow">
-                        <i class="icon nav-icon" data-eva="shopping-bag-outline"></i>
-                        <span class="menu-item" data-key="t-ecommerce">Master</span>
-                    </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li>
-                            <a href="javascript: void(0);">
-                                <i class="icon nav-icon" data-eva="grid-outline"></i>
-                                <span class="menu-item" data-key="t-dashboards">Approver</span>
-                            </a>
-                        <li>
-                            <a href="javascript: void(0);">
-                                <i class="icon nav-icon" data-eva="grid-outline"></i>
-                                <span class="menu-item" data-key="t-dashboards">Balance</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript: void(0);">
-                                <i class="icon nav-icon" data-eva="grid-outline"></i>
-                                <span class="menu-item" data-key="t-dashboards">Company</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript: void(0);">
-                                <i class="icon nav-icon" data-eva="grid-outline"></i>
-                                <span class="menu-item" data-key="t-dashboards">Department</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript: void(0);">
-                                <i class="icon nav-icon" data-eva="grid-outline"></i>
-                                <span class="menu-item" data-key="t-dashboards">Designation</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript: void(0);">
-                                <i class="icon nav-icon" data-eva="grid-outline"></i>
-                                <span class="menu-item" data-key="t-dashboards">Division</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript: void(0);">
-                                <i class="icon nav-icon" data-eva="grid-outline"></i>
-                                <span class="menu-item" data-key="t-dashboards">Holiday</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript: void(0);">
-                                <i class="icon nav-icon" data-eva="grid-outline"></i>
-                                <span class="menu-item" data-key="t-dashboards">Internal Hiring</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript: void(0);">
-                                <i class="icon nav-icon" data-eva="grid-outline"></i>
-                                <span class="menu-item" data-key="t-dashboards">RFC Activity</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript: void(0);">
-                                <i class="icon nav-icon" data-eva="grid-outline"></i>
-                                <span class="menu-item" data-key="t-dashboards">RFC Contractor</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript: void(0);">
-                                <i class="icon nav-icon" data-eva="grid-outline"></i>
-                                <span class="menu-item" data-key="t-dashboards">RFC SK</span>
-                            </a>
-                        </li>
-                    </ul>
-                <li>
-                <li>
-                    <a href="javascript: void(0);">
-                        <i class="icon nav-icon" data-eva="shopping-bag-outline"></i>
-                        <span class="menu-item" data-key="t-ecommerce">Module</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript: void(0);">
-                        <i class="icon nav-icon" data-eva="shopping-bag-outline"></i>
-                        <span class="menu-item" data-key="t-ecommerce">Role</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript: void(0);">
-                        <i class="icon nav-icon" data-eva="shopping-bag-outline"></i>
-                        <span class="menu-item" data-key="t-ecommerce">User</span>
-                    </a>
-                </li>
-                
-
-
-
-                
-                    <li class="menu-title" data-key="t-applications">Request & Approval</li>
-                    <li>
-                        <a href="javascript: void(0);" class="has-arrow">
-                            <i class="icon nav-icon" data-eva="shopping-bag-outline"></i>
-                            <span class="menu-item" data-key="t-ecommerce">Advance</span>
-                        </a>
-                        <ul class="sub-menu" aria-expanded="false">
+                <?php $__currentLoopData = $sequence; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sequenceitem): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <li class="menu-title" data-key="t-applications"><?php echo e($sequenceitem['title']); ?></li>
+                    <?php $__currentLoopData = $sidemenu; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sidemenu_item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <?php if($sidemenu_item['sequence_id'] == $sequenceitem['id'] && $sidemenu_item['is_active'] && $sidemenu_item['parent_id'] == null): ?>
                             <li>
-                                <a href="javascript: void(0);">
-                                    <i class="icon nav-icon" data-eva="grid-outline"></i>
-                                    <span class="menu-item" data-key="t-dashboards">Approval</span>
-                                    <span class="badge rounded-pill bg-primary">3</span>
+                                <a href="<?php echo e(!$sidemenu_item['is_parent'] ? $sidemenu_item['route'] : '#'); ?>" class="<?php echo e($sidemenu_item['is_parent'] ? 'has-arrow' : ''); ?>">
+                                    <i class="icon nav-icon" data-eva="shopping-bag-outline"></i>
+                                    <span class="menu-item" data-key="t-ecommerce"><?php echo e($sidemenu_item['title']); ?></span>
                                 </a>
+                                <?php if($sidemenu_item['is_parent']): ?>
+                                    <ul class="sub-menu" aria-expanded="false">
+                                        <?php $__currentLoopData = $sidemenu; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $submenu_item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <?php if($sidemenu_item['id'] === $submenu_item['parent_id']): ?>
+                                                <li>
+                                                    <a href="<?php echo e($submenu_item['route']); ?>">
+                                                        <i class="icon nav-icon" data-eva="grid-outline"></i>
+                                                        <span class="menu-item" data-key="t-dashboards">
+                                                            <?php
+                                                                $split = explode(" ", $submenu_item['title']);
+                                                                echo $split[count($split)-1]
+                                                            ?>
+                                                        </span>
+                                                        <span class="badge rounded-pill bg-primary">3</span>
+                                                    </a>
+                                                </li>
+                                            <?php endif; ?>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                    </ul>
+                                <?php endif; ?>
                             </li>
-                            <li>
-                                <a href="javascript: void(0);">
-                                    <i class="icon nav-icon" data-eva="grid-outline"></i>
-                                    <span class="menu-item" data-key="t-dashboards">Request</span>
-                                    <span class="badge rounded-pill bg-primary">3</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="javascript: void(0);" class="has-arrow">
-                            <i class="icon nav-icon" data-eva="shopping-bag-outline"></i>
-                            <span class="menu-item" data-key="t-ecommerce">IT</span>
-                        </a>
-                        <ul class="sub-menu" aria-expanded="false">
-                            <li>
-                                <a href="javascript: void(0);">
-                                    <i class="icon nav-icon" data-eva="grid-outline"></i>
-                                    <span class="menu-item" data-key="t-dashboards">Approval</span>
-                                    <span class="badge rounded-pill bg-primary">3</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript: void(0);">
-                                    <i class="icon nav-icon" data-eva="grid-outline"></i>
-                                    <span class="menu-item" data-key="t-dashboards">Request</span>
-                                    <span class="badge rounded-pill bg-primary">3</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="javascript: void(0);" class="has-arrow">
-                            <i class="icon nav-icon" data-eva="shopping-bag-outline"></i>
-                            <span class="menu-item" data-key="t-ecommerce">MMF</span>
-                        </a>
-                        <ul class="sub-menu" aria-expanded="false">
-                            <li>
-                                <a href="javascript: void(0);">
-                                    <i class="icon nav-icon" data-eva="grid-outline"></i>
-                                    <span class="menu-item" data-key="t-dashboards">Approval</span>
-                                    <span class="badge rounded-pill bg-primary">3</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript: void(0);">
-                                    <i class="icon nav-icon" data-eva="grid-outline"></i>
-                                    <span class="menu-item" data-key="t-dashboards">Request</span>
-                                    <span class="badge rounded-pill bg-primary">3</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="javascript: void(0);" class="has-arrow">
-                            <i class="icon nav-icon" data-eva="shopping-bag-outline"></i>
-                            <span class="menu-item" data-key="t-ecommerce">Payment</span>
-                        </a>
-                        <ul class="sub-menu" aria-expanded="false">
-                            <li>
-                                <a href="javascript: void(0);">
-                                    <i class="icon nav-icon" data-eva="grid-outline"></i>
-                                    <span class="menu-item" data-key="t-dashboards">Approval</span>
-                                    <span class="badge rounded-pill bg-primary">3</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript: void(0);">
-                                    <i class="icon nav-icon" data-eva="grid-outline"></i>
-                                    <span class="menu-item" data-key="t-dashboards">Request</span>
-                                    <span class="badge rounded-pill bg-primary">3</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="javascript: void(0);" class="has-arrow">
-                            <i class="icon nav-icon" data-eva="shopping-bag-outline"></i>
-                            <span class="menu-item" data-key="t-ecommerce">PH Coverage</span>
-                        </a>
-                        <ul class="sub-menu" aria-expanded="false">
-                            <li>
-                                <a href="javascript: void(0);">
-                                    <i class="icon nav-icon" data-eva="grid-outline"></i>
-                                    <span class="menu-item" data-key="t-dashboards">Approval</span>
-                                    <span class="badge rounded-pill bg-primary">3</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript: void(0);">
-                                    <i class="icon nav-icon" data-eva="grid-outline"></i>
-                                    <span class="menu-item" data-key="t-dashboards">Request</span>
-                                    <span class="badge rounded-pill bg-primary">3</span>
-                                </a>
-                            </li>
-                        </ul>
-                    <li>
-                        <a href="javascript: void(0);" class="has-arrow">
-                            <i class="icon nav-icon" data-eva="shopping-bag-outline"></i>
-                            <span class="menu-item" data-key="t-ecommerce">RFC</span>
-                        </a>
-                        <ul class="sub-menu" aria-expanded="false">
-                            <li>
-                                <a href="javascript: void(0);">
-                                    <i class="icon nav-icon" data-eva="grid-outline"></i>
-                                    <span class="menu-item" data-key="t-dashboards">Approval</span>
-                                    <span class="badge rounded-pill bg-primary">3</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript: void(0);">
-                                    <i class="icon nav-icon" data-eva="grid-outline"></i>
-                                    <span class="menu-item" data-key="t-dashboards">Request</span>
-                                    <span class="badge rounded-pill bg-primary">3</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="javascript: void(0);" class="has-arrow">
-                            <i class="icon nav-icon" data-eva="shopping-bag-outline"></i>
-                            <span class="menu-item" data-key="t-ecommerce">SKPL</span>
-                        </a>
-                        <ul class="sub-menu" aria-expanded="false">
-                            <li>
-                                <a href="javascript: void(0);">
-                                    <i class="icon nav-icon" data-eva="grid-outline"></i>
-                                    <span class="menu-item" data-key="t-dashboards">Approval</span>
-                                    <span class="badge rounded-pill bg-primary">3</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript: void(0);">
-                                    <i class="icon nav-icon" data-eva="grid-outline"></i>
-                                    <span class="menu-item" data-key="t-dashboards">Request</span>
-                                    <span class="badge rounded-pill bg-primary">3</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="javascript: void(0);" class="has-arrow">
-                            <i class="icon nav-icon" data-eva="shopping-bag-outline"></i>
-                            <span class="menu-item" data-key="t-ecommerce">Travel</span>
-                        </a>
-                        <ul class="sub-menu" aria-expanded="false">
-                            <li>
-                                <a href="javascript: void(0);">
-                                    <i class="icon nav-icon" data-eva="grid-outline"></i>
-                                    <span class="menu-item" data-key="t-dashboards">Approval</span>
-                                    <span class="badge rounded-pill bg-primary">3</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript: void(0);">
-                                    <i class="icon nav-icon" data-eva="grid-outline"></i>
-                                    <span class="menu-item" data-key="t-dashboards">Request</span>
-                                    <span class="badge rounded-pill bg-primary">3</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                
+                        <?php endif; ?>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
             </ul>
+            
         </div>
         <!-- Sidebar -->
 
@@ -333,9 +83,9 @@
             <p class="mb-1 main-title">
                 <script>
                     document.write(new Date().getFullYear())
-                </script> &copy; <b>OAsys</b>.
+                </script> &copy; Borex.
             </p>
-            <p class="mb-0">Developed by <b>KF Planning</b></p>
+            <p class="mb-0">Design & Develop by Themesbrand</p>
         </div>
     </div>
 </div>
