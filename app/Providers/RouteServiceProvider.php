@@ -70,8 +70,7 @@ class RouteServiceProvider extends ServiceProvider
          View::composer('*', function($view)
          {
             $item = SideMenu::orderBy('title')->get();
-            //$icon = Icon::select(['id', 'name'])->where('id', $item->icon_id)->get();
-
+            // $icon = Icon::select(['id', 'name'])->where('id', $item->icon_id)->get();
             $view->with('sidemenu', $item);
          });
 

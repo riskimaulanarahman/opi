@@ -33,8 +33,8 @@ class CreateSideMenusTable extends Migration
         SideMenu::create(['title' => 'Data', 'route' => 'data', 'icon_id' => 1, 'sequence_id' => 1, 'is_active' => true,'created_at' => now(), 'update_at' => null]);
 
         // Dashboard
-        SideMenu::create(['title' => 'Dashboard Oasys', 'route' => 'dashboard_oasys', 'icon_id' => 1, 'sequence_id' => 2, 'is_active' => true, 'created_at' => now(), 'update_at' => null]);
-        SideMenu::create(['title' => 'Dashboard HR', 'route' => 'dashboard_hr', 'icon_id' => 1, 'sequence_id' => 2, 'is_active' => true, 'created_at' => now(), 'update_at' => null]);
+        SideMenu::create(['title' => 'Dashboard', 'route' => 'dashboard_oasys', 'icon_id' => 1, 'sequence_id' => 2, 'is_active' => true, 'created_at' => now(), 'update_at' => null]);
+        // SideMenu::create(['title' => 'Dashboard HR', 'route' => 'dashboard_hr', 'icon_id' => 1, 'sequence_id' => 2, 'is_active' => true, 'created_at' => now(), 'update_at' => null]);
 
         // Request & Approval
 

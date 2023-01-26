@@ -3,7 +3,7 @@
 
     <!-- LOGO -->
     <div class="navbar-brand-box">
-        <a href="index" class="logo logo-dark">
+        <a href="/" class="logo logo-dark">
             <span class="logo-sm">
                 {{-- <img src="{{ URL::asset('assets/images/logo-dark-sm.png') }}" alt="" height="22"> --}}
                 <b style="font-size: 30px;">O</b>
@@ -51,9 +51,16 @@
                                 </a>
                                 @if ($sidemenu_item['is_parent'])
                                     <ul class="sub-menu" aria-expanded="false">
-                                        @foreach ( $sidemenu as $submenu_item )
-                                            @if($sidemenu_item['id'] === $submenu_item['parent_id'])
-                                                <li>
+                                        {{-- @foreach ( $sidemenu as $submenu_item ) --}}
+                                            <li><a href="/">
+                                                <i class="icon nav-icon" data-eva="grid-outline"></i>
+                                                <span class="menu-item" data-key="t-dashboards">
+                                                    test
+                                                </span>
+                                                <span class="badge rounded-pill bg-primary">3</span>
+                                            </a></li>
+                                            {{-- @if($sidemenu_item['id'] === $submenu_item['parent_id']) --}}
+                                                {{-- <li>
                                                     <a href="{{ $submenu_item['route'] }}">
                                                         <i class="icon nav-icon" data-eva="grid-outline"></i>
                                                         <span class="menu-item" data-key="t-dashboards">
@@ -64,9 +71,9 @@
                                                         </span>
                                                         <span class="badge rounded-pill bg-primary">3</span>
                                                     </a>
-                                                </li>
-                                            @endif
-                                        @endforeach
+                                                </li> --}}
+                                            {{-- @endif --}}
+                                        {{-- @endforeach --}}
                                     </ul>
                                 @endif
                             </li>
