@@ -25,7 +25,7 @@
                                         <a class="nav-link dropdown-toggle arrow-none" href="{{ route($data['menu'][$key]['routes']) }}"
                                             id="topnav-dashboard" role="button" data-toggle="dropdown" aria-haspopup="true"
                                             aria-expanded="false">
-                                            <i class="icon nav-icon" data-eva="grid-outline"></i>
+                                            <i class="icon nav-icon" data-eva="{{ $data['icon'] }}"></i>
                                             <span data-key="t-dashboards">{{ $data['menu'][$key]['title'] }}</span>
                                         </a>
                                     </li>

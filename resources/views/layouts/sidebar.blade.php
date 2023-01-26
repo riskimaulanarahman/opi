@@ -46,7 +46,11 @@
                         @if ($sidemenu_item['sequence_id'] == $sequenceitem['id'] && $sidemenu_item['is_active'] && $sidemenu_item['parent_id'] == null)
                             <li>
                                 <a href="{{ !$sidemenu_item['is_parent'] ? $sidemenu_item['route'] : '#' }}" class="{{ $sidemenu_item['is_parent'] ? 'has-arrow' : '' }}">
-                                    <i class="icon nav-icon" data-eva="shopping-bag-outline"></i>
+                                    @foreach ($icons as $icon)
+                                        @if($sidemenu_item['icon_id'] == $icon['id'])
+                                            <i class="icon nav-icon" data-eva="{{ $icon['name'] }}"></i>
+                                        @endif
+                                    @endforeach
                                     <span class="menu-item" data-key="t-ecommerce">{{ $sidemenu_item['title'] }}</span>
                                 </a>
                                 @if ($sidemenu_item['is_parent'])
@@ -55,7 +59,11 @@
                                             @if($sidemenu_item['id'] === $submenu_item['parent_id'])
                                                 <li>
                                                     <a href="{{ $submenu_item['route'] }}">
-                                                        <i class="icon nav-icon" data-eva="grid-outline"></i>
+                                                        @foreach ($icons as $icon)
+                                                            @if($sidemenu_item['icon_id'] == $icon['id'])
+                                                                <i class="icon nav-icon" data-eva="{{ $icon['name'] }}"></i>
+                                                            @endif
+                                                        @endforeach
                                                         <span class="menu-item" data-key="t-dashboards">
                                                             @php
                                                                 $split = explode(" ", $submenu_item['title']);

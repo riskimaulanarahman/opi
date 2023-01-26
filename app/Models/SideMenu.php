@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class SideMenu extends Model
 {
     use HasFactory;
+
+    protected $table = 'side_menus';
     
     protected $guard = ['id'];
 

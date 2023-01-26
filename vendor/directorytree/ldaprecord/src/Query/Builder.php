@@ -513,13 +513,13 @@ class Builder
      * Execute a callback over each item while chunking.
      *
      * @param Closure $callback
-     * @param int     $count
+     * @param int     $pageSize
      *
      * @return bool
      */
-    public function each(Closure $callback, $count = 1000)
+    public function each(Closure $callback, $pageSize = 1000)
     {
-        return $this->chunk($count, function ($results) use ($callback) {
+        return $this->chunk($pageSize, function ($results) use ($callback) {
             foreach ($results as $key => $value) {
                 if ($callback($value, $key) === false) {
                     return false;
@@ -935,8 +935,8 @@ class Builder
     /**
      * Find many records by distinguished name.
      *
-     * @param array $dns
-     * @param array $columns
+     * @param string|array $dns
+     * @param array        $columns
      *
      * @return array|Collection
      */
@@ -948,7 +948,7 @@ class Builder
 
         $objects = [];
 
-        foreach ($dns as $dn) {
+        foreach ((array) $dns as $dn) {
             if (! is_null($object = $this->find($dn, $columns))) {
                 $objects[] = $object;
             }
