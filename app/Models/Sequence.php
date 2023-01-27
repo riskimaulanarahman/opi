@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Sequence extends Model
 {
     use HasFactory;
+
+    protected $table = 'sequences';
     
     protected $guard = ['id'];
 

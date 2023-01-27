@@ -79,6 +79,12 @@ class RouteServiceProvider extends ServiceProvider
              $sequence_menu = Sequence::all();
              $view->with('sequence', $sequence_menu);
          });
+
+         View::composer('*', function($view)
+         {
+             $icons = Icon::all();
+             $view->with('icons', $icons);
+         });
     }
 
     /**
