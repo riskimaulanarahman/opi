@@ -3,7 +3,7 @@
 
     <!-- LOGO -->
     <div class="navbar-brand-box">
-        <a href="/" class="logo logo-dark">
+        <a href="index" class="logo logo-dark">
             <span class="logo-sm">
                 
                 <b style="font-size: 30px;">O</b>
@@ -35,7 +35,6 @@
     </button>
 
     <div data-simplebar class="sidebar-menu-scroll">
-
         <!--- Sidemenu -->
         <div id="sidebar-menu">
             <!-- Left Menu Start -->
@@ -55,25 +54,32 @@
                                 </a>
                                 <?php if($sidemenu_item['is_parent']): ?>
                                     <ul class="sub-menu" aria-expanded="false">
-                                        
-                                            <li><a href="/">
-                                                <i class="icon nav-icon" data-eva="grid-outline"></i>
-                                                <span class="menu-item" data-key="t-dashboards">
-                                                    test
-                                                </span>
-                                                <span class="badge rounded-pill bg-primary">3</span>
-                                            </a></li>
-                                            
-                                                
-                                            
-                                        
+                                        <?php $__currentLoopData = $sidemenu; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $submenu_item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <?php if($sidemenu_item['id'] === $submenu_item['parent_id']  && $sidemenu_item['is_active'] && !$submenu_item['is_secondary_menu']): ?>
+                                                <li>
+                                                    <a href="<?php echo e($submenu_item['route']); ?>">
+                                                        <?php $__currentLoopData = $icons; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $icon): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                            <?php if($sidemenu_item['icon_id'] == $icon['id']): ?>
+                                                                <i class="icon nav-icon" data-eva="<?php echo e($icon['name']); ?>"></i>
+                                                            <?php endif; ?>
+                                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                        <span class="menu-item" data-key="t-dashboards">
+                                                            <?php
+                                                                $split = explode(" ", $submenu_item['title']);
+                                                                echo $split[count($split)-1]
+                                                            ?>
+                                                        </span>
+                                                        <span class="badge rounded-pill bg-primary">3</span>
+                                                    </a>
+                                                </li>
+                                            <?php endif; ?>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </ul>
                                 <?php endif; ?>
                             </li>
                         <?php endif; ?>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-
             </ul>
             
         </div>
