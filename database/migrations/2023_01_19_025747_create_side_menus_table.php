@@ -23,6 +23,7 @@ class CreateSideMenusTable extends Migration
             $table->foreignId('sequence_id')->constrained('sequences');
             $table->boolean('is_active')->default(false);
             $table->boolean('is_parent')->default(false);
+            $table->boolean('is_secondary_menu')->default(false);
             $table->boolean('must_full_title')->default(false);
             $table->timestamps();
         });
@@ -49,6 +50,13 @@ class CreateSideMenusTable extends Migration
         SideMenu::create(['title' => 'IT Approval', 'route' => 'it_approval', 'icon_id' => 1, 'parent_id' => 10, 'sequence_id' => 3, 'is_active' => true, 'created_at' => now(), 'update_at' => null]);
         SideMenu::create(['title' => 'IT Report', 'route' => 'it_report', 'icon_id' => 1, 'parent_id' => 10, 'sequence_id' => 3, 'is_active' => true, 'created_at' => now(), 'update_at' => null]);
         SideMenu::create(['title' => 'IT Request', 'route' => 'it_request', 'icon_id' => 1, 'parent_id' => 10, 'sequence_id' => 3, 'is_active' => true, 'created_at' => now(), 'update_at' => null]);
+        
+        // Secondary Menus
+        SideMenu::create(['title' => 'General Report', 'route' => '#general_report', 'icon_id' => 1, 'sequence_id' => 3, 'is_parent' => true, 'is_secondary_menu' => true, 'is_active' => true, 'created_at' => now(), 'update_at' => null]);
+        SideMenu::create(['title' => 'Network', 'route' => 'report_network', 'icon_id' => 1, 'sequence_id' => 3, 'parent_id' => 14, 'is_secondary_menu' => true, 'is_active' => true, 'created_at' => now(), 'update_at' => null]);
+        SideMenu::create(['title' => 'Device', 'route' => 'report_device', 'icon_id' => 1, 'sequence_id' => 3, 'parent_id' => 14, 'is_secondary_menu' => true, 'is_active' => true, 'created_at' => now(), 'update_at' => null]);
+
+        SideMenu::create(['title' => 'System Development', 'route' => 'report_development', 'icon_id' => 1, 'sequence_id' => 3, 'is_parent' => true, 'is_secondary_menu' => true, 'is_active' => true, 'created_at' => now(), 'update_at' => null]);
 
     }
 

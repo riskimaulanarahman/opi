@@ -22,10 +22,10 @@
                             @foreach ($data['menu'] as $key => $item)
                                 @if ($data['menu'][$key]['submenu'] == null)
                                     <li class="nav-item">
-                                        <a class="nav-link dropdown-toggle arrow-none" href="{{ route($data['menu'][$key]['routes']) }}"
+                                        <a class="nav-link dropdown-toggle arrow-none" href="{{ $data['menu'][$key]['route'] }}"
                                             id="topnav-dashboard" role="button" data-toggle="dropdown" aria-haspopup="true"
                                             aria-expanded="false">
-                                            <i class="icon nav-icon" data-eva="{{ $data['icon'] }}"></i>
+                                            <i class="icon nav-icon" data-eva="{{ $data['menu'][$key]['icon'] }}"></i>
                                             <span data-key="t-dashboards">{{ $data['menu'][$key]['title'] }}</span>
                                         </a>
                                     </li>
@@ -33,15 +33,18 @@
                                     <li class="nav-item dropdown">
                                         <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-dashboard" role="button"
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="icon nav-icon" data-eva="grid-outline"></i>
+                                            <i class="icon nav-icon" data-eva="{{ $data['menu'][$key]['icon'] }}"></i>
                                             <span data-key="t-dashboards">{{ $data['menu'][$key]['title'] }}</span>
                                             <div class="arrow-down"></div>
                                         </a>
                                         <div class="dropdown-menu" aria-labelledby="topnav-dashboard">
                                             @foreach ($data['menu'][$key]['submenu'] as $keysub => $itemsub)
-                                            <a href="{{ route($data['menu'][$key]['submenu'][$keysub]['routes']) }}"
+                                            <a href="{{ $data['menu'][$key]['submenu'][$keysub]['route'] }}"
                                                 class="dropdown-item"
-                                                data-key="t-ecommerce">{{ $data['menu'][$key]['submenu'][$keysub]['title'] }}</a>
+                                                data-key="t-ecommerce">
+                                                <i class="icon nav-icon" data-eva="{{ $data['menu'][$key]['submenu'][$keysub]['icon'] }}"></i>
+                                                <span data-key="t-dashboards">{{ $data['menu'][$key]['submenu'][$keysub]['title'] }}</span>
+                                            </a>
                                             @endforeach
                                         </div>
                                     </li>

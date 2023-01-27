@@ -46,7 +46,11 @@
                         <?php if($sidemenu_item['sequence_id'] == $sequenceitem['id'] && $sidemenu_item['is_active'] && $sidemenu_item['parent_id'] == null): ?>
                             <li>
                                 <a href="<?php echo e(!$sidemenu_item['is_parent'] ? $sidemenu_item['route'] : '#'); ?>" class="<?php echo e($sidemenu_item['is_parent'] ? 'has-arrow' : ''); ?>">
-                                    <i class="icon nav-icon" data-eva="shopping-bag-outline"></i>
+                                    <?php $__currentLoopData = $icons; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $icon): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <?php if($sidemenu_item['icon_id'] == $icon['id']): ?>
+                                            <i class="icon nav-icon" data-eva="<?php echo e($icon['name']); ?>"></i>
+                                        <?php endif; ?>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     <span class="menu-item" data-key="t-ecommerce"><?php echo e($sidemenu_item['title']); ?></span>
                                 </a>
                                 <?php if($sidemenu_item['is_parent']): ?>

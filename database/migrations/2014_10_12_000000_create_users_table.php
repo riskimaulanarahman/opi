@@ -26,7 +26,7 @@ class CreateUsersTable extends Migration
         });
 
         // Insert Super Admin
-        User::create(['fullname' => 'Planning Strategic Developer', 'username' => 'r3Ad-!$', 'email' => 'developer@itci-hutani.com','password' => Hash::make('D3vsVPerAd-'),'avatar' => 'avatar-1.jpg','created_at' => now()]);
+        User::create(['fullname' => 'Planning Strategic Developer', 'username' => 'admin', 'email' => 'developer@itci-hutani.com','password' => Hash::make('Planning2023'),'avatar' => 'avatar-1.jpg','created_at' => now()]);
     }
     /**
      * Reverse the migrations.
