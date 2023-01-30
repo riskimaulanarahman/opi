@@ -176,7 +176,9 @@
             </div>
         @else
             <div class="card-body">
-                <img src="{{ URL::asset('assets/images/no-data.svg')}}" alt="" height="400" style="margin-left: auto; margin-right: auto;" />
+                <div class="dx-viewport demo-container">
+                <div id="gridContainer"></div>
+                </div>
             </div>
         @endif
     </div>
@@ -184,4 +186,12 @@
 
 @section('script')
     <script src="{{ URL::asset('/assets/js/app.min.js') }}"></script>
+    <script src="{{ asset('assets/js/grid/example.js') }}"></script>
 @endsection
+
+<style>
+.dx-datagrid .dx-data-row > td.bullet {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+</style>
