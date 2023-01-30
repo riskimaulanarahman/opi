@@ -25,12 +25,13 @@ class SideMenuController extends Controller
      */
     public function index($route)
     {
-        $menu = array();
-        $sidemenu = SideMenu::select(['title', 'icon_id', 'sequence_id', 'parent_id', 'is_active'])->where('route', $route)->first();
+
+        $sidemenu = SideMenu::select(['id', 'title', 'icon_id', 'sequence_id', 'parent_id', 'is_active'])->where('route', $route)->first();
         $sequence = Sequence::select(['title', 'is_active'])->where('id', $sidemenu->sequence_id)->first();
         $icon = Icon::select('name')->where('id', $sidemenu->icon_id)->first();
+        $menu = array();
         // Check active menu or sequence
-        if($sequence->is_active || $sidemenu->is_active) {
+        if ($sequence->is_active || $sidemenu->is_active) {
             $menu = array(
                 'icon' => $icon->name,
                 'module' => $sequence->title,
@@ -40,25 +41,26 @@ class SideMenuController extends Controller
             );
         }
         // secondary menu queries
-        $secondary_menu = Sidemenu::select(['id', 'icon_id', 'title', 'route'])->whereRaw('parent_id like ? and is_secondary_menu like 1', [$sidemenu->parent_id])->get();
+        $secondary_menu = Sidemenu::select(['id', 'icon_id', 'title', 'route'])->whereRaw('parent_id like ?', [$sidemenu->id])->get();
         // check secondary menu have value
         if (count($secondary_menu) > 0) {
             // Get secondary menu
             foreach ($secondary_menu as $key => $item_menu) {
                 $icon_menu = Icon::select('name')->where('id', $item_menu->icon_id)->first();
-                
+
                 // push array in to menu
                 array_push($menu['menu'], array(
                     'icon' => $icon_menu->name,
                     'title' => $item_menu->title,
                     'route' => $item_menu->route,
-                    'submenu' => array()
+                    'submenu' => array(),
+                    'data' => null
                 ));
-                
+
                 // submenus queries
-                $submenu = Sidemenu::select(['id', 'icon_id','title', 'route'])->whereRaw('parent_id like ? and is_secondary_menu like 1', [$item_menu->id])->get();
+                $submenu = Sidemenu::select(['id', 'icon_id', 'title', 'route'])->whereRaw('parent_id like ? and is_secondary_menu like 1', [$item_menu->id])->get();
                 // check have submenu item
-                if(count($submenu) > 0) {
+                if (count($submenu) > 0) {
                     // get submenu
                     foreach ($submenu as $item_submenu) {
                         $icon_submenu = Icon::select('name')->where('id', $item_submenu->icon_id)->first();
@@ -68,7 +70,9 @@ class SideMenuController extends Controller
                             array(
                                 'icon' => $icon_submenu->name,
                                 'title' => $item_submenu->title,
-                                'route' => $item_submenu->route
+                                'route' => $item_submenu->route,
+                                'data' => null
+
                             )
                         );
                     }
@@ -78,33 +82,7 @@ class SideMenuController extends Controller
             }
         };
 
-        $data = array(
-            'icon' => $icon->name,
-            'module' => $sequence->title,
-            'title' => $sidemenu->title,
-            'menu' => [
-                array(
-                    'title' => 'Menus',
-                    'routes' => 'root',
-                    'submenu' => [
-                        array(
-                            'title' => 'subMenus',
-                            'routes' => 'root',
-                        ),
-                        array(
-                            'title' => 'subMenus 1',
-                            'routes' => 'root',
-                        )
-                    ]
-                ),
-                array(
-                    'title' => 'Menus 1',
-                    'routes' => 'root',
-                    'submenu' => null
-                )
-            ],
-            'data' => null
-        );
+        // dd($menu);
 
         return view('grid.index')->with('data', $menu);
     }
