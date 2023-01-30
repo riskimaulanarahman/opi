@@ -3,7 +3,7 @@
 
     <!-- LOGO -->
     <div class="navbar-brand-box">
-        <a href="index" class="logo logo-dark">
+        <a href="\" class="logo logo-dark">
             <span class="logo-sm">
                 {{-- <img src="{{ URL::asset('assets/images/logo-dark-sm.png') }}" alt="" height="22"> --}}
                 <b style="font-size: 30px;">O</b>
@@ -14,7 +14,7 @@
             </span>
         </a>
 
-        <a href="index" class="logo logo-light">
+        <a href="\" class="logo logo-light">
             <span class="logo-lg">
                 {{-- <img src="{{ URL::asset('assets/images/logo-light.png') }}" alt="" height="22"> --}}
                 <b style="font-size: 30px;">OASys</b>
@@ -42,7 +42,7 @@
                 @foreach ($sequence as $sequenceitem)
                     <li class="menu-title" data-key="t-applications">{{ $sequenceitem['title'] }}</li>
                     @foreach ($sidemenu as $sidemenu_item)
-                        @if ($sidemenu_item['sequence_id'] == $sequenceitem['id'] && $sidemenu_item['is_active'] && $sidemenu_item['parent_id'] == null)
+                        @if ($sidemenu_item['sequence_id'] == $sequenceitem['id'] && $sidemenu_item['is_active'] && $sidemenu_item['parent_id'] == null && !$sidemenu_item['is_secondary_menu'])
                             <li>
                                 <a href="{{ !$sidemenu_item['is_parent'] ? $sidemenu_item['route'] : '#' }}" class="{{ $sidemenu_item['is_parent'] ? 'has-arrow' : '' }}">
                                     @foreach ($icons as $icon)
