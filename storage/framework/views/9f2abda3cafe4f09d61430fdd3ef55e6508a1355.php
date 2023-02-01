@@ -74,24 +74,27 @@
                     <h4 class="mb-0">List <?php echo e($data['title']); ?></h4>
                 </div>
 
-                <div class="flex-shrink-0 align-self-end ms-2">
-                    <button class="btn btn-primary w-100 waves-effect waves-light" type="submit">Create new request</button>
-                </div>
+                
             </div>
         </div>
 
-            <div class="card-body">
-                <div class="dx-viewport demo-container">
-                <div id="gridContainer"></div>
-                </div>
-            </div>
-            
+        <div class="card-body" >
+            <div id="gridContainer" style="height: 600px"></div>
+        </div>
+
     </div>
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('script'); ?>
     
-    <script src="<?php echo e(asset('assets/js/grid/example.js')); ?>"></script>
+    <script>
+        var pathname = window.location.pathname;
+        console.log(pathname);
+        if(pathname == '/module') {
+            $.getScript('assets/js/grid/module.js');
+        }
+    </script>
+    
 <?php $__env->stopSection(); ?>
 
 <style>

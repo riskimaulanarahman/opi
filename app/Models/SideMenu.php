@@ -11,7 +11,7 @@ class SideMenu extends Model
 
     protected $table = 'side_menus';
     
-    protected $guard = ['id'];
+    protected $guarded = ['id'];
 
     protected $fillable = [
         'title', 'route', 'icon_id', 'parent_id', 'sequence_id', 'is_secondary_menu', 'is_active', 'is_parent', 'must_full_title'

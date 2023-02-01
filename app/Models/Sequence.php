@@ -11,7 +11,7 @@ class Sequence extends Model
 
     protected $table = 'sequences';
     
-    protected $guard = ['id'];
+    protected $guarded = ['id'];
 
     protected $fillable = [
         'title', 'icon', 'is_active'

@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Auth;
 Auth::routes();
 
 // Route::apiResource('/module', [App\Http\Controllers\Admin\ModuleController::class]);
-Route::apiResources([
-    'module' => App\Http\Controllers\Admin\ModuleController::class,
-]);
+Route::group(['prefix' => 'api'], function () {
+    Route::apiResources([
+        'module' => App\Http\Controllers\Admin\ModuleController::class,
+    ]);
+});

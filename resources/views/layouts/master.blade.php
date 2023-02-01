@@ -8,7 +8,6 @@
     <meta content="Online Approval System For Employee at Itci Hutani Manunggal" name="Online Approval System" />
     <meta content="Planning KF" name="Planning KF" />
     <!-- App favicon -->
-    @include('layouts.devextreme')
     <link rel="shortcut icon" href="{{ URL::asset('assets/images/favicon.ico') }}">
     @include('layouts.head-css')
 </head>
@@ -44,6 +43,7 @@
 
     <!-- JAVASCRIPT -->
     @include('layouts.vendor-scripts')
+    @include('layouts.service')
 </body>
 
 </html>

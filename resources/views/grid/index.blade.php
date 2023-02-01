@@ -72,24 +72,29 @@
                     <h4 class="mb-0">List {{ $data['title'] }}</h4>
                 </div>
 
-                <div class="flex-shrink-0 align-self-end ms-2">
+                {{-- <div class="flex-shrink-0 align-self-end ms-2">
                     <button class="btn btn-primary w-100 waves-effect waves-light" type="submit">Create new request</button>
-                </div>
+                </div> --}}
             </div>
         </div>
 
-            <div class="card-body">
-                <div class="dx-viewport demo-container">
-                <div id="gridContainer"></div>
-                </div>
-            </div>
-            
+        <div class="card-body" >
+            <div id="gridContainer" style="height: 600px"></div>
+        </div>
+
     </div>
 @endsection
 
 @section('script')
     {{-- <script src="{{ URL::asset('/assets/js/app.min.js') }}"></script> --}}
-    <script src="{{ asset('assets/js/grid/example.js') }}"></script>
+    <script>
+        var pathname = window.location.pathname;
+        console.log(pathname);
+        if(pathname == '/module') {
+            $.getScript('assets/js/grid/module.js');
+        }
+    </script>
+    {{-- <script src="{{ asset('assets/js/grid/example.js') }}"></script> --}}
 @endsection
 
 <style>
