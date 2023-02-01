@@ -3,7 +3,7 @@
 
     <!-- LOGO -->
     <div class="navbar-brand-box">
-        <a href="index" class="logo logo-dark">
+        <a href="\" class="logo logo-dark">
             <span class="logo-sm">
                 
                 <b style="font-size: 30px;">O</b>
@@ -14,7 +14,7 @@
             </span>
         </a>
 
-        <a href="index" class="logo logo-light">
+        <a href="\" class="logo logo-light">
             <span class="logo-lg">
                 
                 <b style="font-size: 30px;">OASys</b>
@@ -42,7 +42,7 @@
                 <?php $__currentLoopData = $sequence; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sequenceitem): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <li class="menu-title" data-key="t-applications"><?php echo e($sequenceitem['title']); ?></li>
                     <?php $__currentLoopData = $sidemenu; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sidemenu_item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <?php if($sidemenu_item['sequence_id'] == $sequenceitem['id'] && $sidemenu_item['is_active'] && $sidemenu_item['parent_id'] == null): ?>
+                        <?php if($sidemenu_item['sequence_id'] == $sequenceitem['id'] && $sidemenu_item['is_active'] && $sidemenu_item['parent_id'] == null && !$sidemenu_item['is_secondary_menu']): ?>
                             <li>
                                 <a href="<?php echo e(!$sidemenu_item['is_parent'] ? $sidemenu_item['route'] : '#'); ?>" class="<?php echo e($sidemenu_item['is_parent'] ? 'has-arrow' : ''); ?>">
                                     <?php $__currentLoopData = $icons; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $icon): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>

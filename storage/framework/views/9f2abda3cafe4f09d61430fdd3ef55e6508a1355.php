@@ -24,10 +24,10 @@
                             <?php $__currentLoopData = $data['menu']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <?php if($data['menu'][$key]['submenu'] == null): ?>
                                     <li class="nav-item">
-                                        <a class="nav-link dropdown-toggle arrow-none" href="<?php echo e(route($data['menu'][$key]['routes'])); ?>"
+                                        <a class="nav-link dropdown-toggle arrow-none" href="<?php echo e($data['menu'][$key]['route']); ?>"
                                             id="topnav-dashboard" role="button" data-toggle="dropdown" aria-haspopup="true"
                                             aria-expanded="false">
-                                            <i class="icon nav-icon" data-eva="grid-outline"></i>
+                                            <i class="icon nav-icon" data-eva="<?php echo e($data['menu'][$key]['icon']); ?>"></i>
                                             <span data-key="t-dashboards"><?php echo e($data['menu'][$key]['title']); ?></span>
                                         </a>
                                     </li>
@@ -35,15 +35,18 @@
                                     <li class="nav-item dropdown">
                                         <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-dashboard" role="button"
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="icon nav-icon" data-eva="grid-outline"></i>
+                                            <i class="icon nav-icon" data-eva="<?php echo e($data['menu'][$key]['icon']); ?>"></i>
                                             <span data-key="t-dashboards"><?php echo e($data['menu'][$key]['title']); ?></span>
                                             <div class="arrow-down"></div>
                                         </a>
                                         <div class="dropdown-menu" aria-labelledby="topnav-dashboard">
                                             <?php $__currentLoopData = $data['menu'][$key]['submenu']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $keysub => $itemsub): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                            <a href="<?php echo e(route($data['menu'][$key]['submenu'][$keysub]['routes'])); ?>"
+                                            <a href="<?php echo e($data['menu'][$key]['submenu'][$keysub]['route']); ?>"
                                                 class="dropdown-item"
-                                                data-key="t-ecommerce"><?php echo e($data['menu'][$key]['submenu'][$keysub]['title']); ?></a>
+                                                data-key="t-ecommerce">
+                                                <i class="icon nav-icon" data-eva="<?php echo e($data['menu'][$key]['submenu'][$keysub]['icon']); ?>"></i>
+                                                <span data-key="t-dashboards"><?php echo e($data['menu'][$key]['submenu'][$keysub]['title']); ?></span>
+                                            </a>
                                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         </div>
                                     </li>
