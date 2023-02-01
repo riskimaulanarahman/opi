@@ -78,114 +78,17 @@
             </div>
         </div>
 
-        @if ($data['data'] !== null)
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="">
-                            <div class="table-responsive">
-                                <table class="table project-list-table table-nowrap align-middle table-borderless">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Request Number</th>
-                                            <th scope="col">Request For</th>
-                                            <th scope="col">Request Date</th>
-                                            <th scope="col">Form Type</th>
-                                            <th scope="col">Status</th>
-                                            <th scope="col" style="width: 200px;">Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td><b>AADC/IHM/20/12/23</b></td>
-                                            <td>
-                                                <img src="{{ URL::asset('assets/images/users/avatar-2.jpg') }}" alt=""
-                                                    class="avatar-sm rounded-circle me-2">
-                                                <a href="#" class="text-body">Simon Ryles</a>
-                                            </td>
-                                            <td>19 July 2022</td>
-                                            <td>Planning</td>
-                                            <td><span class="badge badge-soft-success mb-0">Aprroved</span></td>
-                                            <td>
-                                                <ul class="list-inline mb-0">
-                                                    <li class="list-inline-item">
-                                                        <a href="javascript:void(0);" data-bs-toggle="tooltip"
-                                                            data-bs-placement="top" title="Edit" class="px-2 text-primary"><i
-                                                                class="bx bx-pencil font-size-18"></i></a>
-                                                    </li>
-                                                    <li class="list-inline-item">
-                                                        <a href="javascript:void(0);" data-bs-toggle="tooltip"
-                                                            data-bs-placement="top" title="Delete" class="px-2 text-danger"><i
-                                                                class="bx bx-trash-alt font-size-18"></i></a>
-                                                    </li>
-                                                    <li class="list-inline-item dropdown">
-                                                        <a class="text-muted dropdown-toggle font-size-18 px-2" href="#"
-                                                            role="button" data-bs-toggle="dropdown" aria-haspopup="true">
-                                                            <i class="bx bx-dots-vertical-rounded"></i>
-                                                        </a>
-                                                        <div class="dropdown-menu dropdown-menu-end">
-                                                            <a class="dropdown-item" href="#">Action</a>
-                                                            <a class="dropdown-item" href="#">Another action</a>
-                                                            <a class="dropdown-item" href="#">Something else here</a>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row g-0 align-items-center pb-4 mt-8">
-                    <div class="col-sm-6">
-                        <div>
-                            <p class="mb-sm-0">Showing 1 to 10 of 57 entries</p>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="float-sm-end">
-                            <ul class="pagination mb-sm-0">
-                                <li class="page-item disabled">
-                                    <a href="#" class="page-link"><i class="mdi mdi-chevron-left"></i></a>
-                                </li>
-                                <li class="page-item active">
-                                    <a href="#" class="page-link">1</a>
-                                </li>
-                                <li class="page-item">
-                                    <a href="#" class="page-link">2</a>
-                                </li>
-                                <li class="page-item">
-                                    <a href="#" class="page-link">3</a>
-                                </li>
-                                <li class="page-item">
-                                    <a href="#" class="page-link">4</a>
-                                </li>
-                                <li class="page-item">
-                                    <a href="#" class="page-link">5</a>
-                                </li>
-                                <li class="page-item">
-                                    <a href="#" class="page-link"><i class="mdi mdi-chevron-right"></i></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        @else
             <div class="card-body">
                 <div class="dx-viewport demo-container">
                 <div id="gridContainer"></div>
                 </div>
             </div>
-        @endif
+            
     </div>
 @endsection
 
 @section('script')
-    <script src="{{ URL::asset('/assets/js/app.min.js') }}"></script>
+    {{-- <script src="{{ URL::asset('/assets/js/app.min.js') }}"></script> --}}
     <script src="{{ asset('assets/js/grid/example.js') }}"></script>
 @endsection
 

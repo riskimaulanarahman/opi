@@ -36,8 +36,8 @@ class SideMenuController extends Controller
                 'icon' => $icon->name,
                 'module' => $sequence->title,
                 'title' => $sidemenu->title,
-                'menu' => array(),
-                'data' => null
+                'menu' => array()
+                // 'data' => null
             );
         }
         // secondary menu queries

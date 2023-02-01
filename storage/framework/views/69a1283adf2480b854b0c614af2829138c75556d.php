@@ -55,7 +55,7 @@
                                 <?php if($sidemenu_item['is_parent']): ?>
                                     <ul class="sub-menu" aria-expanded="false">
                                         <?php $__currentLoopData = $sidemenu; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $submenu_item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                            <?php if($sidemenu_item['id'] === $submenu_item['parent_id']  && $sidemenu_item['is_active'] && !$submenu_item['is_secondary_menu']): ?>
+                                            <?php if($sidemenu_item['id'] == $submenu_item['parent_id'] && $sidemenu_item['is_active'] && (!$submenu_item['is_secondary_menu'])): ?>
                                                 <li>
                                                     <a href="<?php echo e($submenu_item['route']); ?>">
                                                         <?php $__currentLoopData = $icons; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $icon): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -89,9 +89,9 @@
             <p class="mb-1 main-title">
                 <script>
                     document.write(new Date().getFullYear())
-                </script> &copy; Borex.
+                </script> &copy; OASys
             </p>
-            <p class="mb-0">Design & Develop by Themesbrand</p>
+            <p class="mb-0">Design & Develop by KF Planning</p>
         </div>
     </div>
 </div>

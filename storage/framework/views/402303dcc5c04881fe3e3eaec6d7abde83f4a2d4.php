@@ -8,6 +8,7 @@
     <meta content="Online Approval System For Employee at Itci Hutani Manunggal" name="Online Approval System" />
     <meta content="Planning KF" name="Planning KF" />
     <!-- App favicon -->
+    <?php echo $__env->make('layouts.devextreme', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     <link rel="shortcut icon" href="<?php echo e(URL::asset('assets/images/favicon.ico')); ?>">
     <?php echo $__env->make('layouts.head-css', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 </head>

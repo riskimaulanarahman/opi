@@ -55,7 +55,7 @@
                                 @if ($sidemenu_item['is_parent'])
                                     <ul class="sub-menu" aria-expanded="false">
                                         @foreach ( $sidemenu as $submenu_item )
-                                            @if($sidemenu_item['id'] === $submenu_item['parent_id']  && $sidemenu_item['is_active'] && !$submenu_item['is_secondary_menu'])
+                                            @if($sidemenu_item['id'] == $submenu_item['parent_id'] && $sidemenu_item['is_active'] && (!$submenu_item['is_secondary_menu']))
                                                 <li>
                                                     <a href="{{ $submenu_item['route'] }}">
                                                         @foreach ($icons as $icon)
@@ -128,9 +128,9 @@
             <p class="mb-1 main-title">
                 <script>
                     document.write(new Date().getFullYear())
-                </script> &copy; Borex.
+                </script> &copy; OASys
             </p>
-            <p class="mb-0">Design & Develop by Themesbrand</p>
+            <p class="mb-0">Design & Develop by KF Planning</p>
         </div>
     </div>
 </div>

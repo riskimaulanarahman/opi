@@ -18,14 +18,14 @@
                                                     <div class="d-flex flex-column h-100">
                                                         <div class="mb-4 mb-md-5">
                                                             <a href="index" class="d-block auth-logo">
-                                                                <img src="<?php echo e(URL::asset('assets/images/logo-dark.png')); ?>" alt="" height="22" class="auth-logo-dark me-start">
-                                                                <img src="<?php echo e(URL::asset('assets/images/logo-light.png')); ?>" alt="" height="22" class="auth-logo-light me-start">
+                                                                
+                                                                <center><b style="font-size: 30px;">OASys</b></center>
                                                             </a>
                                                         </div>
                                                         <div class="auth-content my-auto">
                                                             <div class="text-center">
                                                                 <h5 class="mb-0">Welcome Back !</h5>
-                                                                <p class="text-muted mt-2">Sign in to continue to <b>Oasys</b>.</p>
+                                                                <p class="text-muted mt-2">Sign in to continue</p>
                                                             </div>
                                                             <form class="mt-4 pt-2" action="<?php echo e(route('login')); ?>" method="POST">
                                                                 <?php echo csrf_field(); ?>

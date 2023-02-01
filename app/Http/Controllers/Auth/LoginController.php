@@ -11,6 +11,8 @@ class LoginController extends Controller
 {
     use AuthenticatesUsers, ListensForLdapBindFailure;
 
+    protected $redirectTo = '/';
+
     public function username()
     {
         return 'username';
