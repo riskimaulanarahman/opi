@@ -1,4 +1,4 @@
-var modname = 'module';
+var modname = 'sidemenu';
 
 function moveEditColumnToLeft(dataGrid) {
     dataGrid.columnOption("command:edit", { 
@@ -34,8 +34,8 @@ var dataGrid = $("#gridContainer").dxDataGrid({
         mode: "virtual"
     },
     columns: [
-        { 
-            dataField: "module",
+        {
+			dataField: "title",
             sortOrder: "asc",
             validationRules: [
                 { 
@@ -43,8 +43,66 @@ var dataGrid = $("#gridContainer").dxDataGrid({
                 }
             ]
         },
-		{ 
-			dataField: "remarks",
+        {
+			dataField: "route",
+            validationRules: [
+                { 
+                    type: "required" 
+                }
+            ]
+        },
+        {
+            dataField: "icon_id",
+            caption: "Icons",
+            lookup: {
+                dataSource: listOption('/list-icon','id','name'),  
+                valueExpr: 'id',
+                displayExpr: 'name',
+            },
+            validationRules: [
+                { 
+                    type: "required" 
+                }
+            ]
+        },
+        {
+            dataField: "parent_id",
+            caption: "Parents",
+            lookup: {
+                dataSource: listOption('/list-sidemenu','id','title'),  
+                valueExpr: 'id',
+                displayExpr: 'title',
+            },
+        },
+        {
+            dataField: "sequence_id",
+            caption: "Sequence",
+            lookup: {
+                dataSource: listOption('/list-sequence','id','title'),  
+                valueExpr: 'id',
+                displayExpr: 'title',
+            },
+            validationRules: [
+                { 
+                    type: "required" 
+                }
+            ]
+        },
+        {
+			dataField: "is_active",
+            dataType: "boolean"
+        },
+        {
+			dataField: "is_parent",
+            dataType: "boolean"
+        },
+        {
+			dataField: "is_secondary_menu",
+            dataType: "boolean"
+        },
+        {
+			dataField: "must_full_title",
+            dataType: "boolean"
         },
     ],
     export: {

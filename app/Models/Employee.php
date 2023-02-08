@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Module extends Model
+class Employee extends Model
 {
     use HasFactory;
 
-    protected $table = 'tbl_module';
+    protected $table = 'tbl_employee';
     
     protected $guarded = ['id'];
     

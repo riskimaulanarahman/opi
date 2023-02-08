@@ -2,7 +2,7 @@
     // Riski Maulana Rahman
     apiurl = window.location.origin+'/api';
     // valusername = $('#valusername').val();
-    // valuserid = $('#valuserid').val();
+    valuserid = $('#valuserid').val();
     // role = $('.roleuser').val();
 
     function store(module) {
@@ -64,94 +64,21 @@
         return d.promise();
     }
 
-    function filter(sce) {
-        $.filter('html', function(sce) {
-            return function(val) {
-                return sce.trustAsHtml(val);
-            };
-        });
-    }
-        
-    //get list
-    
-    listKlien = {
-        store: new DevExpress.data.CustomStore({
-            key: "id",
-            loadMode: "raw",
-            load: function() {
-                return $.post(apiurl + "/list-klien");
-            }
-        }),
-        sort: "nama_lengkap_klien"
+    //List
+    function listOption(url,key,sort) {
+        action = {
+            store: new DevExpress.data.CustomStore({
+                key: key,
+                loadMode: "raw",
+                load: function() {
+                    return $.post(apiurl + url);
+                }
+            }),
+            sort: sort
+        }
+        return action;
     }
 
-    listPengurusanjasa = {
-        store: new DevExpress.data.CustomStore({
-            key: "id",
-            loadMode: "raw",
-            load: function() {
-                return $.post(apiurl + "/list-pengurusanjasa");
-            }
-        }),
-        sort: "nama_pengurusan"
-    }
-
-    listDokumenklien = {
-        store: new DevExpress.data.CustomStore({
-            key: "id",
-            loadMode: "raw",
-            load: function() {
-                return $.post(apiurl + "/list-dokumenklien");
-            }
-        }),
-        sort: "nama_dokumen_klien"
-    }
-
-    listTahapanproses = {
-        store: new DevExpress.data.CustomStore({
-            key: "id",
-            loadMode: "raw",
-            load: function() {
-                return $.post(apiurl + "/list-tahapanproses");
-            }
-        }),
-        sort: "nama_tahapan_proses"
-    }
-
-    listUraianbayar = {
-        store: new DevExpress.data.CustomStore({
-            key: "id",
-            loadMode: "raw",
-            load: function() {
-                return $.post(apiurl + "/list-uraianbayar");
-            }
-        }),
-        sort: "nama_tahapan_proses"
-    }
-
-    listJenistransaksi = {
-        store: new DevExpress.data.CustomStore({
-            key: "id",
-            loadMode: "raw",
-            load: function() {
-                return $.post(apiurl + "/list-jenistransaksi");
-            }
-        }),
-        sort: "nama_transaksi_perusahaan"
-    }
-
-    listKaryawan = {
-        store: new DevExpress.data.CustomStore({
-            key: "id",
-            loadMode: "raw",
-            load: function() {
-                return $.post(apiurl + "/list-karyawan");
-            }
-        }),
-        sort: "nama_lengkap"
-    }
-    
-    
     //log
     function logSuccess(valusername, method, url, data, token) {
         var d = $.Deferred();

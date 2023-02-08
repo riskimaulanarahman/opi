@@ -78,28 +78,26 @@
             </div>
         </div>
 
-        <div class="card-body" >
-            <div id="gridContainer" style="height: 600px"></div>
+        <div class="card-body" style="padding: 10px; !important">
+            <div id="gridContainer" style="height: 600px;"></div>
         </div>
 
     </div>
 @endsection
 
 @section('script')
-    {{-- <script src="{{ URL::asset('/assets/js/app.min.js') }}"></script> --}}
     <script>
-        var pathname = window.location.pathname;
-        console.log(pathname);
-        if(pathname == '/module') {
-            $.getScript('assets/js/grid/module.js');
-        }
+        // var pathname = window.location.pathname;
+        // console.log(pathname);
+        // jsmainpath(pathname);
+        // if(pathname == '/module') {
+        //     $.getScript('assets/js/grid/module.js');
+        // } else if(pathname == '/useraccess') {
+        //     $.getScript('assets/js/grid/useraccess.js');
+        // } else if(pathname == '/sidemenu') {
+        //     $.getScript('assets/js/grid/sidemenu.js');
+        // } else if(pathname == '/icons') {
+        //     $.getScript('assets/js/grid/icons.js');
+        // }
     </script>
-    {{-- <script src="{{ asset('assets/js/grid/example.js') }}"></script> --}}
 @endsection
-
-<style>
-.dx-datagrid .dx-data-row > td.bullet {
-  padding-top: 0;
-  padding-bottom: 0;
-}
-</style>

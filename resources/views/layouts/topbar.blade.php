@@ -37,7 +37,7 @@
         </div>
 
         <div class="d-flex">
-            <div class="dropdown d-inline-block d-lg-none ms-2">
+            {{-- <div class="dropdown d-inline-block d-lg-none ms-2">
                 <button type="button" class="btn header-item" id="page-header-search-dropdown" data-bs-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
                     <i data-feather="search" class="icon-lg"></i>
@@ -56,7 +56,7 @@
                         </div>
                     </form>
                 </div>
-            </div>
+            </div> --}}
 
             {{-- <div class="dropdown d-none d-sm-inline-block">
                 <button type="button" class="btn header-item waves-effect" data-bs-toggle="dropdown"
@@ -286,6 +286,7 @@
                     aria-expanded="false">
                     <img class="rounded-circle header-profile-user" src="@if (Auth::user()->avatar != ''){{ URL::asset('images/' . Auth::user()->avatar) }}@else{{ URL::asset('assets/images/users/avatar-1.jpg') }}@endif" alt="Header Avatar">
                 </button>
+                <input type="hidden" id="valuserid" value="{{ Auth::user()->id }}">
                 <div class="dropdown-menu dropdown-menu-end pt-0">
                     <div class="px-3 pt-3">
                         <h6 class="mb-0">{{ Auth::user()->name }}</h6>

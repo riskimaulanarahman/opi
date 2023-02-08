@@ -7,7 +7,7 @@ use App\Models\SideMenu;
 use App\Models\Sequence;
 use Illuminate\Http\Request;
 
-class SideMenuController extends Controller
+class GeneratemenuController extends Controller
 {
     /**
      * Create a new controller instance.

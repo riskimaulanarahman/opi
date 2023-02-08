@@ -5,16 +5,16 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-use App\Models\Module;
+use App\Models\Icon;
 
-class ModuleController extends Controller
+class IconsController extends Controller
 {
 
     public function index()
     {
         try {
 
-            $data = Module::all();
+            $data = Icon::all();
 
             return response()->json(['status' => "show", "message" => "Menampilkan Data" , 'data' => $data]);
 
@@ -30,7 +30,7 @@ class ModuleController extends Controller
 
             $requestData = $request->all();
 
-            Module::create($requestData);
+            Icon::create($requestData);
 
             return response()->json(["status" => "success", "message" => "Berhasil Menambahkan Data"]);
 
@@ -51,7 +51,7 @@ class ModuleController extends Controller
             
             $requestData = $request->all();
 
-            $data = Module::findOrFail($id);
+            $data = Icon::findOrFail($id);
             $data->update($requestData);
 
             return response()->json(["status" => "success", "message" => "Berhasil Ubah Data"]);
@@ -66,7 +66,7 @@ class ModuleController extends Controller
     {
         try {
 
-            $data = Module::findOrFail($id);
+            $data = Icon::findOrFail($id);
             $data->delete();
 
             return response()->json(["status" => "success", "message" => "Berhasil Hapus Data"]);

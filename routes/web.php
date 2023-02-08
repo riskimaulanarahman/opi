@@ -3,16 +3,7 @@
 use App\Models\SideMenu;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+
 Auth::routes();
 //Language Translation
 Route::get('index/{locale}', [App\Http\Controllers\HomeController::class, 'lang']);
@@ -27,7 +18,7 @@ Route::post('/update-password/{id}', [App\Http\Controllers\HomeController::class
 if(Schema::hasTable('side_menus')) {
     $sidemenu = SideMenu::select('route')->get();
     foreach ($sidemenu as $menu_item) {
-        Route::get('/{menu_item}', [App\Http\Controllers\SideMenuController::class, 'index'])->name('index');
+        Route::get('/{menu_item}', [App\Http\Controllers\GeneratemenuController::class, 'index'])->name('index');
     }
 }
 

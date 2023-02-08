@@ -1,4 +1,4 @@
-var modname = 'module';
+var modname = 'sequence';
 
 function moveEditColumnToLeft(dataGrid) {
     dataGrid.columnOption("command:edit", { 
@@ -35,7 +35,7 @@ var dataGrid = $("#gridContainer").dxDataGrid({
     },
     columns: [
         { 
-            dataField: "module",
+            dataField: "title",
             sortOrder: "asc",
             validationRules: [
                 { 
@@ -44,7 +44,8 @@ var dataGrid = $("#gridContainer").dxDataGrid({
             ]
         },
 		{ 
-			dataField: "remarks",
+			dataField: "is_active",
+            dataType: "boolean"
         },
     ],
     export: {

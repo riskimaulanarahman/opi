@@ -1,4 +1,4 @@
-var modname = 'module';
+var modname = 'icons';
 
 function moveEditColumnToLeft(dataGrid) {
     dataGrid.columnOption("command:edit", { 
@@ -34,17 +34,14 @@ var dataGrid = $("#gridContainer").dxDataGrid({
         mode: "virtual"
     },
     columns: [
-        { 
-            dataField: "module",
+        {
+			dataField: "name",
             sortOrder: "asc",
             validationRules: [
                 { 
                     type: "required" 
                 }
             ]
-        },
-		{ 
-			dataField: "remarks",
         },
     ],
     export: {

@@ -78,29 +78,28 @@
             </div>
         </div>
 
-        <div class="card-body" >
-            <div id="gridContainer" style="height: 600px"></div>
+        <div class="card-body" style="padding: 10px; !important">
+            <div id="gridContainer" style="height: 600px;"></div>
         </div>
 
     </div>
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('script'); ?>
-    
     <script>
-        var pathname = window.location.pathname;
-        console.log(pathname);
-        if(pathname == '/module') {
-            $.getScript('assets/js/grid/module.js');
-        }
+        // var pathname = window.location.pathname;
+        // console.log(pathname);
+        // jsmainpath(pathname);
+        // if(pathname == '/module') {
+        //     $.getScript('assets/js/grid/module.js');
+        // } else if(pathname == '/useraccess') {
+        //     $.getScript('assets/js/grid/useraccess.js');
+        // } else if(pathname == '/sidemenu') {
+        //     $.getScript('assets/js/grid/sidemenu.js');
+        // } else if(pathname == '/icons') {
+        //     $.getScript('assets/js/grid/icons.js');
+        // }
     </script>
-    
 <?php $__env->stopSection(); ?>
 
-<style>
-.dx-datagrid .dx-data-row > td.bullet {
-  padding-top: 0;
-  padding-bottom: 0;
-}
-</style>
 <?php echo $__env->make('layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\riski_maulana\www\oasysv2\resources\views/grid/index.blade.php ENDPATH**/ ?>

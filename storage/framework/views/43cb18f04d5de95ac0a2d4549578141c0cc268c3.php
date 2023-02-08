@@ -6,6 +6,7 @@
 <script src="<?php echo e(URL::asset('/assets/js/app.min.js')); ?>"></script>
 
 <script type="text/javascript" src="<?php echo e(asset('assets/js/jquery-3.5.1.min.js')); ?>"></script>
+<script type="text/javascript" src="<?php echo e(asset('assets/js/jszip.js')); ?>"></script>
 <script type="text/javascript" src="<?php echo e(asset('assets/js/dx.all.js')); ?>"></script>
 
 <?php echo $__env->yieldContent('script'); ?>
