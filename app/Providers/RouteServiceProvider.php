@@ -2,9 +2,11 @@
 
 namespace App\Providers;
 
+use App\Models\User;
 use App\Models\Icon;
 use App\Models\Sequence;
 use App\Models\SideMenu;
+use App\Models\Useraccess;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Http\Request;
@@ -13,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 use Illuminate\Pagination\Paginator;
 use View;
+use Auth;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -24,21 +27,7 @@ class RouteServiceProvider extends ServiceProvider
      * @var string
      */
     public const HOME = '/';
-
-    /**
-     * The controller namespace for the application.
-     *
-     * When present, controller route declarations will automatically be prefixed with this namespace.
-     *
-     * @var string|null
-     */
-    // protected $namespace = 'App\\Http\\Controllers';
-
-    /**
-     * Define your route model bindings, pattern filters, etc.
-     *
-     * @return void
-     */
+    
     public function boot()
     {
         $this->configureRateLimiting();
@@ -56,6 +45,14 @@ class RouteServiceProvider extends ServiceProvider
             Route::middleware('web')
                 ->namespace($this->namespace)
                 ->group(base_path('routes/admin.php'));
+
+            Route::middleware('web')
+                ->namespace($this->namespace)
+                ->group(base_path('routes/module.php'));
+            
+            Route::middleware('web')
+                ->namespace($this->namespace)
+                ->group(base_path('routes/submission.php'));
 
             Route::prefix('api')
                 ->middleware('api')
@@ -78,14 +75,50 @@ class RouteServiceProvider extends ServiceProvider
          });
          View::composer('*', function($view)
          {
-            $item = SideMenu::orderBy('title')->get();
-            // $icon = Icon::select(['id', 'name'])->where('id', $item->icon_id)->get();
+            $getuser = Auth::user();
+            $item = SideMenu::where(function($query) use ($getuser){
+                if(isset($getuser->isAdmin)) {
+                    if($getuser->isAdmin == 1) {
+                        $query->where('is_admin',1);
+                        $query->orWhere('is_admin',0);
+                    } else {
+                        $query->where('is_admin',0);
+                        $checkaccess = Useraccess::join('side_menus','tbl_useraccess.module_id','side_menus.modules')
+                        ->where('employee_id',$getuser->id)
+                        ->where('allowView',true)
+                        ->get();
+                        foreach ($checkaccess as $key) {
+                            if($key->modules == $key->module_id) {
+                                $query->orWhere('modules',$key->module_id);
+                            }
+                        }
+                    }
+                }
+            })
+            ->where('is_active', 1)
+            ->orderBy('title')
+            ->get();
+            
             $view->with('sidemenu', $item);
          });
 
          View::composer('*', function($view)
          {
-             $sequence_menu = Sequence::all();
+            $getuser = Auth::user();
+            $sequence_menu = Sequence::where(function($query) use ($getuser){
+                if(isset($getuser->isAdmin)) {
+
+                    if($getuser->isAdmin == 1) {
+                        $query->where('is_admin',1);
+                        $query->orWhere('is_admin',0);
+                    } else {
+                        $query->where('is_admin',0);
+                    }
+                }
+            })
+            ->where('is_active', 1)
+            ->orderBy('title')
+             ->get();
              $view->with('sequence', $sequence_menu);
          });
 

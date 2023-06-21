@@ -8,11 +8,59 @@
 
 <link rel="stylesheet" href="{{ asset('assets/css/dx.common.css') }}">
 @if(Auth::user())
-    @if(Auth::user()->theme == 0)
-        {{-- <link rel="stylesheet" href="{{ asset('assets/css/dx.light.css') }}"> --}}
+    @if(Auth::user()->theme->layout_mode !== 'dark')
         <link rel="stylesheet" href="{{ asset('assets/css/dx.material.blue.light.compact.css') }}">
     @else
         <link rel="stylesheet" href="{{ asset('assets/css/dx.material.blue.dark.compact.css') }}">
+        <style>
+            /* pindahkan ke file css sendiri jika sudah selesai */
+            :root {
+                --bgdark:#22354e !important;
+            }
+            .dx-datagrid {
+                background-color: var(--bgdark);
+            }
+            .dx-toolbar {
+                background-color: var(--bgdark);
+            }
+            .dx-popup-content {
+                background-color: #283f5c;
+            }
+            .dx-accordion-item-title {
+                background-color: var(--bgdark);
+            }
+            .dx-accordion-item-body {
+                background-color: #283f5c;
+            }
+            .dx-datagrid-header-panel {
+                background-color: var(--bgdark)
+            }
+            .dx-datagrid-borders > .dx-datagrid-filter-panel, .dx-datagrid-borders > .dx-datagrid-headers {
+                border-top: 1px solid #283f5c !important;
+            }
+            .dx-datagrid-borders > .dx-datagrid-headers, .dx-datagrid-borders > .dx-datagrid-rowsview, .dx-datagrid-borders > .dx-datagrid-total-footer {
+                border-left: 1px solid var(--bgdark);
+                border-right: 1px solid var(--bgdark);
+            }
+            .dx-datagrid-borders > .dx-datagrid-filter-panel {
+                border-top-width: 0;
+                border-left: 1px solid #283f5c !important;
+                border-right: 1px solid #283f5c !important;
+                border-bottom: 1px solid #283f5c !important;
+            }
+            .dx-datagrid .dx-row-lines > td {
+                border-bottom: 1px solid #283f5c !important;
+            }
+            .dx-datagrid-filter-row {
+                background-color: var(--bgdark);
+            }
+            .dx-datagrid-headers {
+                border-bottom: 1px solid #283f5c !important;
+            }
+            .dx-datagrid .dx-row-alt > td {
+                background-color: #283f5c !important;
+            }
+        </style>
     @endif
 @endif
 <style>
@@ -25,5 +73,8 @@
     }
     .dx-datagrid {
         padding: 10px !important;
+    }
+    .dx-accordion-item-title {
+        padding: 6px 11px !important;
     }
 </style>

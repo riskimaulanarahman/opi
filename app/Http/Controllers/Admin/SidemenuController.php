@@ -9,6 +9,10 @@ use App\Models\SideMenu;
 
 class SidemenuController extends Controller
 {
+    public function __construct()
+    {
+        //
+    }
 
     public function index()
     {
@@ -16,7 +20,7 @@ class SidemenuController extends Controller
 
             $data = SideMenu::all();
 
-            return response()->json(['status' => "show", "message" => "Menampilkan Data" , 'data' => $data]);
+            return response()->json(['status' => "show", "message" => $this->getMessage()['show'] , 'data' => $data]);
 
         } catch (\Exception $e) {
 
@@ -30,22 +34,25 @@ class SidemenuController extends Controller
 
             $requestData = $request->all();
             
-            if($request->is_active) {
-                ($request->is_active == 'false') ? $requestData['is_active'] = 0 : $requestData['is_active'] = 1;
-            }
-            if($request->is_parent) {
-                ($request->is_parent == 'false') ? $requestData['is_parent'] = 0 : $requestData['is_parent'] = 1;
-            }
-            if($request->is_secondary_menu) {
-                ($request->is_secondary_menu == 'false') ? $requestData['is_secondary_menu'] = 0 : $requestData['is_secondary_menu'] = 1;
-            }
-            if($request->must_full_title) {
-                ($request->must_full_title == 'false') ? $requestData['must_full_title'] = 0 : $requestData['must_full_title'] = 1;
-            }
+            // if($request->is_active) {
+            //     ($request->is_active == 'false') ? $requestData['is_active'] = 0 : $requestData['is_active'] = 1;
+            // }
+            // if($request->is_admin) {
+            //     ($request->is_admin == 'false') ? $requestData['is_admin'] = 0 : $requestData['is_admin'] = 1;
+            // }
+            // if($request->is_parent) {
+            //     ($request->is_parent == 'false') ? $requestData['is_parent'] = 0 : $requestData['is_parent'] = 1;
+            // }
+            // if($request->is_secondary_menu) {
+            //     ($request->is_secondary_menu == 'false') ? $requestData['is_secondary_menu'] = 0 : $requestData['is_secondary_menu'] = 1;
+            // }
+            // if($request->must_full_title) {
+            //     ($request->must_full_title == 'false') ? $requestData['must_full_title'] = 0 : $requestData['must_full_title'] = 1;
+            // }
             
             SideMenu::create($requestData);
 
-            return response()->json(["status" => "success", "message" => "Berhasil Menambahkan Data"]);
+            return response()->json(["status" => "success", "message" => $this->getMessage()['store']]);
 
         } catch (\Exception $e) {
 
@@ -64,23 +71,26 @@ class SidemenuController extends Controller
             
             $requestData = $request->all();
 
-            if($request->is_active) {
-                ($request->is_active == 'false') ? $requestData['is_active'] = 0 : $requestData['is_active'] = 1;
-            }
-            if($request->is_parent) {
-                ($request->is_parent == 'false') ? $requestData['is_parent'] = 0 : $requestData['is_parent'] = 1;
-            }
-            if($request->is_secondary_menu) {
-                ($request->is_secondary_menu == 'false') ? $requestData['is_secondary_menu'] = 0 : $requestData['is_secondary_menu'] = 1;
-            }
-            if($request->must_full_title) {
-                ($request->must_full_title == 'false') ? $requestData['must_full_title'] = 0 : $requestData['must_full_title'] = 1;
-            }
+            // if($request->is_active) {
+            //     ($request->is_active == 'false') ? $requestData['is_active'] = 0 : $requestData['is_active'] = 1;
+            // }
+            // if($request->is_admin) {
+            //     ($request->is_admin == 'false') ? $requestData['is_admin'] = 0 : $requestData['is_admin'] = 1;
+            // }
+            // if($request->is_parent) {
+            //     ($request->is_parent == 'false') ? $requestData['is_parent'] = 0 : $requestData['is_parent'] = 1;
+            // }
+            // if($request->is_secondary_menu) {
+            //     ($request->is_secondary_menu == 'false') ? $requestData['is_secondary_menu'] = 0 : $requestData['is_secondary_menu'] = 1;
+            // }
+            // if($request->must_full_title) {
+            //     ($request->must_full_title == 'false') ? $requestData['must_full_title'] = 0 : $requestData['must_full_title'] = 1;
+            // }
     
             $data = SideMenu::findOrFail($id);
             $data->update($requestData);
 
-            return response()->json(["status" => "success", "message" => "Berhasil Ubah Data"]);
+            return response()->json(["status" => "success", "message" => $this->getMessage()['update']]);
 
         } catch (\Exception $e) {
 
@@ -95,7 +105,7 @@ class SidemenuController extends Controller
             $data = SideMenu::findOrFail($id);
             $data->delete();
 
-            return response()->json(["status" => "success", "message" => "Berhasil Hapus Data"]);
+            return response()->json(["status" => "success", "message" => $this->getMessage()['destroy']]);
 
         } catch (\Exception $e) {
 

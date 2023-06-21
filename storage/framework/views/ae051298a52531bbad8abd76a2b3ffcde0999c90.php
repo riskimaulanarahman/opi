@@ -7,14 +7,9 @@
 <link href="<?php echo e(URL::asset('assets/css/app.min.css')); ?>" id="app-style" rel="stylesheet" type="text/css" />
 
 <link rel="stylesheet" href="<?php echo e(asset('assets/css/dx.common.css')); ?>">
-<?php if(Auth::user()): ?>
-    <?php if(Auth::user()->theme == 0): ?>
-        
+
         <link rel="stylesheet" href="<?php echo e(asset('assets/css/dx.material.blue.light.compact.css')); ?>">
-    <?php else: ?>
-        <link rel="stylesheet" href="<?php echo e(asset('assets/css/dx.material.blue.dark.compact.css')); ?>">
-    <?php endif; ?>
-<?php endif; ?>
+    
 <style>
     .dx-checkbox-container {
         height: unset !important;

@@ -17,11 +17,11 @@
         <a href="\" class="logo logo-light">
             <span class="logo-lg">
                 
-                <b style="font-size: 30px;">OASys</b>
+                <b style="font-size: 30px; color:white !important;">OASys</b>
             </span>
             <span class="logo-sm">
                 
-                <b style="font-size: 30px;">O</b>
+                <b style="font-size: 30px; color:white !important;">O</b>
             </span>
         </a>
     </div>
@@ -42,7 +42,7 @@
                 <?php $__currentLoopData = $sequence; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sequenceitem): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <li class="menu-title" data-key="t-applications"><?php echo e($sequenceitem['title']); ?></li>
                     <?php $__currentLoopData = $sidemenu; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sidemenu_item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <?php if($sidemenu_item['sequence_id'] == $sequenceitem['id'] && $sidemenu_item['is_active'] && $sidemenu_item['parent_id'] == null && !$sidemenu_item['is_secondary_menu']): ?>
+                        <?php if(($sidemenu_item['sequence_id'] == $sequenceitem['id'] && $sidemenu_item['is_active'] && $sidemenu_item['parent_id'] == null)): ?>
                             <li>
                                 <a href="<?php echo e(!$sidemenu_item['is_parent'] ? $sidemenu_item['route'] : '#'); ?>" class="<?php echo e($sidemenu_item['is_parent'] ? 'has-arrow' : ''); ?>">
                                     <?php $__currentLoopData = $icons; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $icon): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -55,7 +55,7 @@
                                 <?php if($sidemenu_item['is_parent']): ?>
                                     <ul class="sub-menu" aria-expanded="false">
                                         <?php $__currentLoopData = $sidemenu; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $submenu_item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                            <?php if($sidemenu_item['id'] == $submenu_item['parent_id'] && $sidemenu_item['is_active'] && (!$submenu_item['is_secondary_menu'])): ?>
+                                            <?php if(($sidemenu_item['id'] == $submenu_item['parent_id'] && $sidemenu_item['is_active'])): ?>
                                                 <li>
                                                     <a href="<?php echo e($submenu_item['route']); ?>">
                                                         <?php $__currentLoopData = $icons; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $icon): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -69,13 +69,18 @@
                                                                 echo $split[count($split)-1]
                                                             ?>
                                                         </span>
-                                                        <span class="badge rounded-pill bg-primary">3</span>
+                                                        
                                                     </a>
-                                                </li>
+                                                    
+                                                </li>  
+                                                
+                                                    
                                             <?php endif; ?>
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                        
                                     </ul>
                                 <?php endif; ?>
+                                
                             </li>
                         <?php endif; ?>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

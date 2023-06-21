@@ -16,7 +16,7 @@ class IconsController extends Controller
 
             $data = Icon::all();
 
-            return response()->json(['status' => "show", "message" => "Menampilkan Data" , 'data' => $data]);
+            return response()->json(['status' => "show", "message" => $this->getMessage()['show'] , 'data' => $data]);
 
         } catch (\Exception $e) {
 
@@ -32,7 +32,7 @@ class IconsController extends Controller
 
             Icon::create($requestData);
 
-            return response()->json(["status" => "success", "message" => "Berhasil Menambahkan Data"]);
+            return response()->json(["status" => "success", "message" => $this->getMessage()['store']]);
 
         } catch (\Exception $e) {
 
@@ -54,7 +54,7 @@ class IconsController extends Controller
             $data = Icon::findOrFail($id);
             $data->update($requestData);
 
-            return response()->json(["status" => "success", "message" => "Berhasil Ubah Data"]);
+            return response()->json(["status" => "success", "message" => $this->getMessage()['update']]);
 
         } catch (\Exception $e) {
 
@@ -69,7 +69,7 @@ class IconsController extends Controller
             $data = Icon::findOrFail($id);
             $data->delete();
 
-            return response()->json(["status" => "success", "message" => "Berhasil Hapus Data"]);
+            return response()->json(["status" => "success", "message" => $this->getMessage()['destroy']]);
 
         } catch (\Exception $e) {
 

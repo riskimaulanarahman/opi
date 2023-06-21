@@ -285,25 +285,24 @@
                     id="page-header-user-dropdown-v" data-bs-toggle="dropdown" aria-haspopup="true"
                     aria-expanded="false">
                     <img class="rounded-circle header-profile-user" src="@if (Auth::user()->avatar != ''){{ URL::asset('images/' . Auth::user()->avatar) }}@else{{ URL::asset('assets/images/users/avatar-1.jpg') }}@endif" alt="Header Avatar">
-                </button>
-                <input type="hidden" id="valuserid" value="{{ Auth::user()->id }}">
+                    </button>
                 <div class="dropdown-menu dropdown-menu-end pt-0">
                     <div class="px-3 pt-3">
-                        <h6 class="mb-0">{{ Auth::user()->name }}</h6>
+                        <h6 class="mb-0"></h6>
                         <p class="mb-0 font-size-11 text-muted"><b>{{ Auth::user()->fullname }}</b></p>
                     </div>
                     <div class="px-3 pt-2 pb-3 border-bottom">
-                        <h6 class="mb-0">{{ Auth::user()->name }}</h6>
+                        <h6 class="mb-0"></h6>
                         <p class="mb-0 font-size-11 text-muted">{{ Auth::user()->email }}</p>
                     </div>
-                    <a class="dropdown-item mt-2" href="contacts-profile"><i
+                    {{-- <a class="dropdown-item mt-2" href="#"><i
                             class="mdi mdi-account-circle text-muted font-size-16 align-middle me-1"></i> <span
-                            class="align-middle">Profile</span></a>
+                            class="align-middle">Profile</span></a> --}}
                     {{-- <a class="dropdown-item" href="apps-chat"><i
                             class="mdi mdi-message-text-outline text-muted font-size-16 align-middle me-1"></i> <span
                             class="align-middle">Messages</span></a> --}}
                     
-                    <div class="dropdown-divider"></div>
+                    {{-- <div class="dropdown-divider"></div> --}}
                     {{-- <a class="dropdown-item" href="#"><i
                             class="mdi mdi-account text-muted font-size-16 align-middle me-1"></i> <span
                             class="align-middle">Remaining Day Off : <b>12</b></span></a> --}}
@@ -316,7 +315,7 @@
                     {{-- <a class="dropdown-item" href="pages-faqs"><i
                             class="mdi mdi-cog-outline text-muted font-size-16 align-middle me-1"></i> <span
                             class="align-middle">Settings</span></a> --}}
-                    <a class="dropdown-item" href="pages-faqs"><i
+                    <a class="dropdown-item" href="#"><i
                             class="mdi mdi-lifebuoy text-muted font-size-16 align-middle me-1"></i> <span
                             class="align-middle">Help</span></a>
                     <a class="dropdown-item " href="javascript:void();"

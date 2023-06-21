@@ -13,11 +13,8 @@ class Sequence extends Model
     
     protected $guarded = ['id'];
 
-    protected $fillable = [
-        'title', 'icon', 'is_active'
-    ];
-
     protected $casts = [
+        'is_admin' => 'boolean',
         'is_active' => 'boolean',
     ];
 }

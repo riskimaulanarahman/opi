@@ -1,7 +1,19 @@
-<?php if(Auth::user()->theme == 0): ?>
-    <body>
-<?php else: ?>
-    <body data-layout-mode="dark" data-topbar="dark" data-sidebar="dark">
-<?php endif; ?>
 
-<!-- <body data-layout="horizontal"> --><?php /**PATH D:\riski_maulana\www\oasysv2\resources\views/layouts/body.blade.php ENDPATH**/ ?>
+
+    <body class="content" id="bodycontent" 
+        <?php $__currentLoopData = $themes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $theme): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            data-layout-mode="<?php echo e($theme->layout_mode); ?>"
+            data-topbar="<?php echo e($theme->layout_mode); ?>"
+            data-layout-size="<?php echo e($theme->layout_width); ?>"
+            data-layout-scrollable="<?php echo e($theme->layout_position); ?>"
+            data-sidebar-size="<?php echo e($theme->sidebar_size); ?>"
+            data-sidebar="<?php echo e(($theme->layout_mode == 'dark') ? $theme->layout_mode : $theme->sidebar_color); ?>"
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+    >
+
+
+
+
+
+
+<?php /**PATH D:\riski_maulana\www\oasysv2\resources\views/layouts/body.blade.php ENDPATH**/ ?>

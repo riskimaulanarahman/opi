@@ -16,7 +16,7 @@ class UseraccessController extends Controller
 
             $data = Useraccess::all();
 
-            return response()->json(['status' => "show", "message" => "Menampilkan Data" , 'data' => $data]);
+            return response()->json(['status' => "show", "message" => $this->getMessage()['show'] , 'data' => $data]);
 
         } catch (\Exception $e) {
 
@@ -30,22 +30,22 @@ class UseraccessController extends Controller
 
             $requestData = $request->all();
             
-            if($request->allowAdd) {
-                ($request->allowAdd == 'false') ? $requestData['allowAdd'] = 0 : $requestData['allowAdd'] = 1;
-            }
-            if($request->allowEdit) {
-                ($request->allowEdit == 'false') ? $requestData['allowEdit'] = 0 : $requestData['allowEdit'] = 1;
-            }
-            if($request->allowDelete) {
-                ($request->allowDelete == 'false') ? $requestData['allowDelete'] = 0 : $requestData['allowDelete'] = 1;
-            }
-            if($request->allowView) {
-                ($request->allowView == 'false') ? $requestData['allowView'] = 0 : $requestData['allowView'] = 1;
-            }
+            // if($request->allowAdd) {
+            //     ($request->allowAdd == 'false') ? $requestData['allowAdd'] = 0 : $requestData['allowAdd'] = 1;
+            // }
+            // if($request->allowEdit) {
+            //     ($request->allowEdit == 'false') ? $requestData['allowEdit'] = 0 : $requestData['allowEdit'] = 1;
+            // }
+            // if($request->allowDelete) {
+            //     ($request->allowDelete == 'false') ? $requestData['allowDelete'] = 0 : $requestData['allowDelete'] = 1;
+            // }
+            // if($request->allowView) {
+            //     ($request->allowView == 'false') ? $requestData['allowView'] = 0 : $requestData['allowView'] = 1;
+            // }
             
             Useraccess::create($requestData);
 
-            return response()->json(["status" => "success", "message" => "Berhasil Menambahkan Data"]);
+            return response()->json(["status" => "success", "message" => $this->getMessage()['store']]);
 
         } catch (\Exception $e) {
 
@@ -64,23 +64,23 @@ class UseraccessController extends Controller
             
             $requestData = $request->all();
 
-            if($request->allowAdd) {
-                ($request->allowAdd == 'false') ? $requestData['allowAdd'] = 0 : $requestData['allowAdd'] = 1;
-            }
-            if($request->allowEdit) {
-                ($request->allowEdit == 'false') ? $requestData['allowEdit'] = 0 : $requestData['allowEdit'] = 1;
-            }
-            if($request->allowDelete) {
-                ($request->allowDelete == 'false') ? $requestData['allowDelete'] = 0 : $requestData['allowDelete'] = 1;
-            }
-            if($request->allowView) {
-                ($request->allowView == 'false') ? $requestData['allowView'] = 0 : $requestData['allowView'] = 1;
-            }
+            // if($request->allowAdd) {
+            //     ($request->allowAdd == 'false') ? $requestData['allowAdd'] = 0 : $requestData['allowAdd'] = 1;
+            // }
+            // if($request->allowEdit) {
+            //     ($request->allowEdit == 'false') ? $requestData['allowEdit'] = 0 : $requestData['allowEdit'] = 1;
+            // }
+            // if($request->allowDelete) {
+            //     ($request->allowDelete == 'false') ? $requestData['allowDelete'] = 0 : $requestData['allowDelete'] = 1;
+            // }
+            // if($request->allowView) {
+            //     ($request->allowView == 'false') ? $requestData['allowView'] = 0 : $requestData['allowView'] = 1;
+            // }
     
             $data = Useraccess::findOrFail($id);
             $data->update($requestData);
 
-            return response()->json(["status" => "success", "message" => "Berhasil Ubah Data"]);
+            return response()->json(["status" => "success", "message" => $this->getMessage()['update']]);
 
         } catch (\Exception $e) {
 
@@ -95,7 +95,7 @@ class UseraccessController extends Controller
             $data = Useraccess::findOrFail($id);
             $data->delete();
 
-            return response()->json(["status" => "success", "message" => "Berhasil Hapus Data"]);
+            return response()->json(["status" => "success", "message" => $this->getMessage()['destroy']]);
 
         } catch (\Exception $e) {
 

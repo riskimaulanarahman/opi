@@ -16,7 +16,7 @@ class UserController extends Controller
 
             $data = User::all();
 
-            return response()->json(['status' => "show", "message" => "Menampilkan Data" , 'data' => $data]);
+            return response()->json(['status' => "show", "message" => $this->getMessage()['show'] , 'data' => $data]);
 
         } catch (\Exception $e) {
 
@@ -32,7 +32,7 @@ class UserController extends Controller
 
             User::create($requestData);
 
-            return response()->json(["status" => "success", "message" => "Berhasil Menambahkan Data"]);
+            return response()->json(["status" => "success", "message" => $this->getMessage()['store']]);
 
         } catch (\Exception $e) {
 
@@ -51,10 +51,14 @@ class UserController extends Controller
             
             $requestData = $request->all();
 
+            if($request->isAdmin) {
+                ($request->isAdmin == 'false') ? $requestData['isAdmin'] = 0 : $requestData['isAdmin'] = 1;
+            }
+
             $data = User::findOrFail($id);
             $data->update($requestData);
 
-            return response()->json(["status" => "success", "message" => "Berhasil Ubah Data"]);
+            return response()->json(["status" => "success", "message" => $this->getMessage()['update']]);
 
         } catch (\Exception $e) {
 
@@ -69,7 +73,7 @@ class UserController extends Controller
             $data = User::findOrFail($id);
             $data->delete();
 
-            return response()->json(["status" => "success", "message" => "Berhasil Hapus Data"]);
+            return response()->json(["status" => "success", "message" => $this->getMessage()['destroy']]);
 
         } catch (\Exception $e) {
 

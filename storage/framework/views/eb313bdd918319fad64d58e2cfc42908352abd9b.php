@@ -16,18 +16,19 @@
                                             <div class="auth-full-page-content rounded d-flex p-3 my-2">
                                                 <div class="w-100">
                                                     <div class="d-flex flex-column h-100">
-                                                        <div class="mb-4 mb-md-5">
-                                                            <a href="index" class="d-block auth-logo">
+                                                        <div class="mb-4 mb-md-1">
+                                                            <a href="/" class="d-block auth-logo">
+                                                                <img src="<?php echo e(URL::asset('assets/images/oaslogo.png')); ?>" alt="" height="250" class="auth-logo-dark me-start">
                                                                 
-                                                                <center><b style="font-size: 30px;">OASys</b></center>
+                                                                
                                                             </a>
                                                         </div>
                                                         <div class="auth-content my-auto">
                                                             <div class="text-center">
-                                                                <h5 class="mb-0">Welcome Back !</h5>
+                                                                <h5 class="mb-0">Online Approval System</h5>
                                                                 <p class="text-muted mt-2">Sign in to continue</p>
                                                             </div>
-                                                            <form class="mt-4 pt-2" action="<?php echo e(route('login')); ?>" method="POST">
+                                                            <form class="mt-4 pt-2" id="loginForm" action="<?php echo e(route('login')); ?>" method="POST">
                                                                 <?php echo csrf_field(); ?>
                                                                 <div class="form-floating form-floating-custom mb-4">
                                                                     <input type="text" class="form-control <?php $__errorArgs = ['username'];
@@ -87,8 +88,14 @@ unset($__errorArgs, $__bag); ?>
                                                                 </div>
 
                                                                 <div class="mb-3">
-                                                                    <button class="btn btn-primary w-100 waves-effect waves-light" type="submit">Log In</button>
+                                                                    <button class="btn btn-primary w-100 waves-effect waves-light" type="button" onclick="formSubmit()">Log In</button>
                                                                 </div>
+                                                                <?php if(session('error')): ?>
+                                                                    <div class="alert alert-danger">
+                                                                        <?php echo e(session('error')); ?>
+
+                                                                    </div>
+                                                                <?php endif; ?>
                                                             </form>
                                                         </div>
                                                         <div class="mt-4 text-center">
@@ -217,6 +224,79 @@ unset($__errorArgs, $__bag); ?>
         <?php $__env->startSection('script'); ?>
             <script src="<?php echo e(URL::asset('assets/js/pages/pass-addon.init.js')); ?>"></script>
             <script src="<?php echo e(URL::asset('assets/js/pages/eva-icon.init.js')); ?>"></script>
+            <script>
+                // document.getElementById("sa-basic").addEventListener("click", function() {
+                //     Swal.fire(
+                //         {
+                //             title: 'Any fool can use a computer',
+                //             confirmButtonColor: '#038edc',
+                //         }
+                //     )
+                // });
+
+                const formSubmit = async () => {
+
+                    const username = $('#input-username').val();
+                    const password = $('#password-input').val();
+
+                    if(username == '' || password == '') {
+                        Swal.fire(
+                            {
+                                title: 'Error!',
+                                text: 'Please enter your login information.',
+                                icon: 'error',
+                                showCancelButton: false,
+                                confirmButtonColor: '#3b76e1',
+                            }
+                        )
+                    } else {
+
+                        const formData = new FormData();
+
+                        formData.append('username', username);
+                        formData.append('password', password);
+
+                        const response = await fetch('api/getlogin',{
+                            method: 'POST',
+                            body: formData
+                        });
+                        const data = await response.json();
+
+                        if(data.code == 0) {
+
+                            $("#loginForm").submit();
+
+                        } else if(data.code == 404) {
+
+                            Swal.fire(
+                                {
+                                    title: 'Error!',
+                                    text: 'Your login is not linked to any employee information.',
+                                    icon: 'error',
+                                    showCancelButton: false,
+                                    confirmButtonColor: '#3b76e1',
+                                }
+                            )
+                            
+                        } else if(data.code == 409) {
+
+                            Swal.fire(
+                                {
+                                    title: 'Error!',
+                                    html: 'Someone has accessed your account. <br> ( ip : '+data.ip+' )',
+                                    icon: 'error',
+                                    showCancelButton: false,
+                                    confirmButtonColor: '#3b76e1',
+                                }
+                            )
+
+                        } else if(data.code == 200) {
+                            $("#loginForm").submit();
+                        }
+                    }
+
+                }
+            </script>
         <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('layouts.master-without-nav', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\riski_maulana\www\oasysv2\resources\views/auth/login.blade.php ENDPATH**/ ?>

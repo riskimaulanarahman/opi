@@ -74,32 +74,17 @@
                     <h4 class="mb-0">List <?php echo e($data['title']); ?></h4>
                 </div>
 
-                
+                <div class="flex-shrink-0 align-self-end ms-2">
+                    <button class="btn btn-primary w-100 waves-effect waves-light" id="btnadd" type="button">Create new request</button>
+                </div>
             </div>
         </div>
 
         <div class="card-body" style="padding: 10px; !important">
             <div id="gridContainer" style="height: 600px;"></div>
+            <div id="popup"></div>
         </div>
 
     </div>
 <?php $__env->stopSection(); ?>
-
-<?php $__env->startSection('script'); ?>
-    <script>
-        // var pathname = window.location.pathname;
-        // console.log(pathname);
-        // jsmainpath(pathname);
-        // if(pathname == '/module') {
-        //     $.getScript('assets/js/grid/module.js');
-        // } else if(pathname == '/useraccess') {
-        //     $.getScript('assets/js/grid/useraccess.js');
-        // } else if(pathname == '/sidemenu') {
-        //     $.getScript('assets/js/grid/sidemenu.js');
-        // } else if(pathname == '/icons') {
-        //     $.getScript('assets/js/grid/icons.js');
-        // }
-    </script>
-<?php $__env->stopSection(); ?>
-
 <?php echo $__env->make('layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\riski_maulana\www\oasysv2\resources\views/grid/index.blade.php ENDPATH**/ ?>

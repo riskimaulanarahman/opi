@@ -3,6 +3,7 @@
 <script src="<?php echo e(URL::asset('assets/libs/metismenu/metismenu.min.js')); ?>"></script>
 <script src="<?php echo e(URL::asset('assets/libs/simplebar/simplebar.min.js')); ?>"></script>
 <script src="<?php echo e(URL::asset('assets/libs/eva-icons/eva-icons.min.js')); ?>"></script>
+<script src="<?php echo e(URL::asset('assets/libs/sweetalert2/sweetalert2.min.js')); ?>"></script>
 <script src="<?php echo e(URL::asset('/assets/js/app.min.js')); ?>"></script>
 
 <script type="text/javascript" src="<?php echo e(asset('assets/js/jquery-3.5.1.min.js')); ?>"></script>

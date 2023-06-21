@@ -16,7 +16,7 @@ class SequenceController extends Controller
 
             $data = Sequence::all();
 
-            return response()->json(['status' => "show", "message" => "Menampilkan Data" , 'data' => $data]);
+            return response()->json(['status' => "show", "message" => $this->getMessage()['show'] , 'data' => $data]);
 
         } catch (\Exception $e) {
 
@@ -30,13 +30,16 @@ class SequenceController extends Controller
 
             $requestData = $request->all();
 
-            if($request->is_active) {
-                ($request->is_active == 'false') ? $requestData['is_active'] = 0 : $requestData['is_active'] = 1;
-            }
+            // if($request->is_active) {
+            //     ($request->is_active == 'false') ? $requestData['is_active'] = 0 : $requestData['is_active'] = 1;
+            // }
+            // if($request->is_admin) {
+            //     ($request->is_admin == 'false') ? $requestData['is_admin'] = 0 : $requestData['is_admin'] = 1;
+            // }
 
             Sequence::create($requestData);
 
-            return response()->json(["status" => "success", "message" => "Berhasil Menambahkan Data"]);
+            return response()->json(["status" => "success", "message" => $this->getMessage()['store']]);
 
         } catch (\Exception $e) {
 
@@ -55,14 +58,17 @@ class SequenceController extends Controller
             
             $requestData = $request->all();
 
-            if($request->is_active) {
-                ($request->is_active == 'false') ? $requestData['is_active'] = 0 : $requestData['is_active'] = 1;
-            }
+            // if($request->is_active) {
+            //     ($request->is_active == 'false') ? $requestData['is_active'] = 0 : $requestData['is_active'] = 1;
+            // }
+            // if($request->is_admin) {
+            //     ($request->is_admin == 'false') ? $requestData['is_admin'] = 0 : $requestData['is_admin'] = 1;
+            // }
 
             $data = Sequence::findOrFail($id);
             $data->update($requestData);
 
-            return response()->json(["status" => "success", "message" => "Berhasil Ubah Data"]);
+            return response()->json(["status" => "success", "message" => $this->getMessage()['update']]);
 
         } catch (\Exception $e) {
 
@@ -77,7 +83,7 @@ class SequenceController extends Controller
             $data = Sequence::findOrFail($id);
             $data->delete();
 
-            return response()->json(["status" => "success", "message" => "Berhasil Hapus Data"]);
+            return response()->json(["status" => "success", "message" => $this->getMessage()['destroy']]);
 
         } catch (\Exception $e) {
 

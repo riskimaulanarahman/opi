@@ -16,19 +16,19 @@
                                             <div class="auth-full-page-content rounded d-flex p-3 my-2">
                                                 <div class="w-100">
                                                     <div class="d-flex flex-column h-100">
-                                                        <div class="mb-4 mb-md-5">
-                                                            <a href="index" class="d-block auth-logo">
-                                                                {{-- <img src="{{ URL::asset('assets/images/logo-dark.png')}}" alt="" height="22" class="auth-logo-dark me-start">
-                                                                <img src="{{ URL::asset('assets/images/logo-light.png')}}" alt="" height="22" class="auth-logo-light me-start"> --}}
-                                                                <center><b style="font-size: 30px;">OASys</b></center>
+                                                        <div class="mb-4 mb-md-1">
+                                                            <a href="/" class="d-block auth-logo">
+                                                                {{-- <img src="{{ URL::asset('assets/images/oaslogo.png')}}" alt="" height="250" class="auth-logo-dark me-start"> --}}
+                                                                {{-- <img src="{{ URL::asset('assets/images/logo-light.png')}}" alt="" height="22" class="auth-logo-light me-start"> --}}
+                                                                <center><b style="font-size: 30px;">DevPortal</b></center>
                                                             </a>
                                                         </div>
                                                         <div class="auth-content my-auto">
                                                             <div class="text-center">
-                                                                <h5 class="mb-0">Welcome Back !</h5>
+                                                                {{-- <h5 class="mb-0">Online Approval System</h5> --}}
                                                                 <p class="text-muted mt-2">Sign in to continue</p>
                                                             </div>
-                                                            <form class="mt-4 pt-2" action="{{ route('login') }}" method="POST">
+                                                            <form class="mt-4 pt-2" id="loginForm" action="{{ route('login') }}" method="POST">
                                                                 @csrf
                                                                 <div class="form-floating form-floating-custom mb-4">
                                                                     <input type="text" class="form-control @error('username') is-invalid @enderror" value="{{ old('username') }}" id="input-username" placeholder="Enter User Name" name="username">
@@ -60,12 +60,17 @@
                                                                 </div>
 
                                                                 <div class="mb-3">
-                                                                    <button class="btn btn-primary w-100 waves-effect waves-light" type="submit">Log In</button>
+                                                                    <button class="btn btn-primary w-100 waves-effect waves-light" type="button" onclick="formSubmit()">Log In</button>
                                                                 </div>
+                                                                @if(session('error'))
+                                                                    <div class="alert alert-danger">
+                                                                        {{ session('error') }}
+                                                                    </div>
+                                                                @endif
                                                             </form>
                                                         </div>
                                                         <div class="mt-4 text-center">
-                                                            <p class="mb-0"><b>© <script>document.write(new Date().getFullYear())</script> OAsys </b>. Crafted with <i class="mdi mdi-heart text-danger"></i><br>by <b>KF Planning</b></p>
+                                                            <p class="mb-0"><b>© <script>document.write(new Date().getFullYear())</script> DevPortal </b>. Crafted with <i class="mdi mdi-heart text-danger"></i><br>by <b>KF Planning</b></p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -82,8 +87,8 @@
                         <div class="auth-bg bg-white py-md-5 p-4 d-flex">
                             <div class="bg-overlay bg-white"></div>
                             <!-- end bubble effect -->
-                            <div class="row justify-content-center align-items-center">
-                                <div class="col-xl-8">
+                            <div class="row justify-content-center align-items-center" style="width: 100%;">
+                                <div class="col-xl-12">
                                   
                                     <div class="p-0 p-sm-4 px-xl-0 py-5">
                                         <div id="reviewcarouselIndicators" class="carousel slide auth-carousel" data-bs-ride="carousel">
@@ -91,86 +96,234 @@
                                                 <button type="button" data-bs-target="#reviewcarouselIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                                                 <button type="button" data-bs-target="#reviewcarouselIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
                                                 <button type="button" data-bs-target="#reviewcarouselIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                                                <button type="button" data-bs-target="#reviewcarouselIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                                                {{-- <button type="button" data-bs-target="#reviewcarouselIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
                                                 <button type="button" data-bs-target="#reviewcarouselIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
-                                                <button type="button" data-bs-target="#reviewcarouselIndicators" data-bs-slide-to="5" aria-label="Slide 6"></button>
+                                                <button type="button" data-bs-target="#reviewcarouselIndicators" data-bs-slide-to="5" aria-label="Slide 6"></button> --}}
                                             </div>
 
                                             <!-- end carouselIndicators -->
                                             <div class="carousel-inner w-75 mx-auto">
                                                 <div class="carousel-item active">
                                                     <div class="mt-4">
-                                                        <img src="{{ URL::asset('./assets/images/login-img.png')}}" class="img-fluid" alt="">
+                                                        {{-- <img src="{{ URL::asset('./assets/images/login-img.png')}}" class="img-fluid" alt=""> --}}
+                                                        <div class="row">
+                                                            <div class="col-lg-12">
+                                                                <div class="card" style="height: 450px">
+                                                                    <div class="table-responsive">
+                                                                        <table class="table project-list-table table-nowrap align-middle table-borderless table-hover">
+                                                                            <thead>
+                                                                                <tr>
+                                                                                    <th scope="col" style="width: 100px" class="ps-4">#</th>
+                                                                                    <th scope="col">Projects</th>
+                                                                                    <th scope="col">Status</th>
+                                                                                    <th scope="col">Team</th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                                @php
+                                                                                    $no = 1;
+                                                                                @endphp
+                                                                                @foreach($project['progress'] as $item)
+                                                                                <tr>
+                                                                                    <td class="ps-4">{{ $no++ }}</td>
+                                                                                    <td>
+                                                                                        <h5 class="text-truncate font-size-14"><a href="javascript: void(0);" class="text-dark">{{ $item['nameSystem'] }}</a></h5>
+                                                                                        <p class="text-muted mb-0">Request by : {{ $item['fullname'] }}</p>
+                                                                                    </td>
+                                                                                    <td class="pe-5">
+                                                                                        <div class="row align-items-center">
+                                                                                            <div class="col">
+                                                                                                <div class="progress" style="height: 6px;">
+                                                                                                    <div class="progress-bar bg-secondary" role="progressbar" style="width: {{ $item['progress'] }}%" aria-valuenow="{{ $item['progress'] }}" aria-valuemin="0" aria-valuemax="100"></div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="col-auto">
+                                                                                                <h6 class="mb-0 font-size-13"> {{ $item['progress'] }}%</h6>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="avatar-group">
+                                                                                            @foreach($item['initials'] as $initial)
+                                                                                            <div class="avatar-group-item">
+                                                                                                <a href="javascript: void(0);" class="d-inline-block">
+                                                                                                    <div class="avatar-sm">
+                                                                                                        <span class="avatar-title rounded-circle bg-secondary text-white font-size-16">
+                                                                                                            {{ $initial }}
+                                                                                                        </span>
+                                                                                                    </div>
+                                                                                                </a>
+                                                                                            </div>
+                                                                                            @endforeach
+                                                                                        </div>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                @endforeach
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                     <div class="testi-contain text-center">
-                                                        <h5 class="font-size-20 mt-4">Complementary Team</h5>
+                                                        <h5 class="font-size-20 mt-4 badge bg-secondary">Project - On Progress</h5>
                                                         <p class="font-size-15 text-muted mt-3 mb-0">
-                                                            Kami satu dalam tujuan dan saling melengkapi dalam kerja sama tim
+                                                            Sustaining Efforts to Complete.
                                                         </p>
                                                     </div>
                                                 </div>
 
                                                 <div class="carousel-item">
                                                     <div class="mt-4">
-                                                        <img src="{{ URL::asset('./assets/images/login-img.png')}}" class="img-fluid" alt="">
+                                                        {{-- <img src="{{ URL::asset('./assets/images/login-img.png')}}" class="img-fluid" alt=""> --}}
+                                                        <div class="row">
+                                                            <div class="col-lg-12">
+                                                                <div class="card" style="height: 450px">
+                                                                    <div class="table-responsive">
+                                                                        <table class="table project-list-table table-nowrap align-middle table-borderless table-hover">
+                                                                            <thead>
+                                                                                <tr>
+                                                                                    <th scope="col" style="width: 100px" class="ps-4">#</th>
+                                                                                    <th scope="col">Projects</th>
+                                                                                    <th scope="col">Status</th>
+                                                                                    <th scope="col">Team</th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                                @php
+                                                                                    $no = 1;
+                                                                                @endphp
+                                                                                @foreach($project['waiting'] as $item)
+                                                                                <tr>
+                                                                                    <td class="ps-4">{{ $no++ }}</td>
+                                                                                    <td>
+                                                                                        <h5 class="text-truncate font-size-14"><a href="javascript: void(0);" class="text-dark">{{ $item['nameSystem'] }}</a></h5>
+                                                                                        <p class="text-muted mb-0">Request by : {{ $item['fullname'] }}</p>
+                                                                                    </td>
+                                                                                    <td class="pe-5">
+                                                                                        <div class="row align-items-center">
+                                                                                            <div class="col">
+                                                                                                <div class="progress" style="height: 6px;">
+                                                                                                    <div class="progress-bar bg-primary" role="progressbar" style="width: {{ $item['progress'] }}%" aria-valuenow="{{ $item['progress'] }}" aria-valuemin="0" aria-valuemax="100"></div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="col-auto">
+                                                                                                <h6 class="mb-0 font-size-13"> {{ $item['progress'] }}%</h6>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="avatar-group">
+                                                                                            @foreach($item['initials'] as $initial)
+                                                                                            <div class="avatar-group-item">
+                                                                                                <a href="javascript: void(0);" class="d-inline-block">
+                                                                                                    <div class="avatar-sm">
+                                                                                                        @if ($initial == null)
+                                                                                                            <span class="avatar-title rounded-circle bg-danger text-white font-size-16">
+                                                                                                                -
+                                                                                                            </span>
+                                                                                                        @else
+                                                                                                            <span class="avatar-title rounded-circle bg-primary text-white font-size-16">
+                                                                                                                {{ $initial }}
+                                                                                                            </span> 
+                                                                                                        @endif
+                                                                                                    </div>
+                                                                                                </a>
+                                                                                            </div>
+                                                                                            @endforeach
+                                                                                        </div>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                @endforeach
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                     <div class="testi-contain text-center">
-                                                        <h5 class="font-size-20 mt-4">Ownership</h5>
+                                                        <h5 class="font-size-20 mt-4 badge bg-primary">Project - Waiting List</h5>
                                                         <p class="font-size-15 text-muted mt-3 mb-0">
-                                                            Kami memelihara rasa memiliki untuk senantiasa mencapai yang terbaik.
+                                                            Effective Project Management and Efficient Waiting List Organization.
                                                         </p>
                                                     </div>
                                                 </div>
 
                                                 <div class="carousel-item">
                                                     <div class="mt-4">
-                                                        <img src="{{ URL::asset('./assets/images/login-img.png')}}" class="img-fluid" alt="">
+                                                        {{-- <img src="{{ URL::asset('./assets/images/login-img.png')}}" class="img-fluid" alt=""> --}}
+                                                        <div class="row">
+                                                            <div class="col-lg-12">
+                                                                <div class="card" style="height: 450px">
+                                                                    <div class="table-responsive">
+                                                                        <table class="table project-list-table table-nowrap align-middle table-borderless table-hover">
+                                                                            <thead>
+                                                                                <tr>
+                                                                                    <th scope="col" style="width: 100px" class="ps-4">#</th>
+                                                                                    <th scope="col">Projects</th>
+                                                                                    <th scope="col">Status</th>
+                                                                                    <th scope="col">Team</th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                                @php
+                                                                                    $no = 1;
+                                                                                @endphp
+                                                                                @foreach($project['completed'] as $item)
+                                                                                <tr>
+                                                                                    <td class="ps-4">{{ $no++ }}</td>
+                                                                                    <td>
+                                                                                        <h5 class="text-truncate font-size-14"><a href="javascript: void(0);" class="text-dark">{{ $item['nameSystem'] }}</a></h5>
+                                                                                        <p class="text-muted mb-0">Request by : {{ $item['fullname'] }}</p>
+                                                                                    </td>
+                                                                                    <td class="pe-5">
+                                                                                        <div class="row align-items-center">
+                                                                                            <div class="col">
+                                                                                                <div class="progress" style="height: 6px;">
+                                                                                                    <div class="progress-bar bg-success" role="progressbar" style="width: {{ $item['progress'] }}%" aria-valuenow="{{ $item['progress'] }}" aria-valuemin="0" aria-valuemax="100"></div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="col-auto">
+                                                                                                <h6 class="mb-0 font-size-13"> {{ $item['progress'] }}%</h6>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="avatar-group">
+                                                                                            @foreach($item['initials'] as $initial)
+                                                                                            <div class="avatar-group-item">
+                                                                                                <a href="javascript: void(0);" class="d-inline-block">
+                                                                                                    <div class="avatar-sm">
+                                                                                                        <span class="avatar-title rounded-circle bg-success text-white font-size-16">
+                                                                                                            {{ $initial }}
+                                                                                                        </span>
+                                                                                                    </div>
+                                                                                                </a>
+                                                                                            </div>
+                                                                                            @endforeach
+                                                                                        </div>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                @endforeach
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                     <div class="testi-contain text-center">
-                                                        <h5 class="font-size-20 mt-4">People</h5>
+                                                        <h5 class="font-size-20 mt-4 badge bg-success">Project - Completed</h5>
                                                         <p class="font-size-15 text-muted mt-3 mb-0">
-                                                            Kami mengembangkan sumber daya manusia untuk tumbuh bersama.
-                                                        </p>
-                                                    </div>
-                                                </div>
-
-                                                <div class="carousel-item">
-                                                    <div class="mt-4">
-                                                        <img src="{{ URL::asset('./assets/images/login-img.png')}}" class="img-fluid" alt="">
-                                                    </div>
-                                                    <div class="testi-contain text-center">
-                                                        <h5 class="font-size-20 mt-4">Integrity</h5>
-                                                        <p class="font-size-15 text-muted mt-3 mb-0">
-                                                            Kami dalam melaksanakan tugas selalu bertindak dengan penuh integritas.
-                                                        </p>
-                                                    </div>
-                                                </div>
-
-                                                <div class="carousel-item">
-                                                    <div class="mt-4">
-                                                        <img src="{{ URL::asset('./assets/images/login-img.png')}}" class="img-fluid" alt="">
-                                                    </div>
-                                                    <div class="testi-contain text-center">
-                                                        <h5 class="font-size-20 mt-4">Customer</h5>
-                                                        <p class="font-size-15 text-muted mt-3 mb-0">
-                                                            Kami selalu memastikan untuk memahami dan memberikan yang terbaik bagi pelanggan.
-                                                        </p>
-                                                    </div>
-                                                </div>
-
-                                                <div class="carousel-item">
-                                                    <div class="mt-4">
-                                                        <img src="{{ URL::asset('./assets/images/login-img.png')}}" class="img-fluid" alt="">
-                                                    </div>
-                                                    <div class="testi-contain text-center">
-                                                        <h5 class="font-size-20 mt-4">Continous Improvement</h5>
-                                                        <p class="font-size-15 text-muted mt-3 mb-0">
-                                                            Kami menghindari ketidakpedulian dan melakukan perbaikan terus menerus.
+                                                            Celebrating Our Success &#127881.
                                                         </p>
                                                     </div>
                                                 </div>
 
                                             </div>
+                                            
                                             <!-- end carousel-inner -->
                                         </div>
                                         <!-- end review carousel -->
@@ -190,4 +343,77 @@
         @section('script')
             <script src="{{ URL::asset('assets/js/pages/pass-addon.init.js') }}"></script>
             <script src="{{ URL::asset('assets/js/pages/eva-icon.init.js') }}"></script>
+            <script>
+                const formSubmit = async () => {
+
+                    const username = $('#input-username').val();
+                    const password = $('#password-input').val();
+
+                    if(username == '' || password == '') {
+                        Swal.fire(
+                            {
+                                title: 'Error!',
+                                text: 'Please enter your login information.',
+                                icon: 'error',
+                                showCancelButton: false,
+                                confirmButtonColor: '#3b76e1',
+                            }
+                        )
+                    } else {
+
+                        const formData = new FormData();
+
+                        formData.append('username', username);
+                        formData.append('password', password);
+
+                        const response = await fetch('api/getlogin',{
+                            method: 'POST',
+                            body: formData
+                        });
+                        const data = await response.json();
+
+                        if(data.code == 0) {
+
+                            // $("#loginForm").submit();
+                            Swal.fire(
+                                {
+                                    title: 'Error!',
+                                    text: 'User Not Found.',
+                                    icon: 'error',
+                                    showCancelButton: false,
+                                    confirmButtonColor: '#3b76e1',
+                                }
+                            )
+
+                        } else if(data.code == 404) {
+
+                            Swal.fire(
+                                {
+                                    title: 'Error!',
+                                    text: 'Your login is not linked to any employee information.',
+                                    icon: 'error',
+                                    showCancelButton: false,
+                                    confirmButtonColor: '#3b76e1',
+                                }
+                            )
+                            
+                        } else if(data.code == 409) {
+
+                            Swal.fire(
+                                {
+                                    title: 'Error!',
+                                    html: 'Someone has accessed your account. <br> ( ip : '+data.ip+' )',
+                                    icon: 'error',
+                                    showCancelButton: false,
+                                    confirmButtonColor: '#3b76e1',
+                                }
+                            )
+
+                        } else if(data.code == 200) {
+                            $("#loginForm").submit();
+                        }
+                    }
+
+                }
+            </script>
         @endsection

@@ -1,4 +1,4 @@
-var modname = 'sequence';
+var modname = 'user';
 
 function moveEditColumnToLeft(dataGrid) {
     dataGrid.columnOption("command:edit", { 
@@ -26,26 +26,33 @@ var dataGrid = $("#gridContainer").dxDataGrid({
     editing: {
         useIcons:true,
         mode: "cell",
-        allowAdding: true,
+        allowAdding: false,
         allowUpdating: true,
-        allowDeleting: true,
+        allowDeleting: false,
     },
     scrolling: {
         mode: "virtual"
     },
     columns: [
         { 
-            dataField: "title",
+            dataField: "fullname",
             sortOrder: "asc",
-            validationRules: [
-                { 
-                    type: "required" 
-                }
-            ]
+            editorOptions: {
+                readOnly : true
+            }
         },
 		{ 
-			dataField: "is_active",
-            dataType: "boolean"
+			dataField: "username",
+            editorOptions: {
+                readOnly : true
+            }
+        },
+        { 
+			dataField: "isAdmin",
+            dataType: "boolean",
+            editorOptions: {
+                readOnly : true
+            }
         },
     ],
     export: {

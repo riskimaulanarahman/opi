@@ -1,4 +1,4 @@
-var modname = 'useraccess';
+var modname = 'developer';
 
 function moveEditColumnToLeft(dataGrid) {
     dataGrid.columnOption("command:edit", { 
@@ -25,7 +25,7 @@ var dataGrid = $("#gridContainer").dxDataGrid({
     },
     editing: {
         useIcons:true,
-        mode: "cell",
+        mode: "batch",
         allowAdding: true,
         allowUpdating: true,
         allowDeleting: true,
@@ -35,47 +35,11 @@ var dataGrid = $("#gridContainer").dxDataGrid({
     },
     columns: [
         { 
-            dataField: "module_id",
+			dataField: "developerName",
             sortOrder: "asc",
-            lookup: {
-                dataSource: listOption('/list-module','id','module'),  
-                valueExpr: 'id',
-                displayExpr: 'module',
-            },
-            validationRules: [
-                { 
-                    type: "required" 
-                }
-            ]
-        },
-		{ 
-			dataField: "employee_id",
-            lookup: {
-                dataSource: listOption('/list-employee','id','fullname'),  
-                valueExpr: 'id',
-                displayExpr: 'fullname',
-            },
-            validationRules: [
-                { 
-                    type: "required" 
-                }
-            ]
         },
         { 
-			dataField: "allowAdd",
-            dataType: "boolean"
-        },
-        { 
-			dataField: "allowEdit",
-            dataType: "boolean"
-        },
-        { 
-			dataField: "allowDelete",
-            dataType: "boolean"
-        },
-        { 
-			dataField: "allowView",
-            dataType: "boolean"
+            dataField: "role",
         },
     ],
     export: {

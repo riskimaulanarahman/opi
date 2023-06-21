@@ -22,6 +22,8 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password')->nullable();
             $table->text('avatar')->nullable();
+            $table->integer('theme_id');
+            $table->integer('isAdmin')->default(false);
             $table->timestamps();
         });
 

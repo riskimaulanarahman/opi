@@ -1,4 +1,4 @@
-var modname = 'module';
+var modname = 'level';
 
 function moveEditColumnToLeft(dataGrid) {
     dataGrid.columnOption("command:edit", { 
@@ -25,7 +25,7 @@ var dataGrid = $("#gridContainer").dxDataGrid({
     },
     editing: {
         useIcons:true,
-        mode: "cell",
+        mode: "batch",
         allowAdding: true,
         allowUpdating: true,
         allowDeleting: true,
@@ -35,17 +35,12 @@ var dataGrid = $("#gridContainer").dxDataGrid({
     },
     columns: [
         { 
-            dataField: "module",
-            sortOrder: "asc",
-            validationRules: [
-                { 
-                    type: "required" 
-                }
-            ]
+			dataField: "Level",
         },
-		{ 
-			dataField: "remarks",
+        { 
+            dataField: "Remarks",
         },
+		
     ],
     export: {
         enabled: true,

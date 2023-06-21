@@ -14,19 +14,9 @@
         <hr class="m-0" />
 
         <div class="p-4">
-            <h6 class="mb-3">Layout</h6>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="layout"
-                    id="layout-vertical" value="vertical">
-                <label class="form-check-label" for="layout-vertical">Vertical</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="layout"
-                    id="layout-horizontal" value="horizontal">
-                <label class="form-check-label" for="layout-horizontal">Horizontal</label>
-            </div>
+            
 
-            <h6 class="mt-4 mb-3">Layout Mode</h6>
+            <h6 class="mb-3">Layout Mode</h6>
 
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="layout-mode"
@@ -65,18 +55,7 @@
                 <label class="form-check-label" for="layout-position-scrollable">Scrollable</label>
             </div>
 
-            <h6 class="mt-4 mb-3">Topbar Color</h6>
-
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="topbar-color"
-                    id="topbar-color-light" value="light" onchange="document.body.setAttribute('data-topbar', 'light')">
-                <label class="form-check-label" for="topbar-color-light">Light</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="topbar-color"
-                    id="topbar-color-dark" value="dark" onchange="document.body.setAttribute('data-topbar', 'dark')">
-                <label class="form-check-label" for="topbar-color-dark">Dark</label>
-            </div>
+            
 
             <div id="sidebar-setting">
             <h6 class="mt-4 mb-3 sidebar-setting">Sidebar Size</h6>
@@ -116,18 +95,7 @@
             </div>
         </div>
 
-            <h6 class="mt-4 mb-3">Direction</h6>
-
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="layout-direction"
-                    id="layout-direction-ltr" value="ltr">
-                <label class="form-check-label" for="layout-direction-ltr">LTR</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="layout-direction"
-                    id="layout-direction-rtl" value="rtl">
-                <label class="form-check-label" for="layout-direction-rtl">RTL</label>
-            </div>
+            
 
         </div>
 
@@ -147,4 +115,8 @@
     <div class="offcanvas-body">
       ...
     </div>
-</div><?php /**PATH D:\riski_maulana\www\oasysv2\resources\views/layouts/right-sidebar.blade.php ENDPATH**/ ?>
+</div>
+
+<script>
+    // alert('test');
+</script><?php /**PATH D:\riski_maulana\www\oasysv2\resources\views/layouts/right-sidebar.blade.php ENDPATH**/ ?>
