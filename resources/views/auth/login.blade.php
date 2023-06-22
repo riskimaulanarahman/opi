@@ -17,7 +17,7 @@
                                                 <div class="w-100">
                                                     <div class="d-flex flex-column h-100">
                                                         <div class="mb-4 mb-md-1">
-                                                            <a href="/" class="d-block auth-logo">
+                                                            <a href="{{ url('/') }}" class="d-block auth-logo">
                                                                 {{-- <img src="{{ URL::asset('assets/images/oaslogo.png')}}" alt="" height="250" class="auth-logo-dark me-start"> --}}
                                                                 {{-- <img src="{{ URL::asset('assets/images/logo-light.png')}}" alt="" height="22" class="auth-logo-light me-start"> --}}
                                                                 <center><b style="font-size: 30px;">DevPortal</b></center>
@@ -344,6 +344,12 @@
             <script src="{{ URL::asset('assets/js/pages/pass-addon.init.js') }}"></script>
             <script src="{{ URL::asset('assets/js/pages/eva-icon.init.js') }}"></script>
             <script>
+
+                $('#input-username, #password-input').on('keypress', function(e) {
+                    if (e.which == 13) { // 13 adalah kode tombol enter
+                        formSubmit(); // Panggil fungsi formSubmit di sini
+                    }
+                });
                 const formSubmit = async () => {
 
                     const username = $('#input-username').val();

@@ -3,7 +3,7 @@
 
     <!-- LOGO -->
     <div class="navbar-brand-box">
-        <a href="\" class="logo logo-dark">
+        <a href="{{ url('/') }}" class="logo logo-dark">
             <span class="logo-sm">
                 {{-- <img src="{{ URL::asset('assets/images/logo-dark-sm.png') }}" alt="" height="22"> --}}
                 <b style="font-size: 22px;">DP</b>
@@ -14,7 +14,7 @@
             </span>
         </a>
 
-        <a href="\" class="logo logo-light">
+        <a href="{{ url('/') }}" class="logo logo-light">
             <span class="logo-lg">
                 {{-- <img src="{{ URL::asset('assets/images/logo-light.png') }}" alt="" height="22"> --}}
                 <b style="font-size: 30px; color:white !important;">DevPortal</b>
