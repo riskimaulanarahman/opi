@@ -110,11 +110,10 @@
     }
     
     const pathname = window.location.pathname;
-    const scriptPath = jsFiles[pathname];
-
-    console.log(pathname)
+    var result = /[^/]*$/.exec(pathname)[0];
+    const scriptPath = jsFiles['/'+result];
     if(scriptPath) {
-        $.getScript(`public/assets/js/${scriptPath}`);
+        $.getScript(`/devportal/public/assets/js/${scriptPath}`);
     }
 
 </script>
