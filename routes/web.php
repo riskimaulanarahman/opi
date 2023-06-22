@@ -10,17 +10,13 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'root'])->name('roo
 
 Route::get('index/{locale}', [App\Http\Controllers\HomeController::class, 'lang']);
 
-Route::get('test',function(){
-    return 'lala';
-});
+Route::middleware(['session.check'])->group(function () {
 
-// Route::middleware(['session.check'])->group(function () {
-
-//     if(Schema::hasTable('side_menus')) {
-//         $sidemenu = SideMenu::select('route')->where('route','!=','api')->get();
-//             foreach ($sidemenu as $menu_item) {
-//                 Route::get('{menu_item}', [App\Http\Controllers\GeneratemenuController::class, 'index'])->name('index');
-//             }
-//     }
+    if(Schema::hasTable('side_menus')) {
+        $sidemenu = SideMenu::select('route')->where('route','!=','api')->get();
+            foreach ($sidemenu as $menu_item) {
+                Route::get('{menu_item}', [App\Http\Controllers\GeneratemenuController::class, 'index'])->name('index');
+            }
+    }
     
-// });
+});

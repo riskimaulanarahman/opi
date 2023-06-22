@@ -112,8 +112,9 @@
     const pathname = window.location.pathname;
     const scriptPath = jsFiles[pathname];
 
+    console.log(pathname)
     if(scriptPath) {
-        $.getScript(`assets/js/${scriptPath}`);
+        $.getScript(`public/assets/js/${scriptPath}`);
     }
 
 </script>
