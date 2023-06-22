@@ -10,10 +10,6 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'root'])->name('roo
 
 Route::get('index/{locale}', [App\Http\Controllers\HomeController::class, 'lang']);
 
-Route::get('test',function(){
-    return 'lala';
-});
-
 Route::middleware(['session.check'])->group(function () {
 
     if(Schema::hasTable('side_menus')) {
