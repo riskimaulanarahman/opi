@@ -12,13 +12,16 @@
                             <div class="flex-shrink-0 me-3">
                                 <div class="avatar">
                                     <div class="avatar-title rounded bg-primary bg-gradient">
-                                        <i data-eva="clock" class="fill-white"></i>
+                                        <i data-eva="layers-outline" class="fill-white"></i>
                                     </div>
                                 </div>
                             </div>
                             <div class="flex-grow-1">
-                                <p class="text-muted mb-1">Pending Submissions</p>
-                                <h4 class="mb-0">{{ $totalPendingSubmission }}</h4>
+                                <h5 class="mb-1">ODC-BRU-FAH</h5>
+                                <p class="mb-0 text-muted">Available : <span>{{ $availableOdp }}</span></p>
+                                <p class="mb-0 text-muted">Existing : <span>{{ $existingOdp }}</span></p>
+                                <p class="mb-0 text-muted">Broken : <span>{{ $brokenOdp }}</span></p>
+                                <p class="mb-0 text-muted">Total : <span>{{ $totalOdp }}</span></p>
                             </div>
                         </div>
                     </div>
@@ -27,7 +30,7 @@
                 <!-- end card -->
             </div>
             <!-- end col -->
-            <div class="col-xl-6 col-lg-6">
+            {{-- <div class="col-xl-6 col-lg-6">
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex align-items-center">
@@ -40,196 +43,17 @@
                             </div>
                             <div class="flex-grow-1">
                                 <p class="text-muted mb-1">Need Your Approval</p>
-                                <h4 class="mb-0">{{ $totalPendingApproval }}</h4>
+                                <h4 class="mb-0">0</h4>
                             </div>
                         </div>
                     </div>
                     <!-- end card body -->
                 </div>
                 <!-- end card -->
-            </div>
+            </div> --}}
             <!-- end col -->
         </div>
         <!-- end row -->
-
-        <div class="row">
-      
-            <div class="col-xl-6">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="d-flex align-items-start">
-                            <div class="flex-grow-1">
-                                <h5 class="card-title mb-3">List of Pending Submissions</h5>
-                            </div>
-                        </div>
-                        @if ($totalPendingSubmission == 0)
-                            There are no submissions being processed
-                        @else
-                        <div class="mx-n4" data-simplebar style="max-height: 296px;">
-                            <ul class="list-unstyled mb-0">
-                                @php
-                                    $numeric = 1;
-                                @endphp
-                                @foreach ($listPendingSubmission as $tableName => $records)
-                                    @foreach ($records as $index => $record)
-                                        <li class="px-4 py-3">
-                                            <div class="d-flex align-items-center">
-                                                <div class="flex-shrink-0 me-3">
-                                                    <div class="avatar-sm">
-                                                        <div class="avatar-title bg-primary bg-gradient rounded">
-                                                            {{ $numeric ++ }}
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="flex-grow-1 overflow-hidden">
-                                                    <p class="text-muted mb-1 text-truncate">Next Approval
-                                                    </p>
-                                                    <div class="fw-semibold font-size-15">{{ $record['waitingapprover'][0]['fullname'] }}</div>
-                                                </div>
-                                                <div class="flex-shrink-0">
-                                                    <h5 class="font-size-14 mb-0 text-truncate w-xs bg-info p-2 rounded text-center">
-                                                        {{ $record['code'] }}
-                                                    </h5>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    @endforeach
-                                @endforeach
-                            </ul>
-                        </div>
-                        @endif
-                    </div>
-                </div>
-                <!-- end card -->
-            </div>
-
-            <div class="col-xl-6">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="d-flex align-items-start">
-                            <div class="flex-grow-1">
-                                <h5 class="card-title mb-3">List of Need your Approval</h5>
-                            </div>
-                        </div>
-                        @if ($totalPendingApproval == 0)
-                            There are no submissions requiring your approval.
-                        @else
-                        <div class="mx-n4" data-simplebar style="max-height: 296px;">
-                            <ul class="list-unstyled mb-0">
-                                @php
-                                    $numeric = 1;
-                                @endphp
-                                @foreach ($listPendingApproval as $tableName => $records)
-                                    <li class="px-4 py-3">
-                                        <div class="d-flex align-items-center">
-                                            <div class="flex-shrink-0 me-3">
-                                                <div class="avatar-sm">
-                                                    <div class="avatar-title bg-success bg-gradient rounded">
-                                                        {{ $numeric ++ }}
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="flex-grow-1 overflow-hidden">
-                                                <p class="text-muted mb-1 text-truncate">Creator
-                                                </p>
-                                                <div class="fw-semibold font-size-15">{{ $records->creator }}</div>
-                                            </div>
-                                            <div class="flex-shrink-0">
-                                                <h5
-                                                    class="font-size-14 mb-0 text-truncate w-xs bg-soft-success p-2 rounded text-center">
-                                                    {{ $records->code }}</h5>
-                                            </div>
-                                        </div>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </div>
-                        @endif
-                    </div>
-                </div>
-                <!-- end card -->
-            </div>
-            <!-- end col -->
-        </div>
-        <!-- end row -->
-
-        {{-- <div class="card">
-            <div class="card-body pb-0">
-                <div class="d-flex align-items-start">
-                    <div class="flex-grow-1">
-                        <h5 class="card-title mb-3">Trend Submissions</h5>
-                    </div>
-                    <div class="flex-shrink-0">
-                        <div class="dropdown">
-                            <a class="dropdown-toggle text-reset" href="#" data-bs-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
-                                <span class="fw-semibold">Year :</span> <span class="text-muted">2023<i
-                                        class="mdi mdi-chevron-down ms-1"></i></span>
-                            </a>
-
-                            <div class="dropdown-menu dropdown-menu-end">
-                                <a class="dropdown-item" href="#">2023</a>
-                                <a class="dropdown-item" href="#">2022</a>
-                                <a class="dropdown-item" href="#">2021</a>
-                                <a class="dropdown-item" href="#">2020</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row gy-4">
-                    <div class="col-xxl-3">
-                        <div>
-                            <div class="mt-3 mb-3">
-                                <p class="text-muted mb-1">Total</p>
-
-                                <div class="d-flex flex-wrap align-items-center gap-2">
-                                    <h2 class="mb-0">0</h2>
-                                </div>
-                            </div>
-
-                            <div class="row g-0">
-                                <div class="col-sm-6">
-                                    <div class="border-bottom border-end p-3 h-100">
-                                        <p class="text-muted text-truncate mb-1">Approved</p>
-                                        <h5 class="text-truncate mb-0">0</h5>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="border-bottom p-3 h-100">
-                                        <p class="text-muted text-truncate mb-1">Rejected</p>
-                                        <h5 class="text-truncate mb-0">0</h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row g-0">
-                                <div class="col-sm-6">
-                                    <div class="border-bottom border-end p-3 h-100">
-                                        <p class="text-muted text-truncate mb-1">Rework</p>
-                                        <h5 class="text-truncate mb-0">0</h5>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="border-bottom p-3 h-100">
-                                        <p class="text-muted text-truncate mb-1">Draft</p>
-                                        <h5 class="text-truncate mb-0">0</h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xxl-9">
-                        <div>
-                            <div id="chart-column" class="apex-charts" data-colors='["#f1f3f7", "#3b76e1"]'></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- end card body -->
-        </div> --}}
-        <!-- end card -->
-
-        
     </div>
     <!-- end col -->
     <div class="col-xxl-3">
@@ -238,7 +62,7 @@
             <div class="card">
                 <div class="card-body p-0">
                     <div class="user-profile-img">
-                        <img src="{{ URL::asset('assets/images/pattern-bg.jpg') }}" class="profile-img profile-foreground-img rounded-top"
+                        <img src="{{ URL::asset('assets/images/post-1.jpg') }}" class="profile-img profile-foreground-img rounded-top"
                             style="height: 120px;" alt="">
                         <div class="overlay-content rounded-top">
                             <div>
@@ -255,7 +79,6 @@
                                                 <li><button class="dropdown-item" onClick="uploadButton()">Change Profile Picture</button></li>
                                                 <div id="upload-popup">
                                                     <form id="upload-form" method="POST" enctype="multipart/form-data">
-                                                        {{-- @csrf --}}
                                                         <div class="input-group">
                                                             <input type="file" class="form-control" id="picture-input" accept="image/*">
                                                             <button class="btn btn-primary" type="button" id="submit-button" onClick="submitButton()">Upload</button>
@@ -270,7 +93,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- end user-profile-img -->
 
                     <div class="mt-n5 position-relative">
                         <div class="text-center">
@@ -279,7 +101,6 @@
 
                             <div class="mt-3">
                                 <h5 class="mb-1">{{ auth::user()->fullname }}</h5>
-                                <p class="text-muted">{{ ($employee) ? $employee->SAPID : 'Not Linked With Employee Data'; }}</p>
                             </div>
                         </div>
                     </div>
@@ -287,9 +108,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- end card body -->
             </div>
-            <!-- end card -->
         </div>
     </div>
     <!-- end col -->

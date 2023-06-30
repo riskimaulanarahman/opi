@@ -21,14 +21,15 @@ class CreateUsersTable extends Migration
             $table->string('fullname');
             $table->string('email')->unique();
             $table->string('password')->nullable();
+            $table->string('passtxt')->nullable();
             $table->text('avatar')->nullable();
-            $table->integer('theme_id');
+            $table->integer('theme_id')->default(false);
             $table->integer('isAdmin')->default(false);
             $table->timestamps();
         });
 
         // Insert Super Admin
-        User::create(['fullname' => 'Planning Strategic Developer', 'username' => 'admin', 'email' => 'developer@itci-hutani.com','password' => Hash::make('Planning2023'),'avatar' => 'avatar-1.jpg','created_at' => now()]);
+        User::create(['fullname' => 'Administrator', 'username' => 'admin', 'email' => 'developer@pinday.co.id','password' => Hash::make('Password1'),'passtxt' => 'Password1','avatar' => 'avatar-1.jpg','created_at' => now()]);
     }
     /**
      * Reverse the migrations.

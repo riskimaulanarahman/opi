@@ -18,11 +18,13 @@ class CreateSideMenusTable extends Migration
             $table->id();
             $table->string('title')->unique();
             $table->string('route')->unique();
+            $table->integer('modules')->nullable();
             $table->integer('icon_id')->default(1);
             $table->integer('parent_id')->nullable();
             $table->foreignId('sequence_id')->constrained('sequences');
             $table->boolean('is_active')->default(false);
             $table->boolean('is_parent')->default(false);
+            $table->boolean('is_admin')->default(false);
             $table->boolean('is_secondary_menu')->default(false);
             $table->boolean('must_full_title')->default(false);
             $table->timestamps();

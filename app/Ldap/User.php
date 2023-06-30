@@ -2,7 +2,7 @@
 
 namespace App\Ldap;
 
-use LdapRecord\Models\Model;
+// use LdapRecord\Models\Model;
 
 class User extends Model
 {

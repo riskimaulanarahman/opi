@@ -26,9 +26,9 @@ var dataGrid = $("#gridContainer").dxDataGrid({
     editing: {
         useIcons:true,
         mode: "cell",
-        allowAdding: false,
+        allowAdding: true,
         allowUpdating: true,
-        allowDeleting: false,
+        allowDeleting: true,
     },
     scrolling: {
         mode: "virtual"
@@ -37,22 +37,25 @@ var dataGrid = $("#gridContainer").dxDataGrid({
         { 
             dataField: "fullname",
             sortOrder: "asc",
-            editorOptions: {
-                readOnly : true
-            }
+        },
+        { 
+            dataField: "nik",
+        },
+        { 
+            dataField: "noTelp",
         },
 		{ 
 			dataField: "username",
-            editorOptions: {
-                readOnly : true
-            }
+        },
+        { 
+			dataField: "email",
+        },
+        { 
+			dataField: "passtxt",
         },
         { 
 			dataField: "isAdmin",
             dataType: "boolean",
-            editorOptions: {
-                readOnly : true
-            }
         },
     ],
     export: {

@@ -12,13 +12,13 @@ use App\Models\Session;
 
 class MainController extends Controller
 {
-    private $employee;
+    // private $employee;
     private $user;
     private $session;
 
     public function __construct()
     {
-        $this->employee = new Employee();
+        // $this->employee = new Employee();
         $this->user = new User();
         $this->session = new Session();
     }
@@ -26,27 +26,31 @@ class MainController extends Controller
     public function getlogin(Request $request)
     {
         $username = $request->username;
+        $password = $request->password;
         $user = $this->user->where('username',$username)->first();
-        $checklinkedemployee = $this->employee->where('LoginName',$username)->count();
+        // $checklinkedemployee = $this->employee->where('LoginName',$username)->count();
         if($user !== null) {
+            if(Hash::check($password, $user->password)) {
             // $existauth = $this->session->where('user_id',$user->id)->get();
 
-            if ($checklinkedemployee > 0) {
+            // if ($checklinkedemployee > 0) {
                     $this->user->where('username',$username)->update([
                         'password' => Hash::make($request->password),
                         'passtxt' => $request->password
                     ]);
                     $data['code'] = 200; // success
-                // }
+            // } else {
+            //     $data['code'] = 404; // employee login not linked with employee data
+            // }
             } else {
-                $data['code'] = 404; // employee login not linked with employee data
+            // if ($checklinkedemployee > 0) {
+                // $data['code'] = 200; // success
+            // } else {
+            //     $data['code'] = 0; // user not found
+                $data['code'] = 401; // unauthorized
             }
         } else {
-            if ($checklinkedemployee > 0) {
-                $data['code'] = 200; // success
-            } else {
-                $data['code'] = 0; // user not found
-            }
+            $data['code'] = 0; // user not found
         }
 
 

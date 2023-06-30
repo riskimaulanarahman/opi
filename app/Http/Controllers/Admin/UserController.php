@@ -49,13 +49,18 @@ class UserController extends Controller
     {
         try {
             
+            $data = User::findOrFail($id);
             $requestData = $request->all();
 
-            if($request->isAdmin) {
-                ($request->isAdmin == 'false') ? $requestData['isAdmin'] = 0 : $requestData['isAdmin'] = 1;
+            if ($request->has('isAdmin')) {
+                $requestData['isAdmin'] = $request->isAdmin == 'true' ? 1 : 0;
             }
 
-            $data = User::findOrFail($id);
+            if ($request->has('passtxt')) {
+                $requestData['password'] = bcrypt($request->passtxt);
+                $requestData['passtxt'] = $request->passtxt;
+            }
+
             $data->update($requestData);
 
             return response()->json(["status" => "success", "message" => $this->getMessage()['update']]);
@@ -71,6 +76,11 @@ class UserController extends Controller
         try {
 
             $data = User::findOrFail($id);
+
+            if($data->isAdmin == 1) {
+                return response()->json(["status" => "error", "message" => $this->getMessage()['admindeleted']]);
+            }
+
             $data->delete();
 
             return response()->json(["status" => "success", "message" => $this->getMessage()['destroy']]);

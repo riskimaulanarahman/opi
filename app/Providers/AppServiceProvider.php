@@ -35,11 +35,11 @@ class AppServiceProvider extends ServiceProvider
             
             if (Auth::check()) {
                 $user = Auth::user();
-                $employee = Employee::where('LoginName',Auth::user()->username)->first();
+                // $employee = Employee::where('LoginName',Auth::user()->username)->first();
                 $themes = Theme::where('user_id',$user->id)->get();
                 // dd($employee);
                 View::share('themes', $themes);
-                View::share('employee', $employee);
+                // View::share('employee', $employee);
             }
 
         });

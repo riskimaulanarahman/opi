@@ -1,10 +1,11 @@
-<input type="hidden" name="empid" id="empid" value="{{ ($employee) ? $employee->id : null; }}">
+{{-- <input type="hidden" name="empid" id="empid" value="{{ ($employee) ? $employee->id : null; }}"> --}}
 <input type="hidden" name="usersid" id="usersid" value="{{ Auth::user()->id }}">
 <input type="hidden" name="isadmin" id="isadmin" value="{{ Auth::user()->isAdmin }}">
 <script>
     // Riski Maulana Rahman
     admin = $('#isadmin').val();
-    apiurl = window.location.origin+'/devportal/api';
+    baseurl = window.location.origin;
+    apiurl = window.location.origin+'/api';
     // valusername = $('#valusername').val();
     usersid = parseInt($('#usersid').val());
     empid = parseInt($('#empid').val());

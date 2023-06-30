@@ -60,29 +60,29 @@ return [
     */
 
     'providers' => [
-        'users' => [
-            'driver' => 'ldap',
-            'model' => LdapRecord\Models\ActiveDirectory\User::class,
-            'database' => [
-                'model' => App\Models\User::class,
-                'sync_passwords' => true,
-                'password_column' => false,
-                'sync_attributes' => [
-                    'fullname' => 'cn',
-                    'email' => 'mail',
-                    'username' => 'samaccountname',
-                ],
-            ],
-        ],
+        // 'users' => [
+        //     'driver' => 'ldap',
+        //     'model' => LdapRecord\Models\ActiveDirectory\User::class,
+        //     'database' => [
+        //         'model' => App\Models\User::class,
+        //         'sync_passwords' => true,
+        //         'password_column' => false,
+        //         'sync_attributes' => [
+        //             'fullname' => 'cn',
+        //             'email' => 'mail',
+        //             'username' => 'samaccountname',
+        //         ],
+        //     ],
+        // ],
         // 'users' => [
         //     'driver' => 'eloquent',
         //     'model' => App\Models\User::class,
         // ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'users' => [
+            'driver' => 'database',
+            'table' => 'users',
+        ],
     ],
 
     /*

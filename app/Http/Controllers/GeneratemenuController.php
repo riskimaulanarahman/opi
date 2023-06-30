@@ -96,7 +96,7 @@ class GeneratemenuController extends Controller
                         return $viewGrid;
                     } else {
                         $checkaccess = Useraccess::join('side_menus','tbl_useraccess.module_id','side_menus.modules')
-                        ->where('employee_id',$this->getAuth()->id)
+                        ->where('user_id',$this->getAuth()->id)
                         ->where('allowView',true)
                         ->get();
                         if($checkaccess) {

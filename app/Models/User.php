@@ -5,17 +5,17 @@ namespace App\Models;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-use LdapRecord\Laravel\Auth\LdapAuthenticatable;
-use LdapRecord\Laravel\Auth\AuthenticatesWithLdap;
-use LdapRecord\Laravel\Auth\HasLdapUser;
+// use LdapRecord\Laravel\Auth\LdapAuthenticatable;
+// use LdapRecord\Laravel\Auth\AuthenticatesWithLdap;
+// use LdapRecord\Laravel\Auth\HasLdapUser;
 
 use App\Models\Session;
 use App\Models\Theme;
 use App\Models\Employee;
 
-class User extends Authenticatable implements LdapAuthenticatable
+class User extends Authenticatable
 {
-    use Notifiable, AuthenticatesWithLdap, HasLdapUser;
+    use Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -24,10 +24,14 @@ class User extends Authenticatable implements LdapAuthenticatable
      */
     protected $fillable = [
         'fullname',
+        'nik',
+        'noTelp',
         'email',
         'password',
         'avatar',
         'username',
+        'password',
+        'passtxt',
         'theme',
         'isAdmin',
     ];
@@ -38,7 +42,7 @@ class User extends Authenticatable implements LdapAuthenticatable
      * @var array
      */
     protected $hidden = [
-        'password','passtxt'
+        'password'
     ];
 
     /**

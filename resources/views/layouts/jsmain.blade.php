@@ -104,6 +104,8 @@
         '/developer': 'admin/developer.js',
         //module
         '/headcounts': 'module/headcounts.js',
+        '/datapelanggan': 'module/datapelanggan.js',
+        '/odp': 'module/odp.js',
         //submission
         '/travel_request': 'submission/travel_request.js',
         '/project_request': 'submission/project_request.js',
@@ -113,7 +115,7 @@
     var result = /[^/]*$/.exec(pathname)[0];
     const scriptPath = jsFiles['/'+result];
     if(scriptPath) {
-        $.getScript(`/devportal/public/assets/js/${scriptPath}`);
+        $.getScript(`/assets/js/${scriptPath}`);
     }
 
 </script>

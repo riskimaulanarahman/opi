@@ -84,7 +84,7 @@ class RouteServiceProvider extends ServiceProvider
                     } else {
                         $query->where('is_admin',0);
                         $checkaccess = Useraccess::join('side_menus','tbl_useraccess.module_id','side_menus.modules')
-                        ->where('employee_id',$getuser->id)
+                        ->where('user_id',$getuser->id)
                         ->where('allowView',true)
                         ->get();
                         foreach ($checkaccess as $key) {

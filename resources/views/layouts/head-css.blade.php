@@ -7,10 +7,10 @@
 <link href="{{ URL::asset('assets/css/app.min.css')}}" id="app-style" rel="stylesheet" type="text/css" />
 
 <link rel="stylesheet" href="{{ asset('assets/css/dx.common.css') }}">
-@if(Auth::user())
-    @if(Auth::user()->theme->layout_mode !== 'dark')
+{{-- @if(Auth::user())
+    @if(Auth::user()->theme->layout_mode !== 'dark') --}}
         <link rel="stylesheet" href="{{ asset('assets/css/dx.material.blue.light.compact.css') }}">
-    @else
+    {{-- @else
         <link rel="stylesheet" href="{{ asset('assets/css/dx.material.blue.dark.compact.css') }}">
         <style>
             /* pindahkan ke file css sendiri jika sudah selesai */
@@ -62,7 +62,7 @@
             }
         </style>
     @endif
-@endif
+@endif --}}
 <style>
     .dx-checkbox-container {
         height: unset !important;
