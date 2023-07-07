@@ -20,7 +20,7 @@
                                                             <a href="{{ url('/') }}" class="d-block auth-logo">
                                                                 <img src="{{ URL::asset('assets/images/logo.png')}}" alt="" height="100" class="auth-logo-dark me-start">
                                                                 {{-- <img src="{{ URL::asset('assets/images/logo-light.png')}}" alt="" height="22" class="auth-logo-light me-start"> --}}
-                                                                <center><b style="font-size: 30px;">{{ env('APP_NAME') }}</b></center>
+                                                                <center><b style="font-size: 30px;" class="text-success">{{ env('APP_NAME') }}</b></center>
                                                             </a>
                                                         </div>
                                                         <div class="auth-content my-auto">
@@ -59,7 +59,7 @@
                                                                 </div>
 
                                                                 <div class="mb-3">
-                                                                    <button class="btn btn-danger w-100 waves-effect waves-light" type="button" onclick="formSubmit()">Log In</button>
+                                                                    <button class="btn btn-success w-100 waves-effect waves-light" type="button" onclick="formSubmit()">Log In</button>
                                                                 </div>
                                                                 @if(session('error'))
                                                                     <div class="alert alert-danger">
@@ -92,7 +92,7 @@
                                     <div class="p-0 p-sm-4 px-xl-0 py-5">
                                         <div id="reviewcarouselIndicators" class="carousel slide auth-carousel" data-bs-ride="carousel">
                                             <div class="carousel-indicators carousel-indicators-rounded">
-                                                <button type="button" data-bs-target="#reviewcarouselIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                                <button type="button" data-bs-target="#reviewcarouselIndicators" data-bs-slide-to="0" class="active bg-success" aria-current="true" aria-label="Slide 1"></button>
                                                 {{-- <button type="button" data-bs-target="#reviewcarouselIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
                                                 <button type="button" data-bs-target="#reviewcarouselIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
                                                 <button type="button" data-bs-target="#reviewcarouselIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
@@ -104,10 +104,10 @@
                                             <div class="carousel-inner w-50 mx-auto">
                                                 <div class="carousel-item active">
                                                     <div class="mt-4">
-                                                        <img src="{{ URL::asset('./assets/images/loginbg.jpg')}}" class="img-fluid" alt="">
+                                                        <img src="{{ URL::asset('./assets/images/loginbg2.jpg')}}" class="img-fluid" alt="">
                                                     </div>
                                                     <div class="testi-contain text-center">
-                                                        <h5 class="font-size-20 mt-4">Welcome to our Customer Tracking System!</h5>
+                                                        <h5 class="font-size-20 mt-4">Welcome to our ODC Panel Information System!</h5>
                                                         <p class="font-size-15 text-muted mt-3 mb-0">
                                                             Please log in to access your account and start managing your customer data.
                                                         </p>

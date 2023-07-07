@@ -6,7 +6,7 @@
     <div class="col-xxl-9">
         <div class="row">
             <div class="col-xl-6 col-lg-6">
-                <div class="card">
+                {{-- <div class="card">
                     <div class="card-body">
                         <div class="d-flex align-items-center">
                             <div class="flex-shrink-0 me-3">
@@ -25,9 +25,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- end card body -->
-                </div>
-                <!-- end card -->
+                </div> --}}
             </div>
             <!-- end col -->
             {{-- <div class="col-xl-6 col-lg-6">

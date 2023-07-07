@@ -5,25 +5,22 @@ namespace App\Http\Controllers\Module;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-use App\Models\Module\Odp;
-use App\Models\Module\Datapelanggan;
+use App\Models\Module\Dataodc;
 
-class OdpController extends Controller
+class DataodcController extends Controller
 {
     private $model;
-    public $datapelanggan;
 
     public function __construct()
     {
-        $this->model = new Odp();
-        $this->datapelanggan = new Datapelanggan();
+        $this->model = new Dataodc();
     }
 
     public function index(Request $request)
     {
         try {
             
-            $data = $this->model->all();
+            $data = $this->model->with('odcs')->get();
 
             return response()->json(['status' => "show", "message" => $this->getMessage()['show'] , 'data' => $data])->setEncodingOptions(JSON_NUMERIC_CHECK);
 
@@ -39,20 +36,7 @@ class OdpController extends Controller
 
             $requestData = $request->all();
 
-            $existingData = $this->model->where('odpName', $requestData['odpName'])
-            ->where('portNumber', $requestData['portNumber'])
-            ->first();
-
-            if ($existingData) {
-                return response()->json(["status" => "error", "message" => "odpName dan portNumber must be unique"]);
-            }
-
-            $create = $this->model->create($requestData);
-
-            if ($create) {
-                $this->datapelanggan->odp_id = $create->id;
-                $this->datapelanggan->save();
-            }
+            $this->model->create($requestData);
 
             return response()->json(["status" => "success", "message" => $this->getMessage()['store']]);
 

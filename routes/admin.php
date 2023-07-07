@@ -26,6 +26,7 @@ Route::group(['prefix' => 'api'], function () {
         'approvaltype' => App\Http\Controllers\Admin\ApprovaltypeController::class,
         'approvaluser' => App\Http\Controllers\Admin\ApprovaluserController::class,
         'developer' => App\Http\Controllers\Admin\DeveloperController::class,
+        'odc' => App\Http\Controllers\Module\OdcController::class,
     ]);
     Route::post('/update-profilepicture', [App\Http\Controllers\HomeController::class, 'updateProfilePicture']);
 });

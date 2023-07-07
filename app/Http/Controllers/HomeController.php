@@ -15,7 +15,7 @@ use App\Models\Session as Sess;
 use App\Models\Theme;
 use App\Models\User;
 
-use App\Models\Module\Odp;
+// use App\Models\Module\Odp;
 
 class HomeController extends Controller
 {
@@ -94,19 +94,20 @@ class HomeController extends Controller
             }	
         }
 
-        $odps = Odp::all();
+        // $odps = Odp::all();
 
-        $totalOdp = $odps->count();
-        $availableOdp = $odps->where('status', 'Available')->count();
-        $existingOdp = $odps->where('status', 'Existing')->count();
-        $brokenOdp = $odps->where('status', 'Broken')->count();
+        // $totalOdp = $odps->count();
+        // $availableOdp = $odps->where('status', 'Available')->count();
+        // $existingOdp = $odps->where('status', 'Existing')->count();
+        // $brokenOdp = $odps->where('status', 'Broken')->count();
 
-        return view('dashboard.index',compact(
-            'totalOdp',
-            'availableOdp',
-            'existingOdp',
-            'brokenOdp'
-        ));
+        return view('dashboard.index');
+        // return view('dashboard.index',compact(
+        //     'totalOdp',
+        //     'availableOdp',
+        //     'existingOdp',
+        //     'brokenOdp'
+        // ));
     }
 
     /*Language Translation*/

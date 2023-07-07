@@ -5,7 +5,7 @@ namespace App\Models\Module;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Odp extends Model
+class Odc extends Model
 {
     use HasFactory;
 

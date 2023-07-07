@@ -1,4 +1,4 @@
-var modname = 'odp';
+var modname = 'odc';
 
 function moveEditColumnToLeft(dataGrid) {
     dataGrid.columnOption("command:edit", { 
@@ -35,30 +35,16 @@ var dataGrid = $("#gridContainer").dxDataGrid({
     },
     columns: [ 
         { 
-			dataField: "odpName",
+			dataField: "odcName",
             sortOrder: "asc",
-            lookup: {
-                dataSource: ['ODP-BRU-FAH-001','ODP-BRU-FAH-002','ODP-BRU-FAH-003']
-            },
-            allowSorting: false,
             validationRules: [{ type: "required" }],
         },
         { 
-			dataField: "portNumber",
-            sortOrder: "asc",
-			dataType: "number",
-            lookup: {
-                dataSource: [1,2,3,4,5,6,7,8]
-            },
-            allowSorting: false,
+			dataField: "sto",
             validationRules: [{ type: "required" }],
         },
         { 
-            dataField: "status",
-            lookup: {
-                dataSource: ['Available','Existing','Broken']
-            },
-            allowSorting: false,
+            dataField: "alamat",
             validationRules: [{ type: "required" }],
         },
     ],

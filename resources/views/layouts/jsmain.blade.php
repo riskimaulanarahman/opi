@@ -104,8 +104,8 @@
         '/developer': 'admin/developer.js',
         //module
         '/headcounts': 'module/headcounts.js',
-        '/datapelanggan': 'module/datapelanggan.js',
-        '/odp': 'module/odp.js',
+        '/dataodc': 'module/dataodc.js',
+        '/odc': 'module/odc.js',
         //submission
         '/travel_request': 'submission/travel_request.js',
         '/project_request': 'submission/project_request.js',
