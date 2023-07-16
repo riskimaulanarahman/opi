@@ -177,21 +177,119 @@ class OdpdetailController extends Controller
     }
 
     public function update(Request $request, $id)
-    {
-        try {
-            
-            $requestData = $request->all();
+{
+    try {
+        $odp = $this->model->find($id);
+        $odc = $this->odcdetail->find($odp->odcdetails_id);
+        // $odc = $this->odcdetail->where('panel_id', $odcx->panel_id)->first();
+        $panel = $this->panel->where('id', $odc->panel_id)->first();
 
-            $data = $this->model->findOrFail($id);
-            $data->update($requestData);
+        
 
-            return response()->json(["status" => "success", "message" => $this->getMessage()['update']]);
+        // Validasi 1: Periksa duplikat 'odpName' pada panel feeder
+        if ($request->has('odpName')) {
+            $requestData['odpName'] = $request->odpName;
+            if ($panel->noPanel >= 1 && $panel->noPanel <= 4) {
+                $getfeeder = $this->panel
+                    ->where('noPanel', '>=', 1)
+                    ->where('noPanel', '<=', 4)
+                    ->where('status', 1)
+                    ->get();
 
-        } catch (\Exception $e) {
+                if (count($getfeeder) > 0) {
+                    foreach ($getfeeder as $key) {
+                        $idpanelfeeder[] = $key->id;
+                    }
 
-            return response()->json(["status" => "error", "message" => $e->getMessage()]);
+                    $getodc = $this->odcdetail->whereIn('panel_id', $idpanelfeeder)->get();
+                    foreach ($getodc as $key) {
+                        $idodcdetailfeeder[] = $key->id;
+                    }
+
+                    $getodp = $this->model->whereIn('odcdetails_id', $idodcdetailfeeder)
+                        ->where('id', '!=', $id) // Exclude the current record from duplication check
+                        ->get();
+
+                    $odpNameToFind = $request->odpName;
+                    $odpNames = $getodp->where('odpName', $odpNameToFind)->pluck('odpName')->toArray();
+
+                    if (count($odpNames) > 0) {
+                        return response()->json(["status" => "error", "message" => "Duplikat 'odpName' pada panel feeder"]);
+                    } else {
+                        $this->model->where('id', $id)->update($requestData);
+                    }
+                } else {
+                    $this->model->where('id', $id)->update($requestData);
+                }
+            }
+
+            // Validasi 2: Periksa duplikat 'odpName' pada panel distribusi
+            if ($panel->noPanel >= 5 && $panel->noPanel <= 12) {
+                $getdistribusi = $this->panel
+                    ->where('noPanel', '>=', 5)
+                    ->where('noPanel', '<=', 12)
+                    ->where('status', 1)
+                    ->get();
+
+                if (count($getdistribusi) > 0) {
+                    foreach ($getdistribusi as $key) {
+                        $idpaneldistribusi[] = $key->id;
+                    }
+
+                    $getodc = $this->odcdetail->whereIn('panel_id', $idpaneldistribusi)->get();
+                    foreach ($getodc as $key) {
+                        $idodcdetaildistribusi[] = $key->id;
+                    }
+
+                    $getodp = $this->model->whereIn('odcdetails_id', $idodcdetaildistribusi)
+                        ->where('id', '!=', $id) // Exclude the current record from duplication check
+                        ->get();
+
+                    $odpNameToFind = $request->odpName;
+                    $odpNames = $getodp->where('odpName', $odpNameToFind)->pluck('odpName')->toArray();
+
+                    if (count($odpNames) > 0) {
+                        return response()->json(["status" => "error", "message" => "Duplikat 'odpName' pada panel distribusi"]);
+                    } else {
+                        $this->model->where('id', $id)->update($requestData);
+                    }
+                } else {
+                    $this->model->where('id', $id)->update($requestData);
+                }
+            }
+        } else {
+            $requestData = [
+                'odcdetails_id' => $odc->id,
+                // 'odpName' => $request->odpName,
+                'noPanel' => $request->noPanel,
+                'noPort' => $request->noPort,
+            ];
+            $this->model->where('id', $id)->update($requestData);
         }
+
+        return response()->json(["status" => "success", "message" => $this->getMessage()['store']]);
+    } catch (\Exception $e) {
+        return response()->json(["status" => "error", "message" => $e->getMessage()]);
     }
+}
+
+
+    // public function update(Request $request, $id)
+    // {
+    //     try {
+            
+    //         $requestData = $request->all();
+
+    //         $data = $this->model->findOrFail($id);
+    //         $data->update($requestData);
+
+    //         return response()->json(["status" => "success", "message" => $this->getMessage()['update']]);
+
+    //     } catch (\Exception $e) {
+
+    //         return response()->json(["status" => "error", "message" => $e->getMessage()]);
+    //     }
+    // }
 
     public function destroy($id)
     {
