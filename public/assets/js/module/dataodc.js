@@ -216,6 +216,10 @@ const popupContentTemplate = function (reqid,options) {
                                 e.cellElement.css('color', 'red');
                                 e.cellElement.text('used');
                             }
+
+                            if(e.rowIndex >= 4) {
+                                e.cellElement.css('background', 'rgba(255, 0, 0, 0.1)');
+                            }
                         },
                         onCellClick: function(e) {
 
@@ -270,7 +274,16 @@ function btnsearchodp() {
     sendRequest(apiurl + "/searchodp", "POST", datapanel ).then(function(response){
         if(response.status !== 'error') {
             var items = response.data
-            alert('ODP berada pada\nPanel : '+items.noPanel+'\nPort : '+items.noPort)
+            // alert('ODP berada pada\nPanel : '+items.noPanel+'\nPort : '+items.noPort)
+            if (items.length > 0) {
+                var output = 'ODP berada pada:\n';
+                for (var i = 0; i < items.length; i++) {
+                  output += '\nPanel: ' + items[i].noPanel + '\nPort: ' + items[i].noPort + '\n=========';
+                }
+                alert(output);
+            } else {
+                alert('Tidak ada data ODP yang ditemukan.');
+            }
         }
     });
 }
@@ -280,7 +293,7 @@ function runpopup() {
         contentTemplate: popupContentTemplate,
         container: '.content',
         showTitle: true,
-        title: 'Detail Data Pelanggan',
+        title: 'Detail Data Panel',
         visible: false,
         dragEnabled: false,
         hideOnOutsideClick: false,
